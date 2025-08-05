@@ -1,5 +1,7 @@
 @extends('frontend.layouts.master')
 
+@section('title', 'Blog')
+
 @section('content')
     <!-- Page Title -->
     <div class="page-title" data-aos="fade">
@@ -46,8 +48,9 @@
                                                 <li class="d-flex align-items-center"><i class="bi bi-person"></i> <a
                                                         href="blog-details.html">John Doe</a></li>
                                                 <li class="d-flex align-items-center"><i class="bi bi-clock"></i> <a
-                                                        href="blog-details.html"><time datetime="2022-01-01">Jan 1,
-                                                            2022</time></a></li>
+                                                        href="blog-details.html"><time
+                                                            datetime="2022-01-01">{{ date('M j, Y', strtotime($blog->created_at)) }}</time></a>
+                                                </li>
                                                 <li class="d-flex align-items-center"><i class="bi bi-chat-dots"></i> <a
                                                         href="blog-details.html">12 Comments</a></li>
                                             </ul>
@@ -196,7 +199,11 @@
                 </section><!-- /Blog Posts Section -->
 
                 <!-- Pagination 2 Section -->
-                <section id="pagination-2" class="pagination-2 section">
+                <section>
+                    {{ $blogs->links('pagination::bootstrap-4') }}
+                </section>
+
+                {{-- <section id="pagination-2" class="pagination-2 section">
 
                     <div class="container">
                         <div class="d-flex justify-content-center">
@@ -213,7 +220,7 @@
                         </div>
                     </div>
 
-                </section><!-- /Pagination 2 Section -->
+                </section><!-- /Pagination 2 Section --> --}}
 
             </div>
 

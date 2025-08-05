@@ -22,7 +22,7 @@ class DatabaseSeeder extends Seeder
 
         $this->call([
             CategorySeeder::class,
-            // Add other seeders here
+            BlogSeeder::class,
         ]);
     }
 }

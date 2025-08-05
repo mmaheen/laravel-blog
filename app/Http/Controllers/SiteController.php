@@ -9,6 +9,7 @@ class SiteController extends Controller
     //
     public function index()
     {
-        return view('frontend.index'); 
+        $categories = \App\Models\Category::select('image','slug')->inRandomOrder()->get();
+        return view('frontend.index', compact('categories')); 
     }
 }

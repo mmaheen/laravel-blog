@@ -31,59 +31,47 @@
 
             <div class="swiper init-swiper">
                 <script type="application/json" class="swiper-config">
-            {
-              "loop": true,
-              "speed": 600,
-              "autoplay": {
-                "delay": 5000
-              },
-              "slidesPerView": "auto",
-              "pagination": {
-                "el": ".swiper-pagination",
-                "type": "bullets",
-                "clickable": true
-              },
-              "breakpoints": {
-                "320": {
-                  "slidesPerView": 2,
-                  "spaceBetween": 40
-                },
-                "480": {
-                  "slidesPerView": 3,
-                  "spaceBetween": 60
-                },
-                "640": {
-                  "slidesPerView": 4,
-                  "spaceBetween": 80
-                },
-                "992": {
-                  "slidesPerView": 5,
-                  "spaceBetween": 120
-                },
-                "1200": {
-                  "slidesPerView": 6,
-                  "spaceBetween": 120
-                }
-              }
-            }
-          </script>
+                    {
+                    "loop": true,
+                    "speed": 600,
+                    "autoplay": {
+                        "delay": 5000
+                    },
+                    "slidesPerView": "auto",
+                    "pagination": {
+                        "el": ".swiper-pagination",
+                        "type": "bullets",
+                        "clickable": true
+                    },
+                    "breakpoints": {
+                        "320": {
+                        "slidesPerView": 2,
+                        "spaceBetween": 40
+                        },
+                        "480": {
+                        "slidesPerView": 3,
+                        "spaceBetween": 60
+                        },
+                        "640": {
+                        "slidesPerView": 4,
+                        "spaceBetween": 80
+                        },
+                        "992": {
+                        "slidesPerView": 5,
+                        "spaceBetween": 120
+                        },
+                        "1200": {
+                        "slidesPerView": 6,
+                        "spaceBetween": 120
+                        }
+                    }
+                    }
+                </script>
                 <div class="swiper-wrapper align-items-center">
-                    <div class="swiper-slide"><img src="{{ asset('assets/frontend') }}/img/clients/clients-1.webp"
-                            class="img-fluid" alt=""></div>
-                    <div class="swiper-slide"><img src="{{ asset('assets/frontend') }}/img/clients/clients-2.webp"
-                            class="img-fluid" alt=""></div>
-                    <div class="swiper-slide"><img src="{{ asset('assets/frontend') }}/img/clients/clients-3.webp"
-                            class="img-fluid" alt=""></div>
-                    <div class="swiper-slide"><img src="{{ asset('assets/frontend') }}/img/clients/clients-4.webp"
-                            class="img-fluid" alt=""></div>
-                    <div class="swiper-slide"><img src="{{ asset('assets/frontend') }}/img/clients/clients-5.webp"
-                            class="img-fluid" alt=""></div>
-                    <div class="swiper-slide"><img src="{{ asset('assets/frontend') }}/img/clients/clients-6.webp"
-                            class="img-fluid" alt=""></div>
-                    <div class="swiper-slide"><img src="{{ asset('assets/frontend') }}/img/clients/clients-7.webp"
-                            class="img-fluid" alt=""></div>
-                    <div class="swiper-slide"><img src="{{ asset('assets/frontend') }}/img/clients/clients-8.webp"
-                            class="img-fluid" alt=""></div>
+                    @foreach ($categories as $category)
+                        <div class="swiper-slide"><img src="{{ asset('uploads/categories/' . $category->image) }}"
+                                class="img-fluid" alt=""></div>
+                    @endforeach
                 </div>
             </div>
 

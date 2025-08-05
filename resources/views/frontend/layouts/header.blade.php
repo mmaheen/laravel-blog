@@ -1,9 +1,11 @@
-<header id="header" class="header d-flex align-items-center fixed-top">
+<header id="header"
+    class="header d-flex align-items-center {{ Route::currentRouteName() == 'home' ? 'fixed-top' : 'sticky-top' }}"
+    style = "{{ Route::currentRouteName() != 'home' ? 'background-color: rgba(40, 58, 90, 0.9);' : '' }}">
     <div class="container-fluid container-xl position-relative d-flex align-items-center">
 
         <a href="{{ route('home') }}" class="logo d-flex align-items-center me-auto">
             <!-- Uncomment the line below if you also wish to use an image logo -->
-            <!-- <img src="{{ asset('assets/frontend') }}/img/logo.webp" alt=""> -->
+            <img src="{{ asset('assets/frontend/img/logo.webp') }}" alt="">
             <h1 class="sitename">Blog</h1>
         </a>
 
@@ -15,7 +17,7 @@
                 <li><a href="#portfolio">Portfolio</a></li>
                 <li><a href="#team">Team</a></li>
                 <li><a href="#pricing">Pricing</a></li>
-                <li><a href="blog.html">Blog</a></li>
+                <li><a href="{{ route('blogs.index') }}">Blog</a></li>
                 <li class="dropdown"><a href="#"><span>Dropdown</span> <i
                             class="bi bi-chevron-down toggle-dropdown"></i></a>
                     <ul>

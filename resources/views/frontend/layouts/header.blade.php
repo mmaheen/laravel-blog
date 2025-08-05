@@ -17,7 +17,7 @@
                 <li><a href="#portfolio">Portfolio</a></li>
                 <li><a href="#team">Team</a></li>
                 <li><a href="#pricing">Pricing</a></li>
-                <li><a href="{{ route('blogs.index') }}">Blog</a></li>
+                <li><a href="{{ route('blog.index') }}">Blog</a></li>
                 <li class="dropdown"><a href="#"><span>Dropdown</span> <i
                             class="bi bi-chevron-down toggle-dropdown"></i></a>
                     <ul>

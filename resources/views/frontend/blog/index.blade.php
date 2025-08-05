@@ -65,7 +65,7 @@
                                             </p>
 
                                             <div class="read-more">
-                                                <a href="blog-details.html">Read More</a>
+                                                <a href="{{ route('blog.show', $blog->slug) }}">Read More</a>
                                             </div>
                                         </div>
 

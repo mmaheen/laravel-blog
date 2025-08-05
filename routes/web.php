@@ -6,6 +6,6 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', [SiteController::class, 'index'])->name('home');
 
 Route::resources([
-    'categories' => \App\Http\Controllers\Frontend\CategoryController::class,
-    'blogs' => \App\Http\Controllers\Frontend\BlogController::class,
+    'category' => \App\Http\Controllers\Frontend\CategoryController::class,
+    'blog' => \App\Http\Controllers\Frontend\BlogController::class,
 ]);

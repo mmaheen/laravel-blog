@@ -360,13 +360,15 @@
                                     </div>
                                     <span class="px-3 text-black-50">/</span>
                                     <div class="d-flex align-items-center">
-                                        <i class="bi bi-folder2"></i> <span class="ps-2">Politics</span>
+                                        <i class="bi bi-folder2"></i> <span
+                                            class="ps-2">{{ $blog->category->name }}</span>
                                     </div>
                                 </div>
 
                                 <hr>
 
-                                <a href="blog-details.html" class="readmore stretched-link"><span>Read More</span><i
+                                <a href="{{ route('blog.show', $blog->slug) }}"
+                                    class="readmore stretched-link"><span>Read More</span><i
                                         class="bi bi-arrow-right"></i></a>
 
                             </div>

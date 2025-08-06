@@ -49,8 +49,8 @@
 
                                     <div class="author-info">
                                         <div class="author-details">
-                                            <img src="{{ asset('assets/frontend') }}/img/person/person-f-8.webp"
-                                                alt="Author" class="author-img">
+                                            <img src="{{ asset('uploads/users/' . $blog->user->image) }}" alt="Author"
+                                                class="author-img">
                                             <div class="info">
                                                 <h4>{{ $blog->user->name }}</h4>
                                                 <span class="role">Senior Web Developer</span>

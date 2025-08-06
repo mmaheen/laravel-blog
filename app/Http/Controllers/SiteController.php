@@ -14,7 +14,7 @@ class SiteController extends Controller
             ->get();
         $blogs = \App\Models\Blog::select('image','slug','title','content','created_at','category_id','user_id')
             ->with('category:id,name','user:id,name')
-            ->inRandomOrder()
+            ->latest()
             ->take(6)
             ->get();
         return view('frontend.index', compact('categories', 'blogs')); 

@@ -326,7 +326,7 @@
     </section><!-- /Portfolio Section -->
 
     <!-- Recent Blog Postst Section -->
-    <section id="recent-blog-postst" class="recent-blog-postst section light-background">
+    <section id="recent-blog-posts" class="recent-blog-postst section light-background">
 
         <!-- Section Title -->
         <div class="container section-title" data-aos="fade-up">

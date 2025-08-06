@@ -4,17 +4,24 @@
     <div class="container-fluid container-xl position-relative d-flex align-items-center">
 
         <a href="{{ route('home') }}" class="logo d-flex align-items-center me-auto">
-            <!-- Uncomment the line below if you also wish to use an image logo -->
             <img src="{{ asset('assets/frontend/img/logo.webp') }}" alt="">
             <h1 class="sitename">Blog</h1>
         </a>
 
         <nav id="navmenu" class="navmenu">
             <ul>
-                <li><a href="#hero" class="active">Home</a></li>
-                <li><a href="#portfolio">Portfolio</a></li>
-                <li><a href="#team">Team</a></li>
-                <li><a href="{{ route('blog.index') }}">Blog</a></li>
+                @if (Route::currentRouteName() == 'home')
+                    <li><a href="#hero" class="active">Home</a></li>
+                    <li><a href="#portfolio">Portfolio</a></li>
+                    <li><a href="#recent-blog-posts">Recent Blogs</a></li>
+                    <li><a href="#team">Team</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                @endif
+
+                <li>
+                    <a href="{{ route('blog.index') }}"
+                        class={{ Route::currentRouteName() == 'blog.index' ? 'active' : '' }}>Blog</a>
+                </li>
                 <li class="dropdown"><a href="#"><span>Authentication</span> <i
                             class="bi bi-chevron-down toggle-dropdown"></i></a>
                     <ul>
@@ -32,12 +39,11 @@
                         <li><a href="#">Register</a></li>
                     </ul>
                 </li>
-                <li><a href="#contact">Contact</a></li>
             </ul>
             <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
         </nav>
 
-        <a class="btn-getstarted" href="#hero">Get Started</a>
+        <a class="btn-getstarted" href="{{ route('home') }}">Get Started</a>
 
     </div>
 </header>

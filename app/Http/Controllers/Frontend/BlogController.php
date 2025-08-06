@@ -14,7 +14,7 @@ class BlogController extends Controller
     public function index()
     {
         //
-        $blogs = Blog::select('title', 'slug', 'image', 'created_at','category_id', 'user_id')
+        $blogs = Blog::select('title', 'slug', 'image', 'created_at','content','category_id', 'user_id')
             ->with(['category:id,name', 'user:id,name'])
             ->where('is_published', true)
             ->paginate(6);

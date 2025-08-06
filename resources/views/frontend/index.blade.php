@@ -407,7 +407,7 @@
                             </div>
                             <div class="member-info">
                                 <h4>{{ $user->name }}</h4>
-                                <span>Chief Executive Officer</span>
+                                <span>{{ $user->designation }}</span>
                                 <p>
                                     {{ substr($faker, 0, 80) }}
                                     {{ strlen($faker) > 80 ? '...' : '' }}

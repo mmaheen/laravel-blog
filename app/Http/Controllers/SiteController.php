@@ -17,7 +17,10 @@ class SiteController extends Controller
             ->latest()
             ->take(6)
             ->get();
-        $users = \App\Models\User::select('name','image')->inRandomOrder()->take(4)->get();
+        $users = \App\Models\User::select('name','image','designation')
+            ->inRandomOrder()
+            ->take(4)
+            ->get();
         $faker = \Faker\Factory::create()->sentence(10);
         return view('frontend.index', compact('categories', 'blogs', 'users', 'faker'));
     }

@@ -38,6 +38,7 @@ class UserSeeder extends Seeder
                 'email' => $faker->unique()->safeEmail(),
                 'password' => $faker->password(),
                 'image'=> $image_name,
+                'designation' => $faker->jobTitle(),
                 'created_at' => $faker->dateTimeBetween('-1 year', 'now'),
             ]);
         }

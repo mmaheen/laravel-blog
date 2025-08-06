@@ -46,7 +46,7 @@
                                         <div class="meta-top">
                                             <ul>
                                                 <li class="d-flex align-items-center"><i class="bi bi-person"></i> <a
-                                                        href="blog-details.html">John Doe</a></li>
+                                                        href="blog-details.html">{{ $blog->user->name }}</a></li>
                                                 <li class="d-flex align-items-center"><i class="bi bi-clock"></i> <a
                                                         href="blog-details.html"><time
                                                             datetime="2022-01-01">{{ date('M j, Y', strtotime($blog->created_at)) }}</time></a>

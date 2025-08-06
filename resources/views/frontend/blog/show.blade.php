@@ -1,6 +1,6 @@
 @extends('frontend.layouts.master')
 
-@section('title', 'Blog')
+@section('title', 'Blogs')
 
 @section('content')
 
@@ -33,9 +33,10 @@
                                     class="img-fluid" loading="lazy">
                                 <div class="meta-overlay">
                                     <div class="meta-categories">
-                                        <a href="#" class="category">Web Development</a>
+                                        <a href="#" class="category">{{ $blog->category->name }}</a>
                                         <span class="divider">•</span>
-                                        <span class="reading-time"><i class="bi bi-clock"></i> 6 min read</span>
+                                        <span class="reading-time"><i
+                                                class="bi bi-clock"></i>{{ $blog->created_at->diffForHumans() }} </span>
                                     </div>
                                 </div>
                             </div>
@@ -51,7 +52,7 @@
                                             <img src="{{ asset('assets/frontend') }}/img/person/person-f-8.webp"
                                                 alt="Author" class="author-img">
                                             <div class="info">
-                                                <h4>Michael Chen</h4>
+                                                <h4>{{ $blog->user->name }}</h4>
                                                 <span class="role">Senior Web Developer</span>
                                             </div>
                                         </div>

@@ -1,5 +1,7 @@
 @extends('frontend.layouts.master')
 
+@section('title', 'Home')
+
 @section('content')
     <!-- Hero Section -->
     <section id="hero" class="hero section dark-background">
@@ -356,7 +358,7 @@
 
                                 <div class="meta d-flex align-items-center">
                                     <div class="d-flex align-items-center">
-                                        <i class="bi bi-person"></i> <span class="ps-2">Julia Parker</span>
+                                        <i class="bi bi-person"></i> <span class="ps-2">{{ $blog->user->name }}</span>
                                     </div>
                                     <span class="px-3 text-black-50">/</span>
                                     <div class="d-flex align-items-center">

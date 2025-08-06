@@ -34,6 +34,8 @@ class BlogSeeder extends Seeder
                 'content' => $faker->realText($maxNbChars = 1000, $indexSize = 2),
                 'slug' => \Str::slug($title),
                 'category_id' => \App\Models\Category::inRandomOrder()->first()->id,
+                'user_id' => \App\Models\User::inRandomOrder()->first()->id,
+                'is_published' => rand(0, 1),
                 'image' => $image_name,
                 'created_at' => $faker->dateTimeBetween('-1 year', 'now'),
             ]);

@@ -491,7 +491,22 @@
                             <button type="submit" title="Search"><i class="bi bi-search"></i></button>
                         </form>
 
-                    </div><!--/Search Widget -->
+                    </div>
+                    <!--/Search Widget -->
+
+                    <!-- Tags Widget -->
+                    <div class="tags-widget widget-item">
+
+                        <h3 class="widget-title">Post Tags</h3>
+                        {{-- {{ $blog->tags }} --}}
+                        <ul>
+                            @foreach ($blog->tags as $tag)
+                                <li><a href="{{ route('tag.show', $tag->slug) }}">{{ ucfirst($tag->name) }}</a></li>
+                            @endforeach
+                        </ul>
+
+                    </div>
+                    <!--/Tags Widget -->
 
                     <!-- Recent Posts Widget -->
                     <div class="recent-posts-widget widget-item">
@@ -528,20 +543,8 @@
                             <li><a href="#">Educaion <span>(14)</span></a></li>
                         </ul>
 
-                    </div><!--/Categories Widget -->
-
-                    <!-- Tags Widget -->
-                    <div class="tags-widget widget-item">
-
-                        <h3 class="widget-title">Post Tags</h3>
-                        {{-- {{ $blog->tags }} --}}
-                        <ul>
-                            @foreach ($blog->tags as $tag)
-                                <li><a href="{{ route('tag.show', $tag->slug) }}">{{ ucfirst($tag->name) }}</a></li>
-                            @endforeach
-                        </ul>
-
-                    </div><!--/Tags Widget -->
+                    </div>
+                    <!--/Categories Widget -->
 
                 </div>
 

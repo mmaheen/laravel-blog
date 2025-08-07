@@ -185,7 +185,7 @@
                 <ul class="portfolio-filters isotope-filters" data-aos="fade-up" data-aos-delay="100">
                     <li data-filter="*" class="filter-active">All</li>
                     @foreach ($photo_categories as $category)
-                        <li data-filter=".filter-{{ $category->slug }}">{{ $category->name }}</li>
+                        <li data-filter=".filter-{{ $category->slug }}">{{ ucfirst($category->name) }}</li>
                     @endforeach
                 </ul><!-- End Portfolio Filters -->
 

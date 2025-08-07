@@ -1,6 +1,6 @@
 @extends('frontend.layouts.master')
 
-@section('title', 'Blogs')
+@section('title', 'Blog Details')
 
 @section('content')
 
@@ -498,17 +498,17 @@
 
                         <h3 class="widget-title">Recent Posts</h3>
 
-                        @foreach ($recent_blogs as $blog)
+                        @foreach ($recent_blogs as $recent_blog)
                             <div class="post-item">
-                                <img src="{{ asset('uploads/blogs/' . $blog->image) }}" alt=""
+                                <img src="{{ asset('uploads/blogs/' . $recent_blog->image) }}" alt=""
                                     class="flex-shrink-0">
                                 <div>
                                     <h4>
-                                        <a href="{{ route('blog.show', $blog->slug) }}">
-                                            {{ \Illuminate\Support\Str::limit($blog->title, 50) }}
+                                        <a href="{{ route('blog.show', $recent_blog->slug) }}">
+                                            {{ \Illuminate\Support\Str::limit($recent_blog->title, 50) }}
                                         </a>
                                     </h4>
-                                    <time datetime="2020-01-01">{{ $blog->created_at->format('M d, Y') }}</time>
+                                    <time datetime="2020-01-01">{{ $recent_blog->created_at->format('M d, Y') }}</time>
                                 </div>
                             </div><!-- End recent post item-->
                         @endforeach
@@ -533,19 +533,12 @@
                     <!-- Tags Widget -->
                     <div class="tags-widget widget-item">
 
-                        <h3 class="widget-title">Tags</h3>
+                        <h3 class="widget-title">Post Tags</h3>
+                        {{-- {{ $blog->tags }} --}}
                         <ul>
-                            <li><a href="#">App</a></li>
-                            <li><a href="#">IT</a></li>
-                            <li><a href="#">Business</a></li>
-                            <li><a href="#">Mac</a></li>
-                            <li><a href="#">Design</a></li>
-                            <li><a href="#">Office</a></li>
-                            <li><a href="#">Creative</a></li>
-                            <li><a href="#">Studio</a></li>
-                            <li><a href="#">Smart</a></li>
-                            <li><a href="#">Tips</a></li>
-                            <li><a href="#">Marketing</a></li>
+                            @foreach ($blog->tags as $tag)
+                                <li><a href="{{ route('tag.show', $tag->slug) }}">{{ ucfirst($tag->name) }}</a></li>
+                            @endforeach
                         </ul>
 
                     </div><!--/Tags Widget -->

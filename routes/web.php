@@ -10,3 +10,5 @@ Route::resources([
     'blog' => \App\Http\Controllers\Frontend\BlogController::class,
     'photo' => \App\Http\Controllers\Frontend\PhotoController::class,
 ]);
+
+Route::get('tag/{slug}', [\App\Http\Controllers\Frontend\TagController::class, 'show'])->name('tag.show');

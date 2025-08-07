@@ -26,12 +26,11 @@ class SiteController extends Controller
         $photos = \App\Models\Photo::select('image', 'description', 'title', 'category_id', 'slug')
             ->inRandomOrder()
             ->with('category:id,name,slug')
-            ->take(10)
+            ->take(8)
             ->get();
         $photo_categories = Category::select('name', 'slug')
             ->whereIn('id', $photos->pluck('category_id'))
             ->inRandomOrder()
-            ->take(5)
             ->get();
         // return $photo_categories;
         $faker = \Faker\Factory::create()->sentence(10);

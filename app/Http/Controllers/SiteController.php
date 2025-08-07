@@ -26,7 +26,7 @@ class SiteController extends Controller
         $photos = \App\Models\Photo::select('image', 'description', 'title', 'category_id', 'slug')
             ->inRandomOrder()
             ->with('category:id,name,slug')
-            ->take(8)
+            ->take(7)
             ->get();
         $photo_categories = Category::select('name', 'slug')
             ->whereIn('id', $photos->pluck('category_id'))

@@ -9,13 +9,14 @@
         <div class="container">
             <nav class="breadcrumbs">
                 <ol>
-                    <li><a href="index.html">Home</a></li>
+                    <li><a href="{{ route('home') }}">Home</a></li>
                     <li class="current">Blog Details</li>
                 </ol>
             </nav>
             <h1>Blog Details</h1>
         </div>
-    </div><!-- End Page Title -->
+    </div>
+    <!-- End Page Title -->
 
     <div class="container">
         <div class="row">
@@ -497,50 +498,20 @@
 
                         <h3 class="widget-title">Recent Posts</h3>
 
-                        <div class="post-item">
-                            <img src="{{ asset('assets/frontend') }}/img/blog/blog-post-square-1.webp" alt=""
-                                class="flex-shrink-0">
-                            <div>
-                                <h4><a href="blog-details.html">Nihil blanditiis at in nihil autem</a></h4>
-                                <time datetime="2020-01-01">Jan 1, 2020</time>
-                            </div>
-                        </div><!-- End recent post item-->
-
-                        <div class="post-item">
-                            <img src="{{ asset('assets/frontend') }}/img/blog/blog-post-square-2.webp" alt=""
-                                class="flex-shrink-0">
-                            <div>
-                                <h4><a href="blog-details.html">Quidem autem et impedit</a></h4>
-                                <time datetime="2020-01-01">Jan 1, 2020</time>
-                            </div>
-                        </div><!-- End recent post item-->
-
-                        <div class="post-item">
-                            <img src="{{ asset('assets/frontend') }}/img/blog/blog-post-square-3.webp" alt=""
-                                class="flex-shrink-0">
-                            <div>
-                                <h4><a href="blog-details.html">Id quia et et ut maxime similique occaecati ut</a></h4>
-                                <time datetime="2020-01-01">Jan 1, 2020</time>
-                            </div>
-                        </div><!-- End recent post item-->
-
-                        <div class="post-item">
-                            <img src="{{ asset('assets/frontend') }}/img/blog/blog-post-square-4.webp" alt=""
-                                class="flex-shrink-0">
-                            <div>
-                                <h4><a href="blog-details.html">Laborum corporis quo dara net para</a></h4>
-                                <time datetime="2020-01-01">Jan 1, 2020</time>
-                            </div>
-                        </div><!-- End recent post item-->
-
-                        <div class="post-item">
-                            <img src="{{ asset('assets/frontend') }}/img/blog/blog-post-square-5.webp" alt=""
-                                class="flex-shrink-0">
-                            <div>
-                                <h4><a href="blog-details.html">Et dolores corrupti quae illo quod dolor</a></h4>
-                                <time datetime="2020-01-01">Jan 1, 2020</time>
-                            </div>
-                        </div><!-- End recent post item-->
+                        @foreach ($recent_blogs as $blog)
+                            <div class="post-item">
+                                <img src="{{ asset('uploads/blogs/' . $blog->image) }}" alt=""
+                                    class="flex-shrink-0">
+                                <div>
+                                    <h4>
+                                        <a href="{{ route('blog.show', $blog->slug) }}">
+                                            {{ \Illuminate\Support\Str::limit($blog->title, 50) }}
+                                        </a>
+                                    </h4>
+                                    <time datetime="2020-01-01">{{ $blog->created_at->format('M d, Y') }}</time>
+                                </div>
+                            </div><!-- End recent post item-->
+                        @endforeach
 
                     </div><!--/Recent Posts Widget -->
 

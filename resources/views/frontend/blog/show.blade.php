@@ -525,10 +525,12 @@
                                     </h4>
                                     <time datetime="2020-01-01">{{ $recent_blog->created_at->format('M d, Y') }}</time>
                                 </div>
-                            </div><!-- End recent post item-->
+                            </div>
+                            <!-- End recent post item-->
                         @endforeach
 
-                    </div><!--/Recent Posts Widget -->
+                    </div>
+                    <!--/Recent Posts Widget -->
 
                     <!-- Categories Widget -->
                     <div class="categories-widget widget-item">

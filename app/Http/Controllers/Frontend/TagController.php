@@ -13,6 +13,7 @@ class TagController extends Controller
     {
         $tag = Tag::where('slug', $slug)->firstOrFail();
         $blogs = $tag->blogs()->paginate(6);
-        return view('frontend.tag.show', compact('tag', 'blogs'));
+        $other_tags = Tag::where('slug', '!=', $tag->slug)->inRandomOrder()->take(15)->get();
+        return view('frontend.tag.show', compact('tag', 'blogs', 'other_tags'));
     }
 }

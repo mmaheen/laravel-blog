@@ -22,14 +22,17 @@ class PhotoSeeder extends Seeder
         File::cleanDirectory($destination_path);
         File::copyDirectory($source_path, $destination_path);
 
-        foreach (range(1,100) as $index){
+        foreach (range(1, 100) as $index) {
             $images = File::files($destination_path);
             $random_image = $images[array_rand($images)];
             $image_name = $random_image->getFilename();
 
+            $title = $faker->sentence(3);
+
             \App\Models\Photo::create([
-                'title' => $faker->sentence,
+                'title' => $title,
                 'description' => $faker->paragraph,
+                'slug' => \Str::slug($title),
                 'user_id' => \App\Models\User::inRandomOrder()->first()->id, // Random user
                 'image' => $image_name,
                 'category_id' => \App\Models\Category::inRandomOrder()->first()->id, // Random category

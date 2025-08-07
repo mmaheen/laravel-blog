@@ -23,7 +23,7 @@ class SiteController extends Controller
             ->take(4)
             ->get();
 
-        $photos = \App\Models\Photo::select('image', 'description', 'title', 'category_id')
+        $photos = \App\Models\Photo::select('image', 'description', 'title', 'category_id', 'slug')
             ->inRandomOrder()
             ->with('category:id,name,slug')
             ->take(10)

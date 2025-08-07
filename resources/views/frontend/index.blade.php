@@ -206,8 +206,8 @@
                                 <a href="{{ asset('uploads/photos/' . $photo->image) }}" title="{{ $photo->title }}"
                                     data-gallery="portfolio-gallery-app" class="glightbox preview-link"><i
                                         class="bi bi-zoom-in"></i></a>
-                                <a href="portfolio-details.html" title="More Details" class="details-link"><i
-                                        class="bi bi-link-45deg"></i></a>
+                                <a href="{{ route('photo.show', $photo->slug) }}" title="More Details"
+                                    class="details-link"><i class="bi bi-link-45deg"></i></a>
                             </div>
                         </div><!-- End Portfolio Item -->
                     @endforeach

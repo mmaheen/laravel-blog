@@ -24,12 +24,15 @@ class SiteController extends Controller
 
         $photos = \App\Models\Photo::select('image','description','title','category_id')
             ->inRandomOrder()
-            ->take(6)
+            ->with('category:id,name,slug')
+            ->take(10)
             ->get();
         $photo_categories = \App\Models\Category::select('name','slug')
+            ->whereIn('id', $photos->pluck('category_id'))
             ->inRandomOrder()
-            ->take(4)
+            ->take(5)
             ->get();
+            // return $photo_categories;
         $faker = \Faker\Factory::create()->sentence(10);
         return view('frontend.index', compact('categories', 'blogs', 'users', 'faker', 'photos', 'photo_categories'));
     }

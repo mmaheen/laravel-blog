@@ -187,15 +187,15 @@
                     @foreach ($photo_categories as $category)
                         <li data-filter=".filter-{{ $category->slug }}">{{ $category->name }}</li>
                     @endforeach
-                    <li data-filter=".filter-app">App</li>
+                    {{-- <li data-filter=".filter-app">App</li>
                     <li data-filter=".filter-product">Card</li>
-                    <li data-filter=".filter-branding">Web</li>
+                    <li data-filter=".filter-branding">Web</li> --}}
                 </ul><!-- End Portfolio Filters -->
 
                 <div class="row gy-4 isotope-container" data-aos="fade-up" data-aos-delay="200">
 
                     @foreach ($photos as $photo)
-                        <div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-app">
+                        <div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-{{ $photo->category->slug }}">
                             <img src="{{ asset('uploads/photos/' . $photo->image) }}" class="img-fluid" alt="">
                             <div class="portfolio-info">
                                 <h4>
@@ -215,7 +215,7 @@
                         </div><!-- End Portfolio Item -->
                     @endforeach
 
-                    <div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-product">
+                    {{-- <div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-product">
                         <img src="{{ asset('assets/frontend') }}/img/portfolio/portfolio-1.webp" class="img-fluid"
                             alt="">
                         <div class="portfolio-info">
@@ -325,7 +325,7 @@
                             <a href="portfolio-details.html" title="More Details" class="details-link"><i
                                     class="bi bi-link-45deg"></i></a>
                         </div>
-                    </div><!-- End Portfolio Item -->
+                    </div><!-- End Portfolio Item --> --}}
 
                 </div><!-- End Portfolio Container -->
 

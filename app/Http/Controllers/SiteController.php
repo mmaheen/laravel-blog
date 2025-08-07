@@ -21,7 +21,16 @@ class SiteController extends Controller
             ->inRandomOrder()
             ->take(4)
             ->get();
+
+        $photos = \App\Models\Photo::select('image','description','title','category_id')
+            ->inRandomOrder()
+            ->take(6)
+            ->get();
+        $photo_categories = \App\Models\Category::select('name','slug')
+            ->inRandomOrder()
+            ->take(4)
+            ->get();
         $faker = \Faker\Factory::create()->sentence(10);
-        return view('frontend.index', compact('categories', 'blogs', 'users', 'faker'));
+        return view('frontend.index', compact('categories', 'blogs', 'users', 'faker', 'photos', 'photo_categories'));
     }
 }

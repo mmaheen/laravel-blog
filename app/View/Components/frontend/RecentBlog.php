@@ -15,7 +15,7 @@ class RecentBlog extends Component
      */
     public function __construct()
     {
-        $this->blogs = Blog::latest()->take(5)->get();
+        $this->blogs = Blog::select('title', 'slug', 'image', 'created_at')->latest()->take(5)->get();
     }
 
     /**

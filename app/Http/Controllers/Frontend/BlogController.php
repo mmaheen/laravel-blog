@@ -19,12 +19,7 @@ class BlogController extends Controller
             ->inRandomOrder()
             ->where('is_published', true)
             ->paginate(6);
-
-        $tags = \App\Models\Tag::select('slug', 'name')
-            ->inRandomOrder()
-            ->take(10)
-            ->get();
-        return view('frontend.blog.index', compact('blogs', 'tags'));
+        return view('frontend.blog.index', compact('blogs'));
     }
 
     /**

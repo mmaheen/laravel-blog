@@ -120,16 +120,7 @@
                     <!-- Tags Widget -->
                     <div class="tags-widget widget-item">
 
-                        {{-- <h3 class="widget-title">Other Tags</h3>
-                        <ul>
-                            @foreach ($other_tags as $other_tag)
-                                <li>
-                                    <a href="{{ route('tag.show', $other_tag->slug) }}">
-                                        {{ ucfirst($other_tag->name) }}
-                                    </a>
-                                </li>
-                            @endforeach
-                        </ul> --}}
+                        <x-frontend.tags />
 
                     </div>
                     <!--/Tags Widget -->

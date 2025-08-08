@@ -20,7 +20,7 @@
 
                 <li>
                     <a href="{{ route('blog.index') }}"
-                        class={{ Route::currentRouteName() == 'blog.index' ? 'active' : '' }}>Blog</a>
+                        class={{ Route::currentRouteName() == 'blog.index' ? 'active' : '' }}>Blogs</a>
                 </li>
                 <li class="dropdown"><a href="#"><span>Authentication</span> <i
                             class="bi bi-chevron-down toggle-dropdown"></i></a>

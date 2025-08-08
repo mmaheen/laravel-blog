@@ -39,7 +39,10 @@ class CategoryController extends Controller
     {
         //
         $category = Category::where('slug', $slug)->firstOrFail();
-        $blogs = $category->blogs()->paginate(6);
+        $blogs = $category->blogs()
+            ->select('image', 'title', 'content', 'slug', 'user_id', 'created_at')
+            ->with('user')
+            ->paginate(6);
         return view('frontend.category.show', compact('category', 'blogs'));
     }
 

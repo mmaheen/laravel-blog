@@ -45,12 +45,7 @@ class BlogController extends Controller
     {
         //
         $blog = Blog::where('slug', $slug)->firstOrFail();
-        $recent_blogs = Blog::select('title', 'slug', 'image', 'created_at')
-            ->where('is_published', true)
-            ->orderBy('created_at', 'desc')
-            ->take(5)
-            ->get();
-        return view('frontend.blog.show', compact('blog', 'recent_blogs'));
+        return view('frontend.blog.show', compact('blog'));
     }
 
     /**

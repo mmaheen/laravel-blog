@@ -1,6 +1,6 @@
 @extends('frontend.layouts.master')
 
-@section('title', 'Blog - ' . ucfirst($tag->name))
+@section('title', 'Blog - ' . ucfirst($category->name))
 
 @section('content')
     <!-- Page Title -->
@@ -9,10 +9,10 @@
             <nav class="breadcrumbs">
                 <ol>
                     <li><a href="{{ route('home') }}">Home</a></li>
-                    <li class="current">Tag - {{ ucfirst($tag->name) }}</li>
+                    <li class="current">Category - {{ ucfirst($category->name) }}</li>
                 </ol>
             </nav>
-            <h1>Blog - {{ ucfirst($tag->name) }}</h1>
+            <h1>Blog - {{ ucfirst($category->name) }}</h1>
         </div>
     </div>
     <!-- End Page Title -->
@@ -105,10 +105,22 @@
                     </div>
                     <!--/Search Widget -->
 
+                    <!-- Categories Widget -->
+                    <div class="categories-widget widget-item">
+                        <x-frontend.categories />
+                    </div>
+                    <!--/Categories Widget -->
+
+                    <!-- Recent Posts Widget -->
+                    <div class="recent-posts-widget widget-item">
+                        <x-frontend.recent-blog />
+                    </div>
+                    <!--/Recent Posts Widget -->
+
                     <!-- Tags Widget -->
                     <div class="tags-widget widget-item">
 
-                        <h3 class="widget-title">Other Tags</h3>
+                        {{-- <h3 class="widget-title">Other Tags</h3>
                         <ul>
                             @foreach ($other_tags as $other_tag)
                                 <li>
@@ -117,22 +129,12 @@
                                     </a>
                                 </li>
                             @endforeach
-                        </ul>
+                        </ul> --}}
 
                     </div>
                     <!--/Tags Widget -->
 
-                    <!-- Recent Posts Widget -->
-                    <div class="recent-posts-widget widget-item">
-                        <x-frontend.recent-blog />
-                    </div>
-                    <!--/Recent Posts Widget -->
 
-                    <!-- Categories Widget -->
-                    <div class="categories-widget widget-item">
-                        <x-frontend.categories />
-                    </div>
-                    <!--/Categories Widget -->
 
 
 

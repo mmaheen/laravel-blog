@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Frontend;
 
 use App\Http\Controllers\Controller;
+use App\Models\Category;
 use Illuminate\Http\Request;
 
 class CategoryController extends Controller
@@ -34,9 +35,12 @@ class CategoryController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    public function show(string $slug)
     {
         //
+        $category = Category::where('slug', $slug)->firstOrFail();
+        $blogs = $category->blogs()->paginate(6);
+        return view('frontend.category.show', compact('category', 'blogs'));
     }
 
     /**

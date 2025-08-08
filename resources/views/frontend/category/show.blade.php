@@ -1,6 +1,6 @@
 @extends('frontend.layouts.master')
 
-@section('title', 'Blog - ' . ucfirst($category->name))
+@section('title', 'Category - ' . ucfirst($category->name))
 
 @section('content')
     <!-- Page Title -->

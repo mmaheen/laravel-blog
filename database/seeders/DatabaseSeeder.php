@@ -20,7 +20,8 @@ class DatabaseSeeder extends Seeder
             BlogSeeder::class,
             PhotoSeeder::class,
             TagSeeder::class,
-            BlogTagSeeder::class
+            BlogTagSeeder::class,
+            SkillSeeder::class,
         ]);
     }
 }

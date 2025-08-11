@@ -32,8 +32,11 @@ class SiteController extends Controller
             ->whereIn('id', $photos->pluck('category_id'))
             ->inRandomOrder()
             ->get();
-        // return $photo_categories;
+        $skills = \App\Models\Skill::select('title', 'percentage')
+            ->inRandomOrder()
+            ->take(4)
+            ->get();
         $faker = \Faker\Factory::create()->sentence(10);
-        return view('frontend.index', compact('categories', 'blogs', 'users', 'faker', 'photos', 'photo_categories'));
+        return view('frontend.index', compact('categories', 'blogs', 'users', 'faker', 'photos', 'photo_categories', 'skills'));
     }
 }

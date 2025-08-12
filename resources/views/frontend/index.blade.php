@@ -100,10 +100,12 @@
 
                 <div class="col-lg-6 pt-4 pt-lg-0 content">
 
-                    <h3>Voluptatem dignissimos provident quasi corporis voluptas</h3>
+                    <h3>
+                        What I Do Best
+                    </h3>
                     <p class="fst-italic">
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
-                        labore et dolore magna aliqua.
+                        Crafted skills for building, designing, and debugging the web. From backend logic to frontend
+                        flair—here’s what I bring to the chart...
                     </p>
 
                     <div class="skills-content skills-animation">
@@ -126,7 +128,8 @@
 
         </div>
 
-    </section><!-- /Skills Section -->
+    </section>
+    <!-- /Skills Section -->
 
 
     <!-- Call To Action Section -->
@@ -158,7 +161,7 @@
         <!-- Section Title -->
         <div class="container section-title" data-aos="fade-up">
             <h2>Portfolio</h2>
-            <p>Necessitatibus eius consequatur ex aliquid fuga eum quidem sint consectetur velit</p>
+            <p>Photo album is arranged by categories in this section</p>
         </div><!-- End Section Title -->
 
         <div class="container">
@@ -195,13 +198,15 @@
                         </div><!-- End Portfolio Item -->
                     @endforeach
 
-                </div><!-- End Portfolio Container -->
+                </div>
+                <!-- End Portfolio Container -->
 
             </div>
 
         </div>
 
-    </section><!-- /Portfolio Section -->
+    </section>
+    <!-- /Portfolio Section -->
 
     <!-- Recent Blog Postst Section -->
     <section id="recent-blog-posts" class="recent-blog-postst section light-background">
@@ -209,7 +214,7 @@
         <!-- Section Title -->
         <div class="container section-title" data-aos="fade-up">
             <h2>Recent Blog Posts</h2>
-            <p>Necessitatibus eius consequatur ex aliquid fuga eum quidem sint consectetur velit</p>
+            <p>The blogs are arranged in reverse chronological order</p>
         </div><!-- End Section Title -->
 
         <div class="container">
@@ -261,7 +266,8 @@
 
         </div>
 
-    </section><!-- /Recent Blog Postst Section -->
+    </section>
+    <!-- /Recent Blog Postst Section -->
 
     <!-- Team Section -->
     <section id="team" class="team section">

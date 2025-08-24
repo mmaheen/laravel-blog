@@ -25,7 +25,7 @@
                 <li class="dropdown"><a href="#"><span>Authentication</span> <i
                             class="bi bi-chevron-down toggle-dropdown"></i></a>
                     <ul>
-                        <li><a href="#">Login</a></li>
+                        <li><a href="{{ route('sanctum.login') }}">Login</a></li>
                         {{-- <li class="dropdown"><a href="#"><span>Deep Dropdown</span> <i
                                     class="bi bi-chevron-down toggle-dropdown"></i></a>
                             <ul>
@@ -36,7 +36,7 @@
                                 <li><a href="#">Deep Dropdown 5</a></li>
                             </ul>
                         </li> --}}
-                        <li><a href="#">Register</a></li>
+                        <li><a href="{{ route('sanctum.register') }}">Register</a></li>
                     </ul>
                 </li>
             </ul>

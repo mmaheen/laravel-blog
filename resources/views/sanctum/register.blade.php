@@ -14,10 +14,21 @@
                                 <div class="mb-5">
                                     <h2 class="h3">Registration</h2>
                                     <h3 class="fs-6 fw-normal text-secondary m-0">Enter your details to register</h3>
+                                    @if ($errors->any())
+                                        <div class="alert alert-danger mt-2">
+                                            <ul class="mb-0">
+                                                @foreach ($errors->all() as $error)
+                                                    <li>{{ $error }}</li>
+                                                @endforeach
+                                            </ul>
+                                        </div>
+
+                                    @endif
                                 </div>
                             </div>
                         </div>
-                        <form action="#!">
+                        <form action="{{ route('sanctum.register') }}" method="POST">
+                            @csrf
                             <div class="row gy-3 gy-md-4 overflow-hidden">
 
                                 <div class="col-12">

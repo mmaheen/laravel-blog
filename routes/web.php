@@ -20,5 +20,7 @@ Route::get('tag/{slug}', [\App\Http\Controllers\Frontend\TagController::class, '
 //Sanctum Authentication
 Route::get('register', [RegisterController::class, 'register'])
     ->name('sanctum.register');
+Route::post('register', [RegisterController::class, 'store'])
+    ->name('sanctum.register');
 Route::get('login', [LoginController::class, 'login'])
     ->name('sanctum.login');

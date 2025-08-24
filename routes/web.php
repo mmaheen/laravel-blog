@@ -19,8 +19,17 @@ Route::get('tag/{slug}', [\App\Http\Controllers\Frontend\TagController::class, '
 
 //Sanctum Authentication
 Route::get('register', [RegisterController::class, 'register'])
-    ->name('sanctum.register');
+    ->name('sanctum.register')
+    ->middleware('guest');
 Route::post('register', [RegisterController::class, 'store'])
     ->name('sanctum.register');
 Route::get('login', [LoginController::class, 'login'])
+    ->name('sanctum.login')
+    ->middleware('guest'); //RedirectIfAuthenticated
+Route::post('login', [LoginController::class, 'store'])
     ->name('sanctum.login');
+
+//Dashboard
+Route::get('dashboard', [\App\Http\Controllers\Backend\Client\DashboardController::class, 'index'])
+    ->name('dashboard.index')
+    ->middleware('auth');

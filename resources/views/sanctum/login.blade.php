@@ -14,10 +14,20 @@
                                 <div class="mb-5">
                                     <h2 class="h3">Login</h2>
                                     <h3 class="fs-6 fw-normal text-secondary m-0">Enter your details to login</h3>
+                                    @if ($errors->any())
+                                        <div class="alert alert-danger mt-2">
+                                            <ul class="mb-0">
+                                                @foreach ($errors->all() as $error)
+                                                    <li>{{ $error }}</li>
+                                                @endforeach
+                                            </ul>
+                                        </div>
+                                    @endif
                                 </div>
                             </div>
                         </div>
-                        <form action="#!">
+                        <form action="{{ route('sanctum.login') }}" method="POST">
+                            @csrf
                             <div class="row gy-3 gy-md-4 overflow-hidden">
                                 <div class="col-12">
                                     <label for="email" class="form-label">Email <span
@@ -34,7 +44,7 @@
                                 <div class="col-12">
                                     <div class="form-check">
                                         <input class="form-check-input" type="checkbox" value="" name="remember"
-                                            id="remember" required>
+                                            id="remember">
                                         <label class="form-check-label text-secondary" for="remember">
                                             Remember me
                                         </label>

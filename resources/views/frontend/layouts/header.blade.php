@@ -22,11 +22,12 @@
                     <a href="{{ route('blog.index') }}"
                         class={{ Route::currentRouteName() == 'blog.index' ? 'active' : '' }}>Blogs</a>
                 </li>
-                <li class="dropdown"><a href="#"><span>Authentication</span> <i
-                            class="bi bi-chevron-down toggle-dropdown"></i></a>
-                    <ul>
-                        <li><a href="{{ route('sanctum.login') }}">Login</a></li>
-                        {{-- <li class="dropdown"><a href="#"><span>Deep Dropdown</span> <i
+                @guest()
+                    <li class="dropdown"><a href="#"><span>Authentication</span> <i
+                                class="bi bi-chevron-down toggle-dropdown"></i></a>
+                        <ul>
+                            <li><a href="{{ route('sanctum.login') }}">Login</a></li>
+                            {{-- <li class="dropdown"><a href="#"><span>Deep Dropdown</span> <i
                                     class="bi bi-chevron-down toggle-dropdown"></i></a>
                             <ul>
                                 <li><a href="#">Deep Dropdown 1</a></li>
@@ -36,9 +37,27 @@
                                 <li><a href="#">Deep Dropdown 5</a></li>
                             </ul>
                         </li> --}}
-                        <li><a href="{{ route('sanctum.register') }}">Register</a></li>
-                    </ul>
-                </li>
+                            <li><a href="{{ route('sanctum.register') }}">Register</a></li>
+                        </ul>
+                    </li>
+                @else
+                    <li class="dropdown"><a href="#"><span>{{ Auth::user()->name }}</span> <i
+                                class="bi bi-chevron-down toggle-dropdown"></i></a>
+                        <ul>
+                            <li>
+                                <a href="{{ route('dashboard.index') }}">Dashboard</a>
+                            </li>
+                            <li>
+                                <a href="">Logout</a>
+                                {{-- <form method="POST" action="{{ route('sanctum.logout') }}">
+                                    @csrf
+                                    <button type="submit" class="btn btn-link p-0 m-0 align-baseline">Logout</button>
+                                </form> --}}
+                            </li>
+                        </ul>
+                    </li>
+                @endguest
+
             </ul>
             <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
         </nav>

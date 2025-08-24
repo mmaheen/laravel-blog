@@ -33,7 +33,15 @@ class LoginController extends Controller
         }
         Auth::login($user, $request->boolean('remember'));
         return redirect()->route('dashboard.index');
+    }
 
-
+    public function logout(Request $request)
+    {
+        Auth::logout();
+        //Invalidate all active sessions
+        $request->session()->invalidate();
+        //Regenerate CSRF token
+        $request->session()->regenerateToken();
+        return redirect()->route('home');
     }
 }

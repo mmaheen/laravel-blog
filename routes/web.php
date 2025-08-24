@@ -28,6 +28,8 @@ Route::get('login', [LoginController::class, 'login'])
     ->middleware('guest'); //RedirectIfAuthenticated
 Route::post('login', [LoginController::class, 'store'])
     ->name('sanctum.login');
+Route::post('logout', [LoginController::class, 'logout'])
+    ->name('sanctum.logout');
 
 //Dashboard
 Route::get('dashboard', [\App\Http\Controllers\Backend\Client\DashboardController::class, 'index'])

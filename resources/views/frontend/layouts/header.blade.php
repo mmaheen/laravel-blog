@@ -48,11 +48,10 @@
                                 <a href="{{ route('dashboard.index') }}">Dashboard</a>
                             </li>
                             <li>
-                                <a href="">Logout</a>
-                                {{-- <form method="POST" action="{{ route('sanctum.logout') }}">
+                                <form method="POST" action="{{ route('sanctum.logout') }}">
                                     @csrf
-                                    <button type="submit" class="btn btn-link p-0 m-0 align-baseline">Logout</button>
-                                </form> --}}
+                                    <button type="submit" class="mx-3 btn btn-link">Logout</button>
+                                </form>
                             </li>
                         </ul>
                     </li>

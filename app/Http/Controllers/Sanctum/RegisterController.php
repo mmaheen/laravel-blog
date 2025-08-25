@@ -24,13 +24,21 @@ class RegisterController extends Controller
         ]);
 
         // Create the user
-        User::create([
+        // User::create([
+        //     'name' => $request->input('name'),
+        //     'email' => $request->input('email'),
+        //     'password' => $request->input('password'),
+        // ]);
+
+        // return redirect()->route('sanctum.login')->with('success', 'Registration successful. Please log in.');
+
+        $user = User::create([
             'name' => $request->input('name'),
             'email' => $request->input('email'),
             'password' => $request->input('password'),
         ]);
 
-        // dd($request->all());
-        return redirect()->route('sanctum.login')->with('success', 'Registration successful. Please log in.');
+        auth()->login($user, true);
+        return redirect()->route('dashboard.index')->with('success', 'Registration successful. You are now logged in.');
     }
 }

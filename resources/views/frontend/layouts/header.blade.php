@@ -27,6 +27,7 @@
                                 class="bi bi-chevron-down toggle-dropdown"></i></a>
                         <ul>
                             <li><a href="{{ route('sanctum.login') }}">Login</a></li>
+                            {{-- <li><a href="{{ route('login') }}">Login</a></li> --}}
                             {{-- <li class="dropdown"><a href="#"><span>Deep Dropdown</span> <i
                                         class="bi bi-chevron-down toggle-dropdown"></i></a>
                                 <ul>
@@ -38,6 +39,7 @@
                                 </ul>
                             </li> --}}
                             <li><a href="{{ route('sanctum.register') }}">Register</a></li>
+                            {{-- <li><a href="{{ route('register') }}">Register</a></li> --}}
                         </ul>
                     </li>
                 @else
@@ -48,10 +50,10 @@
                                 <a href="{{ route('dashboard.index') }}">Dashboard</a>
                             </li>
                             <li>
-                                <form method="POST" action="{{ route('sanctum.logout') }}">
+                                {{-- <form method="POST" action="{{ route('sanctum.logout') }}">
                                     @csrf
                                     <button type="submit" class="mx-3 btn btn-link">Logout</button>
-                                </form>
+                                </form> --}}
                             </li>
                         </ul>
                     </li>

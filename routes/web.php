@@ -46,6 +46,17 @@ Route::get('tag/{slug}', [\App\Http\Controllers\Frontend\TagController::class, '
 //     ->middleware('auth');
 
 //Dashboard
-Route::get('dashboard', [\App\Http\Controllers\Backend\Client\DashboardController::class, 'index'])
-    ->name('dashboard.index')
-    ->middleware('auth', 'can:access-admin'); //RedirectIfAuthenticated class
+Route::prefix('dashboard')->name('dashboard.')
+    ->middleware('auth')->group(function () {
+        // Admin routes
+        Route::prefix('admin')->name('admin.')
+            ->middleware('can:access-admin')->group(function () {
+            Route::get('/', [\App\Http\Controllers\Backend\Admin\DashboardController::class, 'index'])
+                ->name('index');
+        });
+        // Client routes
+        Route::prefix('client')->name('client.')->group(function () {
+            Route::get('/', [\App\Http\Controllers\Backend\Client\DashboardController::class, 'index'])
+                ->name('index');
+        });
+    });

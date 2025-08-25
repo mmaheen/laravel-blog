@@ -1,7 +1,5 @@
 <?php
 
-use App\Http\Controllers\Sanctum\LoginController;
-use App\Http\Controllers\Sanctum\RegisterController;
 use App\Http\Controllers\SiteController;
 use Illuminate\Support\Facades\Route;
 
@@ -18,17 +16,17 @@ Route::get('tag/{slug}', [\App\Http\Controllers\Frontend\TagController::class, '
     ->name('tag.show');
 
 //Sanctum Authentication
-Route::get('register', [RegisterController::class, 'register'])
+Route::get('register', [\App\Http\Controllers\Sanctum\RegisterController::class, 'register'])
     ->name('sanctum.register')
     ->middleware('guest');
-Route::post('register', [RegisterController::class, 'store'])
+Route::post('register', [\App\Http\Controllers\Sanctum\RegisterController::class, 'store'])
     ->name('sanctum.register');
-Route::get('login', [LoginController::class, 'login'])
+Route::get('login', [\App\Http\Controllers\Sanctum\LoginController::class, 'login'])
     ->name('sanctum.login')
-    ->middleware('guest'); //RedirectIfAuthenticated
-Route::post('login', [LoginController::class, 'store'])
+    ->middleware('guest'); //RedirectIfAuthenticated class
+Route::post('login', [\App\Http\Controllers\Sanctum\LoginController::class, 'store'])
     ->name('sanctum.login');
-Route::post('logout', [LoginController::class, 'logout'])
+Route::post('logout', [\App\Http\Controllers\Sanctum\LoginController::class, 'logout'])
     ->name('sanctum.logout')
     ->middleware('auth');
 

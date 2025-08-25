@@ -32,12 +32,13 @@ class UserSeeder extends Seeder
             $images = File::files($destination_path);
             $random_image = $images[array_rand($images)];
             $image_name = $random_image->getFilename();
-            
+
             User::factory()->create([
                 'name' => $faker->name(),
                 'email' => $faker->unique()->safeEmail(),
                 'password' => $faker->password(),
-                'image'=> $image_name,
+                'role' => $faker->randomElement(['admin', 'client']),
+                'image' => $image_name,
                 'designation' => $faker->jobTitle(),
                 'created_at' => $faker->dateTimeBetween('-1 year', 'now'),
             ]);

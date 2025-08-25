@@ -31,21 +31,21 @@ Route::get('tag/{slug}', [\App\Http\Controllers\Frontend\TagController::class, '
     ->name('tag.show');
 
 //Sanctum Authentication
-Route::get('register', [\App\Http\Controllers\Sanctum\RegisterController::class, 'register'])
-    ->name('sanctum.register')
-    ->middleware('guest');
-Route::post('register', [\App\Http\Controllers\Sanctum\RegisterController::class, 'store'])
-    ->name('sanctum.register');
-Route::get('login', [\App\Http\Controllers\Sanctum\LoginController::class, 'login'])
-    ->name('sanctum.login')
-    ->middleware('guest'); //RedirectIfAuthenticated class
-Route::post('login', [\App\Http\Controllers\Sanctum\LoginController::class, 'store'])
-    ->name('sanctum.login');
-Route::post('logout', [\App\Http\Controllers\Sanctum\LoginController::class, 'logout'])
-    ->name('sanctum.logout')
-    ->middleware('auth');
+// Route::get('register', [\App\Http\Controllers\Sanctum\RegisterController::class, 'register'])
+//     ->name('sanctum.register')
+//     ->middleware('guest');
+// Route::post('register', [\App\Http\Controllers\Sanctum\RegisterController::class, 'store'])
+//     ->name('sanctum.register');
+// Route::get('login', [\App\Http\Controllers\Sanctum\LoginController::class, 'login'])
+//     ->name('sanctum.login')
+//     ->middleware('guest'); //RedirectIfAuthenticated class
+// Route::post('login', [\App\Http\Controllers\Sanctum\LoginController::class, 'store'])
+//     ->name('sanctum.login');
+// Route::post('logout', [\App\Http\Controllers\Sanctum\LoginController::class, 'logout'])
+//     ->name('sanctum.logout')
+//     ->middleware('auth');
 
 //Dashboard
 Route::get('dashboard', [\App\Http\Controllers\Backend\Client\DashboardController::class, 'index'])
     ->name('dashboard.index')
-    ->middleware('auth');
+    ->middleware('auth', 'can:access-admin'); //RedirectIfAuthenticated class

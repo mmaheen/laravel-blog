@@ -15,7 +15,7 @@ class BlogController extends Controller
     {
         //
         $blogs = Blog::select('slug', 'title', 'image', 'created_at', 'user_id', 'category_id', 'description')
-            ->with(['user:id,name', 'category:id,name'])
+            ->with(['user:id,name', 'category:id,name,slug'])
             ->inRandomOrder()
             ->paginate(6);
         return view('frontend.blog.index', compact('blogs'));
@@ -38,7 +38,7 @@ class BlogController extends Controller
     {
         $blogs = Blog::whereDate('created_at', $date)
             ->select('slug', 'title', 'image', 'created_at', 'user_id', 'category_id', 'description')
-            ->with(['user:id,name', 'category:id,name'])
+            ->with(['user:id,name', 'category:id,name,slug'])
             ->inRandomOrder()
             ->paginate(6);
         return view('frontend.blog.index', compact('blogs'));
@@ -51,9 +51,25 @@ class BlogController extends Controller
     {
         $blogs = Blog::where('user_id', $author)
             ->select('slug', 'title', 'image', 'created_at', 'user_id', 'category_id', 'description')
-            ->with(['user:id,name', 'category:id,name'])
+            ->with(['user:id,name', 'category:id,name,slug'])
             ->inRandomOrder()
             ->paginate(6);
         return view('frontend.blog.index', compact('blogs'));
     }
+
+    /**
+     * Display a listing of the resource by category.
+     */
+    public function blogsByCategory($category)
+    {
+        $category = \App\Models\Category::where('slug', $category)->firstOrFail()->id;
+        // return $category;
+        $blogs = Blog::where('category_id', $category)
+            ->select('slug', 'title', 'image', 'created_at', 'user_id', 'category_id', 'description')
+            ->with(['user:id,name', 'category:id,name,slug'])
+            ->inRandomOrder()
+            ->paginate(6);
+        return view('frontend.blog.index', compact('blogs'));
+    }
+
 }

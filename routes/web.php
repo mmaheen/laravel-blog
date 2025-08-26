@@ -25,6 +25,7 @@ Route::get('blog', [BlogController::class, 'index'])->name('blog.index');
 Route::get('blog/{slug}', [BlogController::class, 'show'])->name('blog.show');
 Route::get('blogs-by-date/{date}', [BlogController::class, 'blogsByDate'])->name('blogs.by.date');
 Route::get('blogs-by-author/{author}', [BlogController::class, 'blogsByAuthor'])->name('blogs.by.author');
+Route::get('blogs-by-category/{category}', [BlogController::class, 'blogsByCategory'])->name('blogs.by.category');
 
 // Photo routes
 Route::get('photo/{slug}', [PhotoController::class, 'show'])->name('photo.show');

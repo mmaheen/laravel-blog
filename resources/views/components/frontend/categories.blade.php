@@ -2,7 +2,7 @@
 <ul class="mt-3">
     @foreach ($categories as $category)
         <li>
-            <a href="#">
+            <a href="{{ route('blogs.by.category', $category->slug) }}">
                 {{ $category->name }}
                 <span>({{ $category->blogs_count }})</span></a>
         </li>

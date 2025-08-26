@@ -2,8 +2,9 @@
 
 namespace App\Http\Controllers\Frontend;
 
-use App\Http\Controllers\Controller;
+use App\Models\Blog;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 
 class BlogController extends Controller
 {
@@ -13,7 +14,11 @@ class BlogController extends Controller
     public function index()
     {
         //
-        return view('frontend.blog.index');
+        $blogs = Blog::select('slug', 'title', 'image', 'created_at', 'user_id', 'category_id', 'description')
+            ->with(['user:id,name', 'category:id,name'])
+            ->inRandomOrder()
+            ->paginate(6);
+        return view('frontend.blog.index', compact('blogs'));
     }
 
     /**
@@ -35,10 +40,11 @@ class BlogController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    public function show(string $slug)
     {
         //
-        return view('frontend.blog.show', compact('id'));
+        $blog = Blog::where('slug', $slug)->firstOrFail();
+        return view('frontend.blog.show', compact('blog'));
     }
 
     /**

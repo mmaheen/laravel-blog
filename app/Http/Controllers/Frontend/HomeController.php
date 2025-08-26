@@ -27,6 +27,16 @@ class HomeController extends Controller
             ->inRandomOrder()
             ->get();
 
-        return view('frontend.index', compact('categories', 'photos', 'photo_categories'));
+        //In Recent blog section
+        $recent_blogs = \App\Models\Blog::select('slug', 'title', 'image', 'created_at', 'user_id', 'category_id')
+            ->with(['user:id,name', 'category:id,name'])
+            ->latest()
+            ->take(9)
+            ->get();
+
+        return view(
+            'frontend.index',
+            compact('categories', 'photos', 'photo_categories', 'recent_blogs')
+        );
     }
 }

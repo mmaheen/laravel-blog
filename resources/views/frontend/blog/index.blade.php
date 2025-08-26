@@ -46,7 +46,7 @@
                                             <div class="row">
                                                 <div class="d-flex align-items-center">
                                                     <i class="bi bi-person"></i> <a
-                                                        href="#">{{ $blog->user->name }}</a>
+                                                        href="{{ route('blogs.by.author', $blog->user->id) }}">{{ $blog->user->name }}</a>
                                                 </div>
                                             </div>
                                             <div class="row mt-2">
@@ -83,8 +83,13 @@
 
                 <!-- Pagination 2 Section -->
                 <section id="pagination-2" class="pagination-2 section">
-
                     <div class="container">
+                        <div class="d-flex justify-content-center">
+                            {{ $blogs->links('pagination::bootstrap-4') }}
+                        </div>
+                    </div>
+
+                    {{-- <div class="container">
                         <div class="d-flex justify-content-center">
                             <ul>
                                 <li><a href="#"><i class="bi bi-chevron-left"></i></a></li>
@@ -97,7 +102,7 @@
                                 <li><a href="#"><i class="bi bi-chevron-right"></i></a></li>
                             </ul>
                         </div>
-                    </div>
+                    </div> --}}
 
                 </section><!-- /Pagination 2 Section -->
 

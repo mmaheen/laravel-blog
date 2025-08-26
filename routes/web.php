@@ -23,7 +23,8 @@ require __DIR__ . '/auth.php';
 // Blog routes
 Route::get('blog', [BlogController::class, 'index'])->name('blog.index');
 Route::get('blog/{slug}', [BlogController::class, 'show'])->name('blog.show');
-Route::get('/blogs-by-date/{date}', [BlogController::class, 'blogsByDate'])->name('blogs.by.date');
+Route::get('blogs-by-date/{date}', [BlogController::class, 'blogsByDate'])->name('blogs.by.date');
+Route::get('blogs-by-author/{author}', [BlogController::class, 'blogsByAuthor'])->name('blogs.by.author');
 
 // Photo routes
 Route::get('photo/{slug}', [PhotoController::class, 'show'])->name('photo.show');

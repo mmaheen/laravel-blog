@@ -73,22 +73,12 @@
                     }
                 </script>
                 <div class="swiper-wrapper align-items-center">
-                    <div class="swiper-slide"><img src="{{ asset('assets/frontend') }}/img/clients/clients-1.webp"
-                            class="img-fluid" alt=""></div>
-                    <div class="swiper-slide"><img src="{{ asset('assets/frontend') }}/img/clients/clients-2.webp"
-                            class="img-fluid" alt=""></div>
-                    <div class="swiper-slide"><img src="{{ asset('assets/frontend') }}/img/clients/clients-3.webp"
-                            class="img-fluid" alt=""></div>
-                    <div class="swiper-slide"><img src="{{ asset('assets/frontend') }}/img/clients/clients-4.webp"
-                            class="img-fluid" alt=""></div>
-                    <div class="swiper-slide"><img src="{{ asset('assets/frontend') }}/img/clients/clients-5.webp"
-                            class="img-fluid" alt=""></div>
-                    <div class="swiper-slide"><img src="{{ asset('assets/frontend') }}/img/clients/clients-6.webp"
-                            class="img-fluid" alt=""></div>
-                    <div class="swiper-slide"><img src="{{ asset('assets/frontend') }}/img/clients/clients-7.webp"
-                            class="img-fluid" alt=""></div>
-                    <div class="swiper-slide"><img src="{{ asset('assets/frontend') }}/img/clients/clients-8.webp"
-                            class="img-fluid" alt=""></div>
+                    @foreach ($categories as $category)
+                        <div class="swiper-slide">
+                            <img src="{{ asset('uploads/categories/' . $category->image) }}" class="img-fluid"
+                                alt="">
+                        </div>
+                    @endforeach
                 </div>
             </div>
 
@@ -200,26 +190,27 @@
 
                 <ul class="portfolio-filters isotope-filters" data-aos="fade-up" data-aos-delay="100">
                     <li data-filter="*" class="filter-active">All</li>
-                    <li data-filter=".filter-app">App</li>
-                    <li data-filter=".filter-product">Card</li>
-                    <li data-filter=".filter-branding">Web</li>
+                    @foreach ($photo_categories as $category)
+                        <li data-filter=".filter-{{ $category->slug }}">{{ $category->name }}</li>
+                    @endforeach
                 </ul><!-- End Portfolio Filters -->
 
                 <div class="row gy-4 isotope-container" data-aos="fade-up" data-aos-delay="200">
 
-                    <div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-app">
-                        <img src="{{ asset('assets/frontend') }}/img/portfolio/portfolio-portrait-1.webp"
-                            class="img-fluid" alt="">
-                        <div class="portfolio-info">
-                            <h4>App 1</h4>
-                            <p>Lorem ipsum, dolor sit</p>
-                            <a href="{{ asset('assets/frontend') }}/img/portfolio/portfolio-portrait-1.webp"
-                                title="App 1" data-gallery="portfolio-gallery-app" class="glightbox preview-link"><i
-                                    class="bi bi-zoom-in"></i></a>
-                            <a href="portfolio-details.html" title="More Details" class="details-link"><i
-                                    class="bi bi-link-45deg"></i></a>
-                        </div>
-                    </div><!-- End Portfolio Item -->
+                    @foreach ($photos as $photo)
+                        <div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-{{ $photo->category->slug }}">
+                            <img src="{{ asset('uploads/photos/' . $photo->image) }}" class="img-fluid" alt="">
+                            <div class="portfolio-info">
+                                <h4>{{ \Illuminate\Support\Str::limit($photo->title, 20) }}</h4>
+                                <p>{{ \Illuminate\Support\Str::limit($photo->description, 30) }}</p>
+                                <a href="{{ asset('uploads/photos/' . $photo->image) }}" title="{{ $photo->title }}"
+                                    data-gallery="portfolio-gallery-app" class="glightbox preview-link"><i
+                                        class="bi bi-zoom-in"></i></a>
+                                <a href="{{ route('photo.show', $photo->slug) }}" title="More Details"
+                                    class="details-link"><i class="bi bi-link-45deg"></i></a>
+                            </div>
+                        </div><!-- End Portfolio Item -->
+                    @endforeach
 
                     <div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-product">
                         <img src="{{ asset('assets/frontend') }}/img/portfolio/portfolio-1.webp" class="img-fluid"

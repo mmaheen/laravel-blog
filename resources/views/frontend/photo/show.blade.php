@@ -1,5 +1,5 @@
 @extends('frontend.layouts.master')
-@section('title', '{{ $photo->title }}')
+@section('title', $photo->title)
 @section('content')
     <!-- Page Title -->
     <div class="page-title" data-aos="fade">
@@ -49,10 +49,12 @@
 
                             <div class="swiper-slide">
                                 <img src="{{ asset('uploads/users/' . $photo->user->image) }}" alt="">
+                                <p><strong>Uploaded By:</strong> {{ $photo->user->name }}</p>
                             </div>
 
                             <div class="swiper-slide">
                                 <img src="{{ asset('uploads/categories/' . $photo->category->image) }}" alt="">
+                                <p><strong>Category:</strong> {{ $photo->category->name }}</p>
                             </div>
 
                         </div>
@@ -65,7 +67,8 @@
                         <h3>Project information</h3>
                         <ul>
                             <li><strong>Category</strong>: {{ $photo->category->name }}</li>
-                            <li><strong>Uploaded</strong>: {{ $photo->created_at->format('d F, Y') }}</li>
+                            <li><strong>Uploaded By</strong>: {{ $photo->user->name }}</li>
+                            <li><strong>Uploaded At</strong>: {{ $photo->created_at->format('d F, Y') }}</li>
                         </ul>
                     </div>
                     <div class="portfolio-description" data-aos="fade-up" data-aos-delay="300">

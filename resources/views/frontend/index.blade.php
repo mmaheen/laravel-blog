@@ -182,7 +182,8 @@
         <div class="container section-title" data-aos="fade-up">
             <h2>Photos</h2>
             <p>Photo album is arranged by categories in this section</p>
-        </div><!-- End Section Title -->
+        </div>
+        <!-- End Section Title -->
 
         <div class="container">
 
@@ -193,7 +194,8 @@
                     @foreach ($photo_categories as $category)
                         <li data-filter=".filter-{{ $category->slug }}">{{ $category->name }}</li>
                     @endforeach
-                </ul><!-- End Portfolio Filters -->
+                </ul>
+                <!-- End Portfolio Filters -->
 
                 <div class="row gy-4 isotope-container" data-aos="fade-up" data-aos-delay="200">
 
@@ -213,7 +215,8 @@
                         <!-- End Portfolio Item -->
                     @endforeach
 
-                </div><!-- End Portfolio Container -->
+                </div>
+                <!-- End Portfolio Container -->
 
             </div>
 
@@ -229,7 +232,8 @@
         <div class="container section-title" data-aos="fade-up">
             <h2>Recent Blog Posts</h2>
             <p>The blogs are arranged in reverse chronological order</p>
-        </div><!-- End Section Title -->
+        </div>
+        <!-- End Section Title -->
 
         <div class="container">
 

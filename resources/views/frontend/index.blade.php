@@ -21,7 +21,7 @@
                     </div>
                 </div>
                 <div class="col-lg-6 order-1 order-lg-2 hero-img" data-aos="zoom-out" data-aos-delay="200">
-                    <img src="{{ asset('assets/frontend') }}/img/hero-img.png" class="img-fluid animated" alt="">
+                    <img src="{{ asset('assets/frontend/img/hero-img.png') }}" class="img-fluid animated" alt="">
                 </div>
             </div>
         </div>
@@ -95,7 +95,7 @@
             <div class="row">
 
                 <div class="col-lg-6 d-flex align-items-center">
-                    <img src="{{ asset('assets/frontend') }}/img/illustration/illustration-10.webp" class="img-fluid"
+                    <img src="{{ asset('assets/frontend/img/illustration/illustration-10.webp') }}" class="img-fluid"
                         alt="">
                 </div>
 
@@ -154,7 +154,7 @@
     <!-- Call To Action Section -->
     <section id="call-to-action" class="call-to-action section dark-background">
 
-        <img src="{{ asset('assets/frontend') }}/img/bg/bg-8.webp" alt="">
+        <img src="{{ asset('assets/frontend/img/bg/bg-8.webp') }}" alt="">
 
         <div class="container">
 

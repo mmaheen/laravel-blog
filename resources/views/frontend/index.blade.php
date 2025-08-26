@@ -192,7 +192,7 @@
                 <ul class="portfolio-filters isotope-filters" data-aos="fade-up" data-aos-delay="100">
                     <li data-filter="*" class="filter-active">All</li>
                     @foreach ($photo_categories as $category)
-                        <li data-filter=".filter-{{ $category->slug }}">{{ $category->name }}</li>
+                        <li data-filter=".filter-{{ $category->slug }}">{{ ucfirst($category->name) }}</li>
                     @endforeach
                 </ul>
                 <!-- End Portfolio Filters -->
@@ -259,12 +259,13 @@
 
                                 <div class="meta d-flex align-items-center">
                                     <div class="d-flex align-items-center">
-                                        <i class="bi bi-person"></i> <span class="ps-2">{{ $blog->user->name }}</span>
+                                        <i class="bi bi-person"></i>
+                                        <span class="ps-2">{{ ucfirst($blog->user->name) }}</span>
                                     </div>
                                     <span class="px-3 text-black-50">/</span>
                                     <div class="d-flex align-items-center">
                                         <i class="bi bi-folder2"></i> <span
-                                            class="ps-2">{{ $blog->category->name }}</span>
+                                            class="ps-2">{{ ucfirst($blog->category->name) }}</span>
                                     </div>
                                 </div>
 

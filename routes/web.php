@@ -17,3 +17,8 @@ Route::middleware('auth')->group(function () {
 });
 
 require __DIR__ . '/auth.php';
+
+Route::resources([
+    'blog' => \App\Http\Controllers\Frontend\BlogController::class,
+    'photo' => \App\Http\Controllers\Frontend\PhotoController::class,
+]);

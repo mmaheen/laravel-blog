@@ -30,7 +30,9 @@
                                     class="img-fluid" loading="lazy">
                                 <div class="meta-overlay">
                                     <div class="meta-categories">
-                                        <a href="#" class="category">{{ $blog->category->name }}</a>
+                                        <a href="{{ route('blogs.by.category', $blog->category->slug) }}" class="category">
+                                            {{ ucfirst($blog->category->name) }}
+                                        </a>
                                         <span class="divider">•</span>
                                         <span class="reading-time"><i
                                                 class="bi bi-clock"></i>{{ $blog->created_at->diffForHumans() }}</span>

@@ -51,7 +51,7 @@
                                             </div>
                                             <div class="row mt-2">
                                                 <div class="col-6 d-flex align-items-center"><i class="bi bi-clock"></i> <a
-                                                        href="#"><time
+                                                        href="{{ route('blogs.by.date', $blog->created_at->format('Y-m-d')) }}"><time
                                                             datetime="2022-01-01">{{ $blog->created_at->format('M d, Y') }}</time></a>
                                                 </div>
                                                 <div class="col-6 d-flex align-items-center"><i class="bi bi-chat-dots"></i>

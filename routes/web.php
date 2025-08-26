@@ -22,3 +22,5 @@ Route::resources([
     'blog' => \App\Http\Controllers\Frontend\BlogController::class,
     'photo' => \App\Http\Controllers\Frontend\PhotoController::class,
 ]);
+
+Route::get('/blogs-by-date/{date}', [\App\Http\Controllers\Frontend\BlogController::class, 'blogsByDate'])->name('blogs.by.date');

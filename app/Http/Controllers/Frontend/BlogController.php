@@ -70,4 +70,14 @@ class BlogController extends Controller
     {
         //
     }
+
+    public function blogsByDate($date)
+    {
+        $blogs = Blog::whereDate('created_at', $date)
+            ->select('slug', 'title', 'image', 'created_at', 'user_id', 'category_id', 'description')
+            ->with(['user:id,name', 'category:id,name'])
+            ->inRandomOrder()
+            ->paginate(6);
+        return view('frontend.blog.index', compact('blogs'));
+    }
 }

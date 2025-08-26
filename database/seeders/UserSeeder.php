@@ -16,8 +16,21 @@ class UserSeeder extends Seeder
     {
         //
         User::factory()->create([
-            'name' => 'Test User',
-            'email' => 'test@example.com',
+            'name' => 'Test Admin',
+            'email' => 'admint@test.com',
+            'role' => 'admin',
+            'image' => 'person-m-12.webp',
+            'designation' => 'Administrator',
+            'password' => '0'
+        ]);
+
+        User::factory()->create([
+            'name' => 'Test Client',
+            'email' => 'client@test.com',
+            'role' => 'client',
+            'image' => 'person-f-9.webp',
+            'designation' => 'Client',
+            'password' => '0'
         ]);
 
         $faker = \Faker\Factory::create();

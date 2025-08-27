@@ -72,4 +72,18 @@ class BlogController extends Controller
         return view('frontend.blog.index', compact('blogs'));
     }
 
+    /**
+     * Display a listing of the resource by tag.
+     */
+    public function blogsByTag($tag)
+    {
+        $tag = \App\Models\Tag::where('slug', $tag)->firstOrFail();
+        $blogs = $tag->blogs()
+            ->select('slug', 'title', 'image', 'created_at', 'user_id', 'category_id', 'description')
+            ->with(['user:id,name', 'category:id,name,slug'])
+            ->inRandomOrder()
+            ->paginate(6);
+        return view('frontend.blog.index', compact('blogs'));
+    }
+
 }

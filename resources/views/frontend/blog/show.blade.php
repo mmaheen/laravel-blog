@@ -510,7 +510,7 @@
                         <h3 class="widget-title">Post Tags</h3>
                         <ul>
                             @foreach ($blog->tags as $tag)
-                                <li><a href="#">{{ ucfirst($tag->name) }}</a></li>
+                                <li><a href="{{ route('blogs.by.tag', $tag->slug) }}">{{ ucfirst($tag->name) }}</a></li>
                             @endforeach
                         </ul>
 

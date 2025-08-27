@@ -18,6 +18,8 @@ class DatabaseSeeder extends Seeder
             CategorySeeder::class,
             BlogSeeder::class,
             PhotoSeeder::class,
+            TagSeeder::class,
+            BlogTagSeeder::class,
         ]);
     }
 }

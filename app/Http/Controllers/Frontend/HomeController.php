@@ -39,9 +39,16 @@ class HomeController extends Controller
             ->take(9)
             ->get();
 
+        //In Team section
+        $teams = \App\Models\Team::select('user_id', 'designation', 'bio')
+            ->with('user:id,name,image')
+            ->take(4)
+            ->inRandomOrder()
+            ->get();
+
         return view(
             'frontend.index',
-            compact('categories', 'skills', 'photos', 'photo_categories', 'recent_blogs')
+            compact('categories', 'skills', 'photos', 'photo_categories', 'recent_blogs', 'teams')
         );
     }
 }

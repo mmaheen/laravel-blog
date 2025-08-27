@@ -17,10 +17,9 @@ class UserSeeder extends Seeder
         //
         User::factory()->create([
             'name' => 'Test Admin',
-            'email' => 'admint@test.com',
+            'email' => 'admin@test.com',
             'role' => 'admin',
             'image' => 'person-m-12.webp',
-            'designation' => 'Administrator',
             'password' => '0'
         ]);
 
@@ -29,7 +28,6 @@ class UserSeeder extends Seeder
             'email' => 'client@test.com',
             'role' => 'client',
             'image' => 'person-f-9.webp',
-            'designation' => 'Client',
             'password' => '0'
         ]);
 
@@ -52,7 +50,6 @@ class UserSeeder extends Seeder
                 'password' => $faker->password(),
                 'role' => $faker->randomElement(['admin', 'client']),
                 'image' => $image_name,
-                'designation' => $faker->jobTitle(),
                 'created_at' => $faker->dateTimeBetween('-1 year', 'now'),
             ]);
         }

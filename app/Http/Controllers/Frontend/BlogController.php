@@ -18,11 +18,7 @@ class BlogController extends Controller
             ->with(['user:id,name', 'category:id,name,slug'])
             ->inRandomOrder()
             ->paginate(6);
-        $tags = \App\Models\Tag::select('slug', 'name')
-            ->inRandomOrder()
-            ->take(10)
-            ->get();
-        return view('frontend.blog.index', compact('blogs', 'tags'));
+        return view('frontend.blog.index', compact('blogs'));
     }
 
     /**
@@ -32,7 +28,6 @@ class BlogController extends Controller
     {
         //
         $blog = Blog::where('slug', $slug)->firstOrFail();
-        // return $blog->tags->pluck('name');
         return view('frontend.blog.show', compact('blog'));
     }
 

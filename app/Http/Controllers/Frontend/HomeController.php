@@ -16,6 +16,11 @@ class HomeController extends Controller
             ->inRandomOrder()
             ->get();
 
+        //In skills section
+        $skills = \Illuminate\Support\Facades\DB::table('skills')
+            ->select('title', 'percentage')
+            ->get();
+
         //In photos section
         $photos = \App\Models\Photo::select('slug', 'image', 'title', 'description', 'category_id')
             ->with('category:id,name,slug')
@@ -36,7 +41,7 @@ class HomeController extends Controller
 
         return view(
             'frontend.index',
-            compact('categories', 'photos', 'photo_categories', 'recent_blogs')
+            compact('categories', 'skills', 'photos', 'photo_categories', 'recent_blogs')
         );
     }
 }

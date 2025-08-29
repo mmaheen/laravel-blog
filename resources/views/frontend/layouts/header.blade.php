@@ -28,7 +28,7 @@
             <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
         </nav>
 
-        <a class="btn-getstarted" href="#hero">Get Started</a>
+        <a class="btn-getstarted" href="#portfolio">Get Started</a>
 
     </div>
 </header>

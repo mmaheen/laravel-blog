@@ -35,6 +35,7 @@ class HomeController extends Controller
         //In Recent blog section
         $recent_blogs = \App\Models\Blog::select('slug', 'title', 'image', 'created_at', 'user_id', 'category_id')
             ->with(['user:id,name', 'category:id,name'])
+            ->where('is_published', true)
             ->latest()
             ->take(9)
             ->get();
@@ -48,7 +49,7 @@ class HomeController extends Controller
 
         //In Testimonials section
         $testimonials = \App\Models\Testimonial::select('user_id', 'rating', 'comment')
-            ->with('user:id,name,image,role')
+            ->with('user:id,name,image,role', 'user.team:id,designation')
             ->inRandomOrder()
             ->take(5)
             ->get();

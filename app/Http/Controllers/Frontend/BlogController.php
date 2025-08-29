@@ -16,6 +16,7 @@ class BlogController extends Controller
         //
         $blogs = Blog::select('slug', 'title', 'image', 'created_at', 'user_id', 'category_id', 'description')
             ->with(['user:id,name', 'category:id,name,slug'])
+            ->where('is_published', true)
             ->inRandomOrder()
             ->paginate(6);
         return view('frontend.blog.index', compact('blogs'));

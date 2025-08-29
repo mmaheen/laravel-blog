@@ -22,6 +22,7 @@ class DatabaseSeeder extends Seeder
             BlogTagSeeder::class,
             SkillSeeder::class,
             TeamSeeder::class,
+            TestimonialSeeder::class,
         ]);
     }
 }

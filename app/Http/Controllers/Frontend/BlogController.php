@@ -42,7 +42,7 @@ class BlogController extends Controller
             ->with(['user:id,name', 'category:id,name,slug'])
             ->inRandomOrder()
             ->paginate(6);
-        return view('frontend.blog.index', compact('blogs'));
+        return view('frontend.blog.index', compact('blogs', 'date'));
     }
 
     /**
@@ -50,12 +50,14 @@ class BlogController extends Controller
      */
     public function blogsByAuthor($author)
     {
-        $blogs = Blog::where('user_id', $author)
+        $author = \App\Models\User::where('id', $author)->select('id', 'name')->firstOrFail();
+        // return $author;
+        $blogs = Blog::where('user_id', $author->id)
             ->select('slug', 'title', 'image', 'created_at', 'user_id', 'category_id', 'description')
             ->with(['user:id,name', 'category:id,name,slug'])
             ->inRandomOrder()
             ->paginate(6);
-        return view('frontend.blog.index', compact('blogs'));
+        return view('frontend.blog.index', compact('blogs', 'author'));
     }
 
     /**
@@ -63,14 +65,14 @@ class BlogController extends Controller
      */
     public function blogsByCategory($category)
     {
-        $category = \App\Models\Category::where('slug', $category)->firstOrFail()->id;
-        // return $category;
-        $blogs = Blog::where('category_id', $category)
+        $category = \App\Models\Category::where('slug', $category)->select('id', 'name')->firstOrFail();
+        // return $category->id;
+        $blogs = Blog::where('category_id', $category->id)
             ->select('slug', 'title', 'image', 'created_at', 'user_id', 'category_id', 'description')
             ->with(['user:id,name', 'category:id,name,slug'])
             ->inRandomOrder()
             ->paginate(6);
-        return view('frontend.blog.index', compact('blogs'));
+        return view('frontend.blog.index', compact('blogs', 'category'));
     }
 
     /**
@@ -84,7 +86,8 @@ class BlogController extends Controller
             ->with(['user:id,name', 'category:id,name,slug'])
             ->inRandomOrder()
             ->paginate(6);
-        return view('frontend.blog.index', compact('blogs'));
+        // return $blogs;
+        return view('frontend.blog.index', compact('blogs', 'tag'));
     }
 
 }

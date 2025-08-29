@@ -46,9 +46,16 @@ class HomeController extends Controller
             ->inRandomOrder()
             ->get();
 
+        //In Testimonials section
+        $testimonials = \App\Models\Testimonial::select('user_id', 'rating', 'comment')
+            ->with('user:id,name,image,role')
+            ->inRandomOrder()
+            ->take(5)
+            ->get();
+
         return view(
             'frontend.index',
-            compact('categories', 'skills', 'photos', 'photo_categories', 'recent_blogs', 'teams')
+            compact('categories', 'skills', 'photos', 'photo_categories', 'recent_blogs', 'teams', 'testimonials')
         );
     }
 }

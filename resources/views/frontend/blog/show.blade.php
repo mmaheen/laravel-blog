@@ -52,7 +52,8 @@
                                                 class="author-img">
                                             <div class="info">
                                                 <h4>{{ $blog->user->name }}</h4>
-                                                <span class="role">{{ $blog->user->designation }}</span>
+                                                <span
+                                                    class="role">{{ $blog->user->team ? $blog->user->team->designation : 'N/A' }}</span>
                                             </div>
                                         </div>
                                         <div class="post-meta">

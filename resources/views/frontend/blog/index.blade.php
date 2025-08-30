@@ -40,8 +40,11 @@
                                     <article>
 
                                         <div class="post-img">
-                                            <img src="{{ asset('uploads/blogs/' . $blog->image) }}" alt=""
-                                                class="img-fluid">
+                                            <div class="ratio ratio-4x3">
+                                                <img src="{{ asset('uploads/blogs/' . $blog->image) }}" alt=""
+                                                    class="img-fluid">
+                                            </div>
+
                                         </div>
 
                                         <h2 class="title">

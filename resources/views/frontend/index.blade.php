@@ -224,8 +224,11 @@
                             data-aos-delay="{{ $loop->index * 100 }}">
 
                             <div class="post-img position-relative overflow-hidden">
-                                <img src="{{ asset('uploads/blogs/' . $blog->image) }}" class="img-fluid"
-                                    alt="">
+                                <div class="ratio ratio-4x3">
+                                    <img src="{{ asset('uploads/blogs/' . $blog->image) }}" class="img-fluid"
+                                        alt="">
+                                </div>
+
                                 <span class="post-date">{{ $blog->created_at->format('F d') }}</span>
                             </div>
 

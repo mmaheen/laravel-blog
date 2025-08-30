@@ -235,8 +235,8 @@
                             <div class="post-content d-flex flex-column">
 
                                 <h3 class="post-title">
-                                    {{ substr($blog->title, 0, 30) }}
-                                    {{ strlen($blog->title) > 30 ? '...' : '' }}
+                                    {{ substr($blog->title, 0, 70) }}
+                                    {{ strlen($blog->title) > 70 ? '...' : '' }}
                                 </h3>
 
                                 <div class="meta d-flex align-items-center">

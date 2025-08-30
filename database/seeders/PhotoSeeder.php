@@ -27,7 +27,7 @@ class PhotoSeeder extends Seeder
             $random_image = $images[array_rand($images)];
             $image_name = $random_image->getFilename();
 
-            $title = $faker->realText($maxNbChars = 100, $indexSize = 4);
+            $title = $faker->realTextBetween(50, 100);
 
             \App\Models\Photo::create([
                 'title' => $title,

@@ -22,12 +22,12 @@ class BlogSeeder extends Seeder
         File::cleanDirectory($destination_path);
         File::copyDirectory($source_path, $destination_path);
 
-        foreach (range(1, 500) as $index) {
+        foreach (range(1, 200) as $index) {
             $images = File::files($destination_path);
             $random_image = $images[array_rand($images)];
             $image_name = $random_image->getFilename();
 
-            $title = $faker->realText($maxNbChars = 100, $indexSize = 2);
+            $title = $faker->realTextBetween(50, 100);
 
             \App\Models\Blog::create([
                 'title' => $title,

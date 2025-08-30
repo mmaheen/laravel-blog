@@ -15,11 +15,11 @@ class TeamSeeder extends Seeder
         //
         $faker = \Faker\Factory::create();
 
-        foreach (range(1, 100) as $index) {
+        foreach (range(1, 30) as $index) {
             \App\Models\Team::create([
                 'user_id' => $index,
                 'designation' => $faker->jobTitle(),
-                'bio' => $faker->realText(100),
+                'bio' => $faker->realTextBetween(100, 200),
             ]);
         }
     }

@@ -15,7 +15,7 @@ class TestimonialSeeder extends Seeder
         //
         $faker = \Faker\Factory::create();
 
-        foreach (range(1, 50) as $index) {
+        foreach (range(1, 100) as $index) {
             \App\Models\Testimonial::create([
                 'user_id' => \App\Models\User::inRandomOrder()->first()->id,
                 'rating' => $faker->numberBetween(1, 5),

@@ -162,11 +162,9 @@
                                     <div class="tags-section">
                                         <h4>Related Topics</h4>
                                         <div class="tags">
-                                            <a href="#" class="tag">Web Development</a>
-                                            <a href="#" class="tag">Performance</a>
-                                            <a href="#" class="tag">Best Practices</a>
-                                            <a href="#" class="tag">Trends</a>
-                                            <a href="#" class="tag">2025</a>
+                                            @foreach ($blog->tags as $tag)
+                                                <a href="#" class="tag">Web Development</a>
+                                            @endforeach
                                         </div>
                                     </div>
 
@@ -507,15 +505,9 @@
 
                     <!-- Tags Widget -->
                     <div class="tags-widget widget-item">
-
-                        <h3 class="widget-title">Post Tags</h3>
-                        <ul>
-                            @foreach ($blog->tags as $tag)
-                                <li><a href="{{ route('blogs.by.tag', $tag->slug) }}">{{ ucfirst($tag->name) }}</a></li>
-                            @endforeach
-                        </ul>
-
-                    </div><!--/Tags Widget -->
+                        <x-frontend.tags />
+                    </div>
+                    <!--/Tags Widget -->
 
                 </div>
 

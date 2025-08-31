@@ -112,80 +112,66 @@
 
                 <!-- Blog Comments Section -->
                 <section id="blog-comments" class="blog-comments section">
-
                     <div class="container" data-aos="fade-up" data-aos-delay="100">
 
                         <div class="blog-comments-4">
                             <div class="comments-header">
                                 <h3 class="title">Community Feedback</h3>
                                 <div class="comments-stats">
-                                    <span class="count">{{ $blog->comments_count }}</span>
+                                    <span class="count">{{ $blog->comments->count() }}</span>
                                     <span class="label">Comments</span>
                                 </div>
                             </div>
 
                             <div class="comments-container">
-                                <!-- Comment #1 -->
                                 @foreach ($blog->comments as $comment)
                                     <div class="comment-thread">
-                                        @if (!$comment->parent_id)
-                                            <div class="comment-box">
-                                                <div class="comment-wrapper">
-                                                    <div class="avatar-wrapper">
-                                                        <img src="{{ asset('uploads/users/' . $comment->user->image) }}"
-                                                            alt="Avatar" loading="lazy">
-                                                        <span class="status-indicator"></span>
+                                        <div class="comment-box">
+                                            <div class="comment-wrapper">
+                                                <div class="avatar-wrapper">
+                                                    <img src="{{ asset('uploads/users/' . $comment->user->image) }}"
+                                                        alt="Avatar" loading="lazy">
+                                                    <span class="status-indicator"></span>
+                                                </div>
+
+                                                <div class="comment-content">
+                                                    <div class="comment-header">
+                                                        <div class="user-info">
+                                                            <h4>{{ $comment->user->name }}</h4>
+                                                            <span class="time-badge">
+                                                                <i class="bi bi-clock"></i>
+                                                                {{ $comment->created_at->diffForHumans() }}
+                                                            </span>
+                                                        </div>
+                                                        <div class="engagement">
+                                                            <span class="likes">
+                                                                <i class="bi bi-heart"></i> {{ $comment->id }}
+                                                            </span>
+                                                        </div>
                                                     </div>
 
-                                                    <div class="comment-content">
-                                                        <div class="comment-header">
-                                                            <div class="user-info">
-                                                                <h4>{{ $comment->user->name }}</h4>
-                                                                <span class="time-badge">
-                                                                    <i class="bi bi-clock"></i>
-                                                                    {{ $comment->created_at->diffForHumans() }}
-                                                                </span>
-                                                            </div>
-                                                            <div class="engagement">
-                                                                <span class="likes">
-                                                                    <i class="bi bi-heart"></i>
-                                                                    {{ $comment->id }}
-                                                                    <!-- Just for demo, replace with actual like count -->
-                                                                </span>
-                                                            </div>
-                                                        </div>
+                                                    <div class="comment-body">
+                                                        <p>{{ $comment->description }}</p>
+                                                    </div>
 
-                                                        <div class="comment-body">
-                                                            <p>
-                                                                {{ $comment->description }}
-                                                            </p>
-                                                        </div>
-
-                                                        <div class="comment-actions">
-                                                            <button class="action-btn like-btn" aria-label="Like comment">
-                                                                <i class="bi bi-heart"></i>
-                                                                <span>Like</span>
-                                                            </button>
-                                                            <button class="action-btn reply-btn"
-                                                                aria-label="Reply to comment">
-                                                                <i class="bi bi-chat"></i>
-                                                                <span>Reply</span>
-                                                            </button>
-                                                            <button class="action-btn share-btn"
-                                                                aria-label="Share comment">
-                                                                <i class="bi bi-share"></i>
-                                                                <span>Share</span>
-                                                            </button>
-                                                        </div>
+                                                    <div class="comment-actions">
+                                                        <button class="action-btn like-btn"
+                                                            data-comment-id="{{ $comment->id }}">
+                                                            <i class="bi bi-heart"></i><span>Like</span>
+                                                        </button>
+                                                        <button class="action-btn reply-btn">
+                                                            <i class="bi bi-chat"></i><span>Reply</span>
+                                                        </button>
+                                                        <button class="action-btn share-btn">
+                                                            <i class="bi bi-share"></i><span>Share</span>
+                                                        </button>
                                                     </div>
                                                 </div>
                                             </div>
-                                        @endif
+                                        </div>
 
-                                        <!-- Replies Container -->
-                                        @if ($comment->replies)
+                                        @if ($comment->replies->isNotEmpty())
                                             <div class="replies-container">
-                                                <!-- Reply #1 -->
                                                 @foreach ($comment->replies as $reply)
                                                     <div class="comment-box reply">
                                                         <div class="comment-wrapper">
@@ -213,26 +199,19 @@
                                                                 </div>
 
                                                                 <div class="comment-body">
-                                                                    <p>
-                                                                        {{ $reply->description }}
-                                                                    </p>
+                                                                    <p>{{ $reply->description }}</p>
                                                                 </div>
 
                                                                 <div class="comment-actions">
                                                                     <button class="action-btn like-btn"
-                                                                        aria-label="Like comment">
-                                                                        <i class="bi bi-heart"></i>
-                                                                        <span>Like</span>
+                                                                        data-comment-id="{{ $reply->id }}">
+                                                                        <i class="bi bi-heart"></i><span>Like</span>
                                                                     </button>
-                                                                    <button class="action-btn reply-btn"
-                                                                        aria-label="Reply to comment">
-                                                                        <i class="bi bi-chat"></i>
-                                                                        <span>Reply</span>
+                                                                    <button class="action-btn reply-btn">
+                                                                        <i class="bi bi-chat"></i><span>Reply</span>
                                                                     </button>
-                                                                    <button class="action-btn share-btn"
-                                                                        aria-label="Share comment">
-                                                                        <i class="bi bi-share"></i>
-                                                                        <span>Share</span>
+                                                                    <button class="action-btn share-btn">
+                                                                        <i class="bi bi-share"></i><span>Share</span>
                                                                     </button>
                                                                 </div>
                                                             </div>
@@ -241,15 +220,15 @@
                                                 @endforeach
                                             </div>
                                         @endif
+
                                     </div>
                                 @endforeach
-
                             </div>
                         </div>
 
                     </div>
-
                 </section>
+
                 <!-- /Blog Comments Section -->
 
                 <!-- Blog Comment Form Section -->

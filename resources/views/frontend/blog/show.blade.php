@@ -60,7 +60,10 @@
                                             <span class="date"><i
                                                     class="bi bi-calendar3"></i>{{ $blog->created_at->format('M d, Y') }}</span>
                                             <span class="divider">•</span>
-                                            <span class="comments"><i class="bi bi-chat-text"></i> 18 Comments</span>
+                                            <span class="comments">
+                                                <i class="bi bi-chat-text"></i>
+                                                {{ $blog->comments_count }} Comments
+                                            </span>
                                         </div>
                                     </div>
                                 </div>
@@ -74,88 +77,7 @@
                                         {{ $blog->description }}
                                     </p>
 
-                                    <div class="content-image right-aligned">
-                                        <img src="{{ asset('assets/frontend') }}/img/blog/blog-hero-2.webp"
-                                            class="img-fluid" alt="Modern web development tools" loading="lazy">
-                                        <figcaption>Modern development environments emphasize collaboration and efficiency
-                                        </figcaption>
-                                    </div>
 
-                                    <h2>The Rise of Web Components</h2>
-                                    <p>
-                                        Web Components have become increasingly crucial in modern web development, offering
-                                        a standardized way to create reusable custom elements. Key advantages include:
-                                    </p>
-                                    <ul>
-                                        <li>Enhanced code reusability across different frameworks</li>
-                                        <li>Better encapsulation of functionality</li>
-                                        <li>Improved maintenance and scalability</li>
-                                        <li>Framework-agnostic component development</li>
-                                    </ul>
-
-                                    <div class="highlight-box">
-                                        <h3>Key Trends in 2025</h3>
-                                        <ul class="trend-list">
-                                            <li>
-                                                <i class="bi bi-lightning-charge"></i>
-                                                <span>Edge Computing and Serverless Architecture</span>
-                                            </li>
-                                            <li>
-                                                <i class="bi bi-shield-check"></i>
-                                                <span>Enhanced Security Measures</span>
-                                            </li>
-                                            <li>
-                                                <i class="bi bi-phone"></i>
-                                                <span>Progressive Web Apps (PWAs)</span>
-                                            </li>
-                                        </ul>
-                                    </div>
-
-                                    <h2>Performance Optimization</h2>
-                                    <p>
-                                        Performance remains a critical factor in web development, with an increasing focus
-                                        on Core Web Vitals and user experience metrics. Modern applications must be
-                                        optimized for both speed and efficiency.
-                                    </p>
-
-                                    <blockquote>
-                                        <p>
-                                            "The future of web development lies not just in writing code, but in creating
-                                            seamless, accessible, and performant experiences that work for everyone,
-                                            everywhere."
-                                        </p>
-                                        <cite>Emily Thompson, Web Performance Architect</cite>
-                                    </blockquote>
-
-                                    <div class="content-grid">
-                                        <div class="row g-4">
-                                            <div class="col-md-6">
-                                                <div class="info-card">
-                                                    <i class="bi bi-speedometer2"></i>
-                                                    <h4>Performance Metrics</h4>
-                                                    <p>Focus on Core Web Vitals and user-centric performance metrics for
-                                                        better search rankings and user experience.</p>
-                                                </div>
-                                            </div>
-                                            <div class="col-md-6">
-                                                <div class="info-card">
-                                                    <i class="bi bi-universal-access"></i>
-                                                    <h4>Accessibility</h4>
-                                                    <p>Implementing WCAG guidelines and ensuring web applications are
-                                                        accessible to all users across different devices.</p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <h2>Looking Forward</h2>
-                                    <p>
-                                        As we continue through 2025, web development practices will further evolve,
-                                        embracing new technologies while maintaining a strong foundation in performance,
-                                        accessibility, and user experience. Staying updated with these trends and best
-                                        practices is crucial for developers looking to build modern, scalable web
-                                        applications.
-                                    </p>
                                 </div>
 
                                 <div class="meta-bottom">
@@ -163,7 +85,9 @@
                                         <h4>Related Topics</h4>
                                         <div class="tags">
                                             @foreach ($blog->tags as $tag)
-                                                <a href="#" class="tag">Web Development</a>
+                                                <a href="{{ route('blogs.by.tag', $tag->slug) }}" class="tag">
+                                                    {{ ucfirst($tag->name) }}
+                                                </a>
                                             @endforeach
                                         </div>
                                     </div>
@@ -195,223 +119,138 @@
                             <div class="comments-header">
                                 <h3 class="title">Community Feedback</h3>
                                 <div class="comments-stats">
-                                    <span class="count">12</span>
+                                    <span class="count">{{ $blog->comments_count }}</span>
                                     <span class="label">Comments</span>
                                 </div>
                             </div>
 
                             <div class="comments-container">
                                 <!-- Comment #1 -->
-                                <div class="comment-thread">
-                                    <div class="comment-box">
-                                        <div class="comment-wrapper">
-                                            <div class="avatar-wrapper">
-                                                <img src="{{ asset('assets/frontend') }}/img/person/person-f-9.webp"
-                                                    alt="Avatar" loading="lazy">
-                                                <span class="status-indicator"></span>
-                                            </div>
-
-                                            <div class="comment-content">
-                                                <div class="comment-header">
-                                                    <div class="user-info">
-                                                        <h4>Thomas Anderson</h4>
-                                                        <span class="time-badge">
-                                                            <i class="bi bi-clock"></i>
-                                                            2 hours ago
-                                                        </span>
+                                @foreach ($blog->comments as $comment)
+                                    <div class="comment-thread">
+                                        @if (!$comment->parent_id)
+                                            <div class="comment-box">
+                                                <div class="comment-wrapper">
+                                                    <div class="avatar-wrapper">
+                                                        <img src="{{ asset('uploads/users/' . $comment->user->image) }}"
+                                                            alt="Avatar" loading="lazy">
+                                                        <span class="status-indicator"></span>
                                                     </div>
-                                                    <div class="engagement">
-                                                        <span class="likes">
-                                                            <i class="bi bi-heart"></i>
-                                                            24
-                                                        </span>
-                                                    </div>
-                                                </div>
 
-                                                <div class="comment-body">
-                                                    <p>Nullam ac urna eu felis dapibus condimentum sit amet a augue. Sed non
-                                                        neque elit. Sed ut imperdiet nisi. Proin condimentum fermentum nunc.
-                                                    </p>
-                                                </div>
-
-                                                <div class="comment-actions">
-                                                    <button class="action-btn like-btn" aria-label="Like comment">
-                                                        <i class="bi bi-heart"></i>
-                                                        <span>Like</span>
-                                                    </button>
-                                                    <button class="action-btn reply-btn" aria-label="Reply to comment">
-                                                        <i class="bi bi-chat"></i>
-                                                        <span>Reply</span>
-                                                    </button>
-                                                    <button class="action-btn share-btn" aria-label="Share comment">
-                                                        <i class="bi bi-share"></i>
-                                                        <span>Share</span>
-                                                    </button>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <!-- Replies Container -->
-                                    <div class="replies-container">
-                                        <!-- Reply #1 -->
-                                        <div class="comment-box reply">
-                                            <div class="comment-wrapper">
-                                                <div class="avatar-wrapper">
-                                                    <img src="{{ asset('assets/frontend') }}/img/person/person-m-9.webp"
-                                                        alt="Avatar" loading="lazy">
-                                                    <span class="status-indicator"></span>
-                                                </div>
-
-                                                <div class="comment-content">
-                                                    <div class="comment-header">
-                                                        <div class="user-info">
-                                                            <h4>Maria Rodriguez</h4>
-                                                            <span class="time-badge">
-                                                                <i class="bi bi-clock"></i>
-                                                                1 hour ago
-                                                            </span>
+                                                    <div class="comment-content">
+                                                        <div class="comment-header">
+                                                            <div class="user-info">
+                                                                <h4>{{ $comment->user->name }}</h4>
+                                                                <span class="time-badge">
+                                                                    <i class="bi bi-clock"></i>
+                                                                    {{ $comment->created_at->diffForHumans() }}
+                                                                </span>
+                                                            </div>
+                                                            <div class="engagement">
+                                                                <span class="likes">
+                                                                    <i class="bi bi-heart"></i>
+                                                                    {{ $comment->id }}
+                                                                    <!-- Just for demo, replace with actual like count -->
+                                                                </span>
+                                                            </div>
                                                         </div>
-                                                        <div class="engagement">
-                                                            <span class="likes">
+
+                                                        <div class="comment-body">
+                                                            <p>
+                                                                {{ $comment->description }}
+                                                            </p>
+                                                        </div>
+
+                                                        <div class="comment-actions">
+                                                            <button class="action-btn like-btn" aria-label="Like comment">
                                                                 <i class="bi bi-heart"></i>
-                                                                8
-                                                            </span>
+                                                                <span>Like</span>
+                                                            </button>
+                                                            <button class="action-btn reply-btn"
+                                                                aria-label="Reply to comment">
+                                                                <i class="bi bi-chat"></i>
+                                                                <span>Reply</span>
+                                                            </button>
+                                                            <button class="action-btn share-btn"
+                                                                aria-label="Share comment">
+                                                                <i class="bi bi-share"></i>
+                                                                <span>Share</span>
+                                                            </button>
                                                         </div>
-                                                    </div>
-
-                                                    <div class="comment-body">
-                                                        <p>Vivamus elementum semper nisi. Aenean vulputate eleifend tellus.
-                                                            Aenean leo ligula, porttitor eu, consequat vitae.</p>
-                                                    </div>
-
-                                                    <div class="comment-actions">
-                                                        <button class="action-btn like-btn" aria-label="Like comment">
-                                                            <i class="bi bi-heart"></i>
-                                                            <span>Like</span>
-                                                        </button>
-                                                        <button class="action-btn reply-btn"
-                                                            aria-label="Reply to comment">
-                                                            <i class="bi bi-chat"></i>
-                                                            <span>Reply</span>
-                                                        </button>
-                                                        <button class="action-btn share-btn" aria-label="Share comment">
-                                                            <i class="bi bi-share"></i>
-                                                            <span>Share</span>
-                                                        </button>
                                                     </div>
                                                 </div>
                                             </div>
-                                        </div>
+                                        @endif
 
-                                        <!-- Reply #2 -->
-                                        <div class="comment-box reply">
-                                            <div class="comment-wrapper">
-                                                <div class="avatar-wrapper">
-                                                    <img src="{{ asset('assets/frontend') }}/img/person/person-f-9.webp"
-                                                        alt="Avatar" loading="lazy">
-                                                    <span class="status-indicator"></span>
-                                                </div>
+                                        <!-- Replies Container -->
+                                        @if ($comment->replies)
+                                            <div class="replies-container">
+                                                <!-- Reply #1 -->
+                                                @foreach ($comment->replies as $reply)
+                                                    <div class="comment-box reply">
+                                                        <div class="comment-wrapper">
+                                                            <div class="avatar-wrapper">
+                                                                <img src="{{ asset('uploads/users/' . $reply->user->image) }}"
+                                                                    alt="Avatar" loading="lazy">
+                                                                <span class="status-indicator"></span>
+                                                            </div>
 
-                                                <div class="comment-content">
-                                                    <div class="comment-header">
-                                                        <div class="user-info">
-                                                            <h4>Alex Chen</h4>
-                                                            <span class="time-badge">
-                                                                <i class="bi bi-clock"></i>
-                                                                30 minutes ago
-                                                            </span>
+                                                            <div class="comment-content">
+                                                                <div class="comment-header">
+                                                                    <div class="user-info">
+                                                                        <h4>{{ $reply->user->name }}</h4>
+                                                                        <span class="time-badge">
+                                                                            <i class="bi bi-clock"></i>
+                                                                            {{ $reply->created_at->diffForHumans() }}
+                                                                        </span>
+                                                                    </div>
+                                                                    <div class="engagement">
+                                                                        <span class="likes">
+                                                                            <i class="bi bi-heart"></i>
+                                                                            {{ $reply->parent_id }}
+                                                                        </span>
+                                                                    </div>
+                                                                </div>
+
+                                                                <div class="comment-body">
+                                                                    <p>
+                                                                        {{ $reply->description }}
+                                                                    </p>
+                                                                </div>
+
+                                                                <div class="comment-actions">
+                                                                    <button class="action-btn like-btn"
+                                                                        aria-label="Like comment">
+                                                                        <i class="bi bi-heart"></i>
+                                                                        <span>Like</span>
+                                                                    </button>
+                                                                    <button class="action-btn reply-btn"
+                                                                        aria-label="Reply to comment">
+                                                                        <i class="bi bi-chat"></i>
+                                                                        <span>Reply</span>
+                                                                    </button>
+                                                                    <button class="action-btn share-btn"
+                                                                        aria-label="Share comment">
+                                                                        <i class="bi bi-share"></i>
+                                                                        <span>Share</span>
+                                                                    </button>
+                                                                </div>
+                                                            </div>
                                                         </div>
-                                                        <div class="engagement">
-                                                            <span class="likes">
-                                                                <i class="bi bi-heart"></i>
-                                                                5
-                                                            </span>
-                                                        </div>
                                                     </div>
-
-                                                    <div class="comment-body">
-                                                        <p>Cras dapibus. Vivamus elementum semper nisi. Aenean vulputate
-                                                            eleifend tellus.</p>
-                                                    </div>
-
-                                                    <div class="comment-actions">
-                                                        <button class="action-btn like-btn" aria-label="Like comment">
-                                                            <i class="bi bi-heart"></i>
-                                                            <span>Like</span>
-                                                        </button>
-                                                        <button class="action-btn reply-btn"
-                                                            aria-label="Reply to comment">
-                                                            <i class="bi bi-chat"></i>
-                                                            <span>Reply</span>
-                                                        </button>
-                                                        <button class="action-btn share-btn" aria-label="Share comment">
-                                                            <i class="bi bi-share"></i>
-                                                            <span>Share</span>
-                                                        </button>
-                                                    </div>
-                                                </div>
+                                                @endforeach
                                             </div>
-                                        </div>
+                                        @endif
                                     </div>
-                                </div>
+                                @endforeach
 
-                                <!-- Comment #2 -->
-                                <div class="comment-thread">
-                                    <div class="comment-box">
-                                        <div class="comment-wrapper">
-                                            <div class="avatar-wrapper">
-                                                <img src="{{ asset('assets/frontend') }}/img/person/person-f-7.webp"
-                                                    alt="Avatar" loading="lazy">
-                                                <span class="status-indicator"></span>
-                                            </div>
-
-                                            <div class="comment-content">
-                                                <div class="comment-header">
-                                                    <div class="user-info">
-                                                        <h4>Emily Watson</h4>
-                                                        <span class="time-badge">
-                                                            <i class="bi bi-clock"></i>
-                                                            3 hours ago
-                                                        </span>
-                                                    </div>
-                                                    <div class="engagement">
-                                                        <span class="likes">
-                                                            <i class="bi bi-heart"></i>
-                                                            15
-                                                        </span>
-                                                    </div>
-                                                </div>
-
-                                                <div class="comment-body">
-                                                    <p>Maecenas tempus, tellus eget condimentum rhoncus, sem quam semper
-                                                        libero, sit amet adipiscing sem neque sed ipsum.</p>
-                                                </div>
-
-                                                <div class="comment-actions">
-                                                    <button class="action-btn like-btn" aria-label="Like comment">
-                                                        <i class="bi bi-heart"></i>
-                                                        <span>Like</span>
-                                                    </button>
-                                                    <button class="action-btn reply-btn" aria-label="Reply to comment">
-                                                        <i class="bi bi-chat"></i>
-                                                        <span>Reply</span>
-                                                    </button>
-                                                    <button class="action-btn share-btn" aria-label="Share comment">
-                                                        <i class="bi bi-share"></i>
-                                                        <span>Share</span>
-                                                    </button>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
                             </div>
                         </div>
 
                     </div>
 
-                </section><!-- /Blog Comments Section -->
+                </section>
+                <!-- /Blog Comments Section -->
 
                 <!-- Blog Comment Form Section -->
                 <section id="blog-comment-form" class="blog-comment-form section">
@@ -469,7 +308,9 @@
 
                     </div>
 
-                </section><!-- /Blog Comment Form Section -->
+                </section>
+                <!-- /Blog Comment Form Section -->
+
 
             </div>
 

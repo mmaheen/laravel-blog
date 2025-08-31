@@ -28,7 +28,11 @@ class BlogController extends Controller
     public function show(string $slug)
     {
         //
-        $blog = Blog::where('slug', $slug)->firstOrFail();
+        $blog = Blog::where('slug', $slug)
+            ->with('comments.user')
+            ->withCount('comments')
+            ->firstOrFail();
+        // return $blog;
         return view('frontend.blog.show', compact('blog'));
     }
 

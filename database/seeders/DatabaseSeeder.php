@@ -23,6 +23,7 @@ class DatabaseSeeder extends Seeder
             SkillSeeder::class,
             TeamSeeder::class,
             TestimonialSeeder::class,
+            CommentSeeder::class
         ]);
     }
 }

@@ -7,7 +7,14 @@
             <nav class="breadcrumbs">
                 <ol>
                     <li><a href="{{ route('home') }}">Home</a></li>
-                    <li class="current">Blog</li>
+                    <li class="current">
+                        Blog -
+                        {{ Route::currentRouteName() == 'blog.index' ? 'All Blogs' : '' }}
+                        {{ Route::currentRouteName() == 'blogs.by.category' ? 'Category: ' . ucfirst($category->name) : '' }}
+                        {{ Route::currentRouteName() == 'blogs.by.tag' ? 'Tag: ' . ucfirst($tag->name) : '' }}
+                        {{ Route::currentRouteName() == 'blogs.by.date' ? 'By Date: ' . date('M d, Y', strtotime($date)) : '' }}
+                        {{ Route::currentRouteName() == 'blogs.by.author' ? 'By Author: ' . ucfirst($author->name) : '' }}
+                    </li>
                 </ol>
             </nav>
             <h1>Blog</h1>

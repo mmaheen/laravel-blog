@@ -30,8 +30,8 @@ class BlogController extends Controller
     {
         //
         $blog = Blog::where('slug', $slug)
-            ->with('comments.user')
-            ->withCount('comments')
+            // ->with('comments.user')
+            // ->withCount('comments')
             ->firstOrFail();
         // return $blog;
         return view('frontend.blog.show', compact('blog'));

@@ -73,22 +73,12 @@
                     }
                 </script>
                 <div class="swiper-wrapper align-items-center">
-                    <div class="swiper-slide"><img src="{{ asset('assets/frontend') }}/img/clients/clients-1.webp"
-                            class="img-fluid" alt=""></div>
-                    <div class="swiper-slide"><img src="{{ asset('assets/frontend') }}/img/clients/clients-2.webp"
-                            class="img-fluid" alt=""></div>
-                    <div class="swiper-slide"><img src="{{ asset('assets/frontend') }}/img/clients/clients-3.webp"
-                            class="img-fluid" alt=""></div>
-                    <div class="swiper-slide"><img src="{{ asset('assets/frontend') }}/img/clients/clients-4.webp"
-                            class="img-fluid" alt=""></div>
-                    <div class="swiper-slide"><img src="{{ asset('assets/frontend') }}/img/clients/clients-5.webp"
-                            class="img-fluid" alt=""></div>
-                    <div class="swiper-slide"><img src="{{ asset('assets/frontend') }}/img/clients/clients-6.webp"
-                            class="img-fluid" alt=""></div>
-                    <div class="swiper-slide"><img src="{{ asset('assets/frontend') }}/img/clients/clients-7.webp"
-                            class="img-fluid" alt=""></div>
-                    <div class="swiper-slide"><img src="{{ asset('assets/frontend') }}/img/clients/clients-8.webp"
-                            class="img-fluid" alt=""></div>
+                    @foreach ($categories as $category)
+                        <div class="swiper-slide">
+                            <img src="{{ asset('uploads/categories/' . $category->image) }}" class="img-fluid"
+                                alt="">
+                        </div>
+                    @endforeach
                 </div>
             </div>
 
@@ -200,140 +190,30 @@
 
                 <ul class="portfolio-filters isotope-filters" data-aos="fade-up" data-aos-delay="100">
                     <li data-filter="*" class="filter-active">All</li>
-                    <li data-filter=".filter-app">App</li>
-                    <li data-filter=".filter-product">Card</li>
-                    <li data-filter=".filter-branding">Web</li>
-                </ul><!-- End Portfolio Filters -->
+                    @foreach ($photo_categories as $category)
+                        <li data-filter=".filter-{{ $category->slug }}">{{ $category->name }}</li>
+                    @endforeach
+                </ul>
+                <!-- End Portfolio Filters -->
 
                 <div class="row gy-4 isotope-container" data-aos="fade-up" data-aos-delay="200">
-
-                    <div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-app">
-                        <img src="{{ asset('assets/frontend') }}/img/portfolio/portfolio-portrait-1.webp"
-                            class="img-fluid" alt="">
-                        <div class="portfolio-info">
-                            <h4>App 1</h4>
-                            <p>Lorem ipsum, dolor sit</p>
-                            <a href="{{ asset('assets/frontend') }}/img/portfolio/portfolio-portrait-1.webp"
-                                title="App 1" data-gallery="portfolio-gallery-app" class="glightbox preview-link"><i
-                                    class="bi bi-zoom-in"></i></a>
-                            <a href="{{ route('photo.show', ['id' => 1]) }}" title="More Details"
-                                class="details-link"><i class="bi bi-link-45deg"></i></a>
+                    @foreach ($photos as $photo)
+                        <div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-{{ $photo->category->slug }}">
+                            <img src="{{ asset('uploads/photos/' . $photo->image) }}" class="img-fluid" alt="">
+                            <div class="portfolio-info">
+                                <h4>{{ \Illuminate\Support\Str::limit($photo->title, 30) }}</h4>
+                                <p>{{ \Illuminate\Support\Str::limit($photo->description, 40) }}</p>
+                                <a href="{{ asset('uploads/photos/' . $photo->image) }}" title="{{ $photo->title }}"
+                                    data-gallery="portfolio-gallery-app" class="glightbox preview-link"><i
+                                        class="bi bi-zoom-in"></i></a>
+                                <a href="{{ route('photo.show', $photo->slug) }}" title="More Details"
+                                    class="details-link"><i class="bi bi-link-45deg"></i></a>
+                            </div>
                         </div>
-                    </div><!-- End Portfolio Item -->
-
-                    <div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-product">
-                        <img src="{{ asset('assets/frontend') }}/img/portfolio/portfolio-1.webp" class="img-fluid"
-                            alt="">
-                        <div class="portfolio-info">
-                            <h4>Product 1</h4>
-                            <p>Lorem ipsum, dolor sit</p>
-                            <a href="{{ asset('assets/frontend') }}/img/portfolio/portfolio-1.webp" title="Product 1"
-                                data-gallery="portfolio-gallery-product" class="glightbox preview-link"><i
-                                    class="bi bi-zoom-in"></i></a>
-                            <a href="{{ route('photo.show', ['id' => 1]) }}" title="More Details"
-                                class="details-link"><i class="bi bi-link-45deg"></i></a>
-                        </div>
-                    </div><!-- End Portfolio Item -->
-
-                    <div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-branding">
-                        <img src="{{ asset('assets/frontend') }}/img/portfolio/portfolio-3.webp" class="img-fluid"
-                            alt="">
-                        <div class="portfolio-info">
-                            <h4>Branding 1</h4>
-                            <p>Lorem ipsum, dolor sit</p>
-                            <a href="{{ asset('assets/frontend') }}/img/portfolio/portfolio-3.webp" title="Branding 1"
-                                data-gallery="portfolio-gallery-branding" class="glightbox preview-link"><i
-                                    class="bi bi-zoom-in"></i></a>
-                            <a href="{{ route('photo.show', ['id' => 1]) }}" title="More Details"
-                                class="details-link"><i class="bi bi-link-45deg"></i></a>
-                        </div>
-                    </div><!-- End Portfolio Item -->
-
-                    <div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-app">
-                        <img src="{{ asset('assets/frontend') }}/img/portfolio/portfolio-4.webp" class="img-fluid"
-                            alt="">
-                        <div class="portfolio-info">
-                            <h4>App 2</h4>
-                            <p>Lorem ipsum, dolor sit</p>
-                            <a href="{{ asset('assets/frontend') }}/img/portfolio/portfolio-4.webp" title="App 2"
-                                data-gallery="portfolio-gallery-app" class="glightbox preview-link"><i
-                                    class="bi bi-zoom-in"></i></a>
-                            <a href="{{ route('photo.show', ['id' => 1]) }}" title="More Details"
-                                class="details-link"><i class="bi bi-link-45deg"></i></a>
-                        </div>
-                    </div><!-- End Portfolio Item -->
-
-                    <div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-product">
-                        <img src="{{ asset('assets/frontend') }}/img/portfolio/portfolio-portrait-2.webp"
-                            class="img-fluid" alt="">
-                        <div class="portfolio-info">
-                            <h4>Product 2</h4>
-                            <p>Lorem ipsum, dolor sit</p>
-                            <a href="{{ asset('assets/frontend') }}/img/portfolio/portfolio-portrait-2.webp"
-                                title="Product 2" data-gallery="portfolio-gallery-product"
-                                class="glightbox preview-link"><i class="bi bi-zoom-in"></i></a>
-                            <a href="{{ route('photo.show', ['id' => 2]) }}" title="More Details"
-                                class="details-link"><i class="bi bi-link-45deg"></i></a>
-                        </div>
-                    </div><!-- End Portfolio Item -->
-
-                    <div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-branding">
-                        <img src="{{ asset('assets/frontend') }}/img/portfolio/portfolio-portrait-3.webp"
-                            class="img-fluid" alt="">
-                        <div class="portfolio-info">
-                            <h4>Branding 2</h4>
-                            <p>Lorem ipsum, dolor sit</p>
-                            <a href="{{ asset('assets/frontend') }}/img/portfolio/portfolio-portrait-3.webp"
-                                title="Branding 2" data-gallery="portfolio-gallery-branding"
-                                class="glightbox preview-link"><i class="bi bi-zoom-in"></i></a>
-                            <a href="{{ route('photo.show', ['id' => 3]) }}" title="More Details"
-                                class="details-link"><i class="bi bi-link-45deg"></i></a>
-                        </div>
-                    </div><!-- End Portfolio Item -->
-
-                    <div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-app">
-                        <img src="{{ asset('assets/frontend') }}/img/portfolio/portfolio-7.webp" class="img-fluid"
-                            alt="">
-                        <div class="portfolio-info">
-                            <h4>App 3</h4>
-                            <p>Lorem ipsum, dolor sit</p>
-                            <a href="{{ asset('assets/frontend') }}/img/portfolio/portfolio-7.webp" title="App 3"
-                                data-gallery="portfolio-gallery-app" class="glightbox preview-link"><i
-                                    class="bi bi-zoom-in"></i></a>
-                            <a href="{{ route('photo.show', ['id' => 1]) }}" title="More Details"
-                                class="details-link"><i class="bi bi-link-45deg"></i></a>
-                        </div>
-                    </div><!-- End Portfolio Item -->
-
-                    <div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-product">
-                        <img src="{{ asset('assets/frontend') }}/img/portfolio/portfolio-8.webp" class="img-fluid"
-                            alt="">
-                        <div class="portfolio-info">
-                            <h4>Product 3</h4>
-                            <p>Lorem ipsum, dolor sit</p>
-                            <a href="{{ asset('assets/frontend') }}/img/portfolio/portfolio-8.webp" title="Product 3"
-                                data-gallery="portfolio-gallery-product" class="glightbox preview-link"><i
-                                    class="bi bi-zoom-in"></i></a>
-                            <a href="{{ route('photo.show', ['id' => 2]) }}" title="More Details"
-                                class="details-link"><i class="bi bi-link-45deg"></i></a>
-                        </div>
-                    </div><!-- End Portfolio Item -->
-
-                    <div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-branding">
-                        <img src="{{ asset('assets/frontend') }}/img/portfolio/portfolio-9.webp" class="img-fluid"
-                            alt="">
-                        <div class="portfolio-info">
-                            <h4>Branding 3</h4>
-                            <p>Lorem ipsum, dolor sit</p>
-                            <a href="{{ asset('assets/frontend') }}/img/portfolio/portfolio-9.webp" title="Branding 2"
-                                data-gallery="portfolio-gallery-branding" class="glightbox preview-link"><i
-                                    class="bi bi-zoom-in"></i></a>
-                            <a href="{{ route('photo.show', ['id' => 3]) }}" title="More Details"
-                                class="details-link"><i class="bi bi-link-45deg"></i></a>
-                        </div>
-                    </div><!-- End Portfolio Item -->
-
-                </div><!-- End Portfolio Container -->
+                        <!-- End Portfolio Item -->
+                    @endforeach
+                </div>
+                <!-- End Portfolio Container -->
 
             </div>
 
@@ -342,7 +222,7 @@
     </section>
     <!-- /Portfolio Section -->
 
-    <!-- Recent Blog Postst Section -->
+    <!-- Recent Blog Posts Section -->
     <section id="recent-blog-postst" class="recent-blog-postst section light-background">
 
         <!-- Section Title -->
@@ -355,111 +235,57 @@
 
             <div class="row gy-5">
 
-                <div class="col-xl-4 col-md-6">
-                    <div class="post-item position-relative h-100" data-aos="fade-up" data-aos-delay="100">
+                @foreach ($recent_blogs as $blog)
+                    <div class="col-xl-4 col-md-6">
+                        <div class="post-item position-relative h-100" data-aos="fade-up"
+                            data-aos-delay="{{ $loop->index * 100 }}">
 
-                        <div class="post-img position-relative overflow-hidden">
-                            <img src="{{ asset('assets/frontend') }}/img/blog/blog-post-1.webp" class="img-fluid"
-                                alt="">
-                            <span class="post-date">December 12</span>
-                        </div>
-
-                        <div class="post-content d-flex flex-column">
-
-                            <h3 class="post-title">Eum ad dolor et. Autem aut fugiat debitis</h3>
-
-                            <div class="meta d-flex align-items-center">
-                                <div class="d-flex align-items-center">
-                                    <i class="bi bi-person"></i> <span class="ps-2">Julia Parker</span>
+                            <div class="post-img position-relative overflow-hidden">
+                                <div class="ratio ratio-4x3">
+                                    <img src="{{ asset('uploads/blogs/' . $blog->image) }}" class="img-fluid"
+                                        alt="">
                                 </div>
-                                <span class="px-3 text-black-50">/</span>
-                                <div class="d-flex align-items-center">
-                                    <i class="bi bi-folder2"></i> <span class="ps-2">Politics</span>
-                                </div>
+                                <span class="post-date">{{ $blog->created_at->format('F d') }}</span>
                             </div>
 
-                            <hr>
+                            <div class="post-content d-flex flex-column">
 
-                            <a href="{{ route('blog.show', ['id' => 1]) }}" class="readmore stretched-link"><span>Read
-                                    More</span><i class="bi bi-arrow-right"></i></a>
+                                <h3 class="post-title">
+                                    {{ substr($blog->title, 0, 70) }}
+                                    {{ strlen($blog->title) > 70 ? '...' : '' }}
+                                </h3>
 
-                        </div>
-
-                    </div>
-                </div><!-- End post item -->
-
-                <div class="col-xl-4 col-md-6">
-                    <div class="post-item position-relative h-100" data-aos="fade-up" data-aos-delay="200">
-
-                        <div class="post-img position-relative overflow-hidden">
-                            <img src="{{ asset('assets/frontend') }}/img/blog/blog-post-2.webp" class="img-fluid"
-                                alt="">
-                            <span class="post-date">July 17</span>
-                        </div>
-
-                        <div class="post-content d-flex flex-column">
-
-                            <h3 class="post-title">Et repellendus molestiae qui est sed omnis</h3>
-
-                            <div class="meta d-flex align-items-center">
-                                <div class="d-flex align-items-center">
-                                    <i class="bi bi-person"></i> <span class="ps-2">Mario Douglas</span>
+                                <div class="meta d-flex align-items-center">
+                                    <div class="d-flex align-items-center">
+                                        <i class="bi bi-person"></i> <span
+                                            class="ps-2">{{ ucfirst($blog->user->name) }}</span>
+                                    </div>
+                                    <span class="px-3 text-black-50">/</span>
+                                    <div class="d-flex align-items-center">
+                                        <i class="bi bi-folder2"></i> <span
+                                            class="ps-2">{{ ucfirst($blog->category->name) }}</span>
+                                    </div>
                                 </div>
-                                <span class="px-3 text-black-50">/</span>
-                                <div class="d-flex align-items-center">
-                                    <i class="bi bi-folder2"></i> <span class="ps-2">Sports</span>
-                                </div>
+
+                                <hr>
+
+                                <a href="{{ route('blog.show', $blog->slug) }}"
+                                    class="readmore stretched-link"><span>Read
+                                        More</span><i class="bi bi-arrow-right"></i></a>
+
                             </div>
 
-                            <hr>
-
-                            <a href="{{ route('blog.show', ['id' => 2]) }}" class="readmore stretched-link"><span>Read
-                                    More</span><i class="bi bi-arrow-right"></i></a>
-
                         </div>
-
                     </div>
-                </div><!-- End post item -->
-
-                <div class="col-xl-4 col-md-6" data-aos="fade-up" data-aos-delay="300">
-                    <div class="post-item position-relative h-100">
-
-                        <div class="post-img position-relative overflow-hidden">
-                            <img src="{{ asset('assets/frontend') }}/img/blog/blog-post-3.webp" class="img-fluid"
-                                alt="">
-                            <span class="post-date">September 05</span>
-                        </div>
-
-                        <div class="post-content d-flex flex-column">
-
-                            <h3 class="post-title">Quia assumenda est et veritati tirana ploder</h3>
-
-                            <div class="meta d-flex align-items-center">
-                                <div class="d-flex align-items-center">
-                                    <i class="bi bi-person"></i> <span class="ps-2">Lisa Hunter</span>
-                                </div>
-                                <span class="px-3 text-black-50">/</span>
-                                <div class="d-flex align-items-center">
-                                    <i class="bi bi-folder2"></i> <span class="ps-2">Economics</span>
-                                </div>
-                            </div>
-
-                            <hr>
-
-                            <a href="{{ route('blog.show', ['id' => 3]) }}" class="readmore stretched-link"><span>Read
-                                    More</span><i class="bi bi-arrow-right"></i></a>
-
-                        </div>
-
-                    </div>
-                </div><!-- End post item -->
+                    <!-- End post item -->
+                @endforeach
 
             </div>
 
         </div>
 
     </section>
-    <!-- /Recent Blog Postst Section -->
+    <!-- /Recent Blog Posts Section -->
 
     <!-- Team Section -->
     <section id="team" class="team section">

@@ -27,173 +27,60 @@
 
                         <div class="row gy-4">
 
-                            <div class="col-lg-6">
-                                <article>
+                            @foreach ($blogs as $blog)
+                                <div class="col-lg-6">
+                                    <article>
 
-                                    <div class="post-img">
-                                        <img src="{{ asset('assets/frontend') }}/img/blog/blog-post-1.webp" alt=""
-                                            class="img-fluid">
-                                    </div>
+                                        <div class="post-img">
+                                            <div class="ratio ratio-4x3">
+                                                <img src="{{ asset('uploads/blogs/' . $blog->image) }}" alt=""
+                                                    class="img-fluid">
+                                            </div>
 
-                                    <h2 class="title">
-                                        <a href="{{ route('blog.show', ['id' => 1]) }}">Dolorum optio tempore voluptas
-                                            dignissimos cumque fuga
-                                            qui quibusdam quia</a>
-                                    </h2>
-
-                                    <div class="meta-top">
-                                        <ul>
-                                            <li class="d-flex align-items-center"><i class="bi bi-person"></i> <a
-                                                    href="{{ route('blog.show', ['id' => 1]) }}">John Doe</a></li>
-                                            <li class="d-flex align-items-center"><i class="bi bi-clock"></i> <a
-                                                    href="{{ route('blog.show', ['id' => 1]) }}"><time
-                                                        datetime="2022-01-01">Jan 1,
-                                                        2022</time></a></li>
-                                            <li class="d-flex align-items-center"><i class="bi bi-chat-dots"></i> <a
-                                                    href="{{ route('blog.show', ['id' => 1]) }}">12 Comments</a></li>
-                                        </ul>
-                                    </div>
-
-                                    <div class="content">
-                                        <p>
-                                            Similique neque nam consequuntur ad non maxime aliquam quas. Quibusdam animi
-                                            praesentium. Aliquam et laboriosam eius aut nostrum quidem aliquid dicta..
-                                        </p>
-
-                                        <div class="read-more">
-                                            <a href="{{ route('blog.show', ['id' => 1]) }}">Read More</a>
                                         </div>
-                                    </div>
 
-                                </article>
-                            </div><!-- End post list item -->
+                                        <h2 class="title">
+                                            <a href="{{ route('blog.show', $blog->slug) }}">
+                                                {{ \Illuminate\Support\Str::limit($blog->title, 50) }}
+                                            </a>
+                                        </h2>
 
-                            <div class="col-lg-6">
+                                        <div class="meta-top">
+                                            <div class="row">
+                                                <div class="d-flex align-items-center">
+                                                    <i class="bi bi-person"></i> <a
+                                                        href="{{ route('blogs.by.author', $blog->user->id) }}">{{ $blog->user->name }}</a>
+                                                </div>
+                                            </div>
+                                            <div class="row mt-2">
+                                                <div class="col-6 d-flex align-items-center"><i class="bi bi-clock"></i> <a
+                                                        href="{{ route('blogs.by.date', $blog->created_at->format('Y-m-d')) }}"><time
+                                                            datetime="2022-01-01">{{ $blog->created_at->format('M d, Y') }}</time></a>
+                                                </div>
+                                                <div class="col-6 d-flex align-items-center"><i class="bi bi-chat-dots"></i>
+                                                    <a href="#">12 Comments</a>
+                                                </div>
+                                            </div>
 
-                                <article>
-
-                                    <div class="post-img">
-                                        <img src="{{ asset('assets/frontend') }}/img/blog/blog-post-2.webp" alt=""
-                                            class="img-fluid">
-                                    </div>
-
-                                    <h2 class="title">
-                                        <a href="{{ route('blog.show', ['id' => 1]) }}">Nisi magni odit consequatur autem
-                                            nulla dolorem</a>
-                                    </h2>
-
-                                    <div class="meta-top">
-                                        <ul>
-                                            <li class="d-flex align-items-center"><i class="bi bi-person"></i> <a
-                                                    href="{{ route('blog.show', ['id' => 1]) }}">John Doe</a></li>
-                                            <li class="d-flex align-items-center"><i class="bi bi-clock"></i> <a
-                                                    href="{{ route('blog.show', ['id' => 1]) }}"><time
-                                                        datetime="2022-01-01">Jan 1,
-                                                        2022</time></a></li>
-                                            <li class="d-flex align-items-center"><i class="bi bi-chat-dots"></i> <a
-                                                    href="{{ route('blog.show', ['id' => 1]) }}">12 Comments</a></li>
-                                        </ul>
-                                    </div>
-
-                                    <div class="content">
-                                        <p>
-                                            Incidunt voluptate sit temporibus aperiam. Quia vitae aut sint ullam quis illum
-                                            voluptatum et. Quo libero rerum voluptatem pariatur nam.
-                                            Ad impedit qui officiis est</p>
-                                        <div class="read-more">
-                                            <a href="{{ route('blog.show', ['id' => 1]) }}">Read More</a>
                                         </div>
-                                    </div>
 
-                                </article>
+                                        <div class="content">
+                                            <p>
+                                                {{ \Illuminate\Support\Str::limit($blog->description, 100) }}
+                                            </p>
 
-                            </div><!-- End post list item -->
-
-                            <div class="col-lg-6">
-
-                                <article>
-
-                                    <div class="post-img">
-                                        <img src="{{ asset('assets/frontend') }}/img/blog/blog-post-3.webp" alt=""
-                                            class="img-fluid">
-                                    </div>
-
-                                    <h2 class="title">
-                                        <a href="{{ route('blog.show', ['id' => 1]) }}">Possimus soluta ut id suscipit ea
-                                            ut. In quo quia et
-                                            soluta libero sit sint.</a>
-                                    </h2>
-
-                                    <div class="meta-top">
-                                        <ul>
-                                            <li class="d-flex align-items-center"><i class="bi bi-person"></i> <a
-                                                    href="{{ route('blog.show', ['id' => 1]) }}">John Doe</a></li>
-                                            <li class="d-flex align-items-center"><i class="bi bi-clock"></i> <a
-                                                    href="{{ route('blog.show', ['id' => 1]) }}"><time
-                                                        datetime="2022-01-01">Jan 1,
-                                                        2022</time></a></li>
-                                            <li class="d-flex align-items-center"><i class="bi bi-chat-dots"></i> <a
-                                                    href="{{ route('blog.show', ['id' => 1]) }}">12 Comments</a></li>
-                                        </ul>
-                                    </div>
-
-                                    <div class="content">
-                                        <p>
-                                            Aut iste neque ut illum qui perspiciatis similique recusandae non. Fugit autem
-                                            dolorem labore omnis et. Eum temporibus fugiat voluptate enim tenetur sun</p>
-                                        <div class="read-more">
-                                            <a href="{{ route('blog.show', ['id' => 1]) }}">Read More</a>
+                                            <div class="read-more">
+                                                <a href="{{ route('blog.show', $blog->slug) }}">Read More</a>
+                                            </div>
                                         </div>
-                                    </div>
 
-                                </article>
+                                    </article>
+                                </div>
+                                <!-- End post list item -->
+                            @endforeach
 
-                            </div><!-- End post list item -->
-
-                            <div class="col-lg-6">
-
-                                <article>
-
-                                    <div class="post-img">
-                                        <img src="{{ asset('assets/frontend') }}/img/blog/blog-post-4.webp" alt=""
-                                            class="img-fluid">
-                                    </div>
-
-                                    <h2 class="title">
-                                        <a href="{{ route('blog.show', ['id' => 1]) }}">Non rem rerum nam cum quo minus.
-                                            Dolor distinctio
-                                            deleniti explicabo eius exercitationem.</a>
-                                    </h2>
-
-                                    <div class="meta-top">
-                                        <ul>
-                                            <li class="d-flex align-items-center"><i class="bi bi-person"></i> <a
-                                                    href="{{ route('blog.show', ['id' => 1]) }}">John Doe</a></li>
-                                            <li class="d-flex align-items-center"><i class="bi bi-clock"></i> <a
-                                                    href="{{ route('blog.show', ['id' => 1]) }}"><time
-                                                        datetime="2022-01-01">Jan 1,
-                                                        2022</time></a></li>
-                                            <li class="d-flex align-items-center"><i class="bi bi-chat-dots"></i> <a
-                                                    href="{{ route('blog.show', ['id' => 1]) }}">12 Comments</a></li>
-                                        </ul>
-                                    </div>
-
-                                    <div class="content">
-                                        <p>
-                                            Aspernatur rerum perferendis et sint. Voluptates cupiditate voluptas atque quae.
-                                            Rem veritatis rerum enim et autem. Saepe atque cum eligendi eaque iste omnis a
-                                            qui.
-                                            Quia sed sunt. Ea asperiores expedita <br></p>
-                                        <div class="read-more">
-                                            <a href="{{ route('blog.show', ['id' => 1]) }}">Read More</a>
-                                        </div>
-                                    </div>
-
-                                </article>
-
-                            </div><!-- End post list item -->
-
-                        </div><!-- End blog posts list -->
+                        </div>
+                        <!-- End blog posts list -->
 
                     </div>
 

@@ -19,6 +19,8 @@ class DatabaseSeeder extends Seeder
             BlogSeeder::class,
             PhotoSeeder::class,
             SkillSeeder::class,
+            TagSeeder::class,
+            BlogTagSeeder::class,
         ]);
 
 

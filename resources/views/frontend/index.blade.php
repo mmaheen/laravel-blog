@@ -170,7 +170,7 @@
 
             <div class="row" data-aos="zoom-in" data-aos-delay="100">
                 <div class="col-xl-9 text-center text-xl-start">
-                    <h3>🚀 Let’s Dive Into the Blog</h3>
+                    <h3>🚀 Let’s Dive into the Blog</h3>
                     <p>Discover stories, insights, and updates crafted with Laravel precision.
                         <br> A space where content meets clean code and user experience shines.
                     </p>

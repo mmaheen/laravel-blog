@@ -28,6 +28,7 @@
 
     <!-- Main CSS File -->
     <link href="{{ asset('assets/frontend') }}/css/main.css" rel="stylesheet">
+    @yield('style')
 
     <!-- =======================================================
   * Template Name: Arsha

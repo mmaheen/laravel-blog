@@ -12,4 +12,14 @@ class HomeController extends Controller
     {
         return view('frontend.index');
     }
+
+    public function register()
+    {
+        return view('auth.register');
+    }
+
+    public function login()
+    {
+        return view('auth.login');
+    }
 }

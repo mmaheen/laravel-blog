@@ -13,3 +13,7 @@ Route::get('/blog', [BlogController::class, 'index'])->name('blog.index');
 Route::get('/blog/{id}', [BlogController::class, 'show'])->name('blog.show');
 
 Route::get('/photo/{id}', [PhotoController::class, 'show'])->name('photo.show');
+
+// Auth Routes
+Route::get('/register', [HomeController::class, 'register'])->name('register');
+Route::get('/login', [HomeController::class, 'login'])->name('login');

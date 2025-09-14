@@ -410,56 +410,7 @@
                     <!-- Recent Posts Widget -->
                     <div class="recent-posts-widget widget-item">
 
-                        <h3 class="widget-title">Recent Posts</h3>
-
-                        <div class="post-item">
-                            <img src="{{ asset('assets/frontend') }}/img/blog/blog-post-square-1.webp" alt=""
-                                class="flex-shrink-0">
-                            <div>
-                                <h4><a href="{{ route('blog.show', ['id' => 1]) }}">Nihil blanditiis at in nihil autem</a>
-                                </h4>
-                                <time datetime="2020-01-01">Jan 1, 2020</time>
-                            </div>
-                        </div><!-- End recent post item-->
-
-                        <div class="post-item">
-                            <img src="{{ asset('assets/frontend') }}/img/blog/blog-post-square-2.webp" alt=""
-                                class="flex-shrink-0">
-                            <div>
-                                <h4><a href="{{ route('blog.show', ['id' => 1]) }}">Quidem autem et impedit</a></h4>
-                                <time datetime="2020-01-01">Jan 1, 2020</time>
-                            </div>
-                        </div><!-- End recent post item-->
-
-                        <div class="post-item">
-                            <img src="{{ asset('assets/frontend') }}/img/blog/blog-post-square-3.webp" alt=""
-                                class="flex-shrink-0">
-                            <div>
-                                <h4><a href="{{ route('blog.show', ['id' => 1]) }}">Id quia et et ut maxime similique
-                                        occaecati ut</a></h4>
-                                <time datetime="2020-01-01">Jan 1, 2020</time>
-                            </div>
-                        </div><!-- End recent post item-->
-
-                        <div class="post-item">
-                            <img src="{{ asset('assets/frontend') }}/img/blog/blog-post-square-4.webp" alt=""
-                                class="flex-shrink-0">
-                            <div>
-                                <h4><a href="{{ route('blog.show', ['id' => 1]) }}">Laborum corporis quo dara net para</a>
-                                </h4>
-                                <time datetime="2020-01-01">Jan 1, 2020</time>
-                            </div>
-                        </div><!-- End recent post item-->
-
-                        <div class="post-item">
-                            <img src="{{ asset('assets/frontend') }}/img/blog/blog-post-square-5.webp" alt=""
-                                class="flex-shrink-0">
-                            <div>
-                                <h4><a href="{{ route('blog.show', ['id' => 1]) }}">Et dolores corrupti quae illo quod
-                                        dolor</a></h4>
-                                <time datetime="2020-01-01">Jan 1, 2020</time>
-                            </div>
-                        </div><!-- End recent post item-->
+                        <x-frontend.recent-post />
 
                     </div><!--/Recent Posts Widget -->
 

@@ -39,10 +39,11 @@
                     Let’s build, share, and grow—connect with me across platforms.
                 </p>
                 <div class="social-links d-flex">
-                    <a href="https://github.com/mmaheen"><i class="bi bi-github"></i></a>
-                    <a href="https://www.linkedin.com/in/mmmugdha/"><i class="bi bi-linkedin"></i></a>
-                    <a href="https://www.facebook.com/mushrif.maheen.mugdha/"><i class="bi bi-facebook"></i></a>
-                    <a href="https://www.instagram.com/mm.mugdha/"><i class="bi bi-instagram"></i></a>
+                    <a href="https://github.com/mmaheen" target="_blank"><i class="bi bi-github"></i></a>
+                    <a href="https://www.linkedin.com/in/mmmugdha/" target="_blank"><i class="bi bi-linkedin"></i></a>
+                    <a href="https://www.facebook.com/mushrif.maheen.mugdha/" target="_blank"><i
+                            class="bi bi-facebook"></i></a>
+                    <a href="https://www.instagram.com/mm.mugdha/" target="_blank"><i class="bi bi-instagram"></i></a>
                 </div>
             </div>
 

@@ -2,16 +2,18 @@
 
 namespace App\Http\Controllers\Frontend;
 
-use App\Http\Controllers\Controller;
+use App\Models\Photo;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 
 class PhotoController extends Controller
 {
     //
-    public function show(string $id)
+    public function show(string $slug)
     {
         //
-        return view('frontend.photo.show', compact('id'));
+        $photo = Photo::where('slug', $slug)->firstOrFail();
+        return view('frontend.photo.show', compact('photo'));
     }
 
 }

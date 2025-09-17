@@ -15,7 +15,10 @@
                     <li><a href="#portfolio">Photos</a></li>
                     <li><a href="#recent-blog-postst">Recent Blogs</a></li>
                 @endif
-                <li><a href="{{ route('blog.index') }}">Blogs</a></li>
+                <li><a href="{{ route('blog.index') }}"
+                        class = "{{ Route::currentRouteName() == 'blog.index' ? 'active' : '' }}">
+                        Blogs
+                    </a></li>
                 <li class="dropdown"><a href="#"><span>Authentication</span> <i
                             class="bi bi-chevron-down toggle-dropdown"></i></a>
                     <ul>

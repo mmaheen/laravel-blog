@@ -203,175 +203,179 @@
     <!-- /Portfolio Section -->
 
     <!-- Recent Blog Posts Section -->
-    <section id="recent-blog-postst" class="recent-blog-postst section light-background">
+    <section id="recent-blog-posts" class="recent-blog-posts section light-background">
+        <!-- Recent Blog Posts Section -->
+        <section id="recent-blog-postst" class="recent-blog-postst section light-background">
 
-        <!-- Section Title -->
-        <div class="container section-title" data-aos="fade-up">
-            <h2>Recent Blog Posts</h2>
-            <p>The blogs are arranged in reverse chronological order</p>
-        </div><!-- End Section Title -->
+            <!-- Section Title -->
+            <div class="container section-title" data-aos="fade-up">
+                <h2>Recent Blog Posts</h2>
+                <p>The blogs are arranged in reverse chronological order</p>
+            </div><!-- End Section Title -->
 
-        <div class="container">
+            <div class="container">
 
-            <div class="row gy-5">
+                <div class="row gy-5">
 
-                @foreach ($recent_blogs as $blog)
-                    <div class="col-xl-4 col-md-6">
-                        <div class="post-item position-relative h-100" data-aos="fade-up"
-                            data-aos-delay="{{ $loop->index * 100 }}">
+                    @foreach ($recent_blogs as $blog)
+                        <div class="col-xl-4 col-md-6">
+                            <div class="post-item position-relative h-100" data-aos="fade-up"
+                                data-aos-delay="{{ $loop->index * 100 }}">
 
-                            <div class="post-img position-relative overflow-hidden">
-                                <div class="ratio ratio-4x3">
-                                    <img src="{{ asset('uploads/blogs/' . $blog->image) }}" class="img-fluid"
-                                        alt="">
-                                </div>
-                                <span class="post-date">{{ $blog->created_at->format('F d') }}</span>
-                            </div>
-
-                            <div class="post-content d-flex flex-column">
-
-                                <h3 class="post-title">
-                                    {{ substr($blog->title, 0, 70) }}
-                                    {{ strlen($blog->title) > 70 ? '...' : '' }}
-                                </h3>
-
-                                <div class="meta d-flex align-items-center">
-                                    <div class="d-flex align-items-center">
-                                        <i class="bi bi-person"></i> <span
-                                            class="ps-2">{{ ucfirst($blog->user->name) }}</span>
+                                <div class="post-img position-relative overflow-hidden">
+                                    <div class="ratio ratio-4x3">
+                                        <img src="{{ asset('uploads/blogs/' . $blog->image) }}" class="img-fluid"
+                                            alt="">
                                     </div>
-                                    <span class="px-3 text-black-50">/</span>
-                                    <div class="d-flex align-items-center">
-                                        <i class="bi bi-folder2"></i> <span
-                                            class="ps-2">{{ ucfirst($blog->category->name) }}</span>
-                                    </div>
+                                    <span class="post-date">{{ $blog->created_at->format('F d') }}</span>
                                 </div>
 
-                                <hr>
+                                <div class="post-content d-flex flex-column">
 
-                                <a href="{{ route('blog.show', $blog->slug) }}"
-                                    class="readmore stretched-link"><span>Read
-                                        More</span><i class="bi bi-arrow-right"></i></a>
+                                    <h3 class="post-title">
+                                        {{ substr($blog->title, 0, 70) }}
+                                        {{ strlen($blog->title) > 70 ? '...' : '' }}
+                                    </h3>
+
+                                    <div class="meta d-flex align-items-center">
+                                        <div class="d-flex align-items-center">
+                                            <i class="bi bi-person"></i> <span
+                                                class="ps-2">{{ ucfirst($blog->user->name) }}</span>
+                                        </div>
+                                        <span class="px-3 text-black-50">/</span>
+                                        <div class="d-flex align-items-center">
+                                            <i class="bi bi-folder2"></i> <span
+                                                class="ps-2">{{ ucfirst($blog->category->name) }}</span>
+                                        </div>
+                                    </div>
+
+                                    <hr>
+
+                                    <a href="{{ route('blog.show', $blog->slug) }}"
+                                        class="readmore stretched-link"><span>Read
+                                            More</span><i class="bi bi-arrow-right"></i></a>
+
+                                </div>
 
                             </div>
-
                         </div>
-                    </div>
-                    <!-- End post item -->
-                @endforeach
+                        <!-- End post item -->
+                    @endforeach
+
+                </div>
 
             </div>
 
-        </div>
+        </section>
+        <!-- /Recent Blog Posts Section -->
+        <!-- /Recent Blog Posts Section -->
 
-    </section>
-    <!-- /Recent Blog Posts Section -->
+        <!-- Team Section -->
+        <section id="team" class="team section">
 
-    <!-- Team Section -->
-    <section id="team" class="team section">
+            <!-- Section Title -->
+            <div class="container section-title" data-aos="fade-up">
+                <h2>Team</h2>
+                <p>Each member has a dedicated profile displaying their role, bio and skills</p>
+            </div><!-- End Section Title -->
 
-        <!-- Section Title -->
-        <div class="container section-title" data-aos="fade-up">
-            <h2>Team</h2>
-            <p>Each member has a dedicated profile displaying their role, bio and skills</p>
-        </div><!-- End Section Title -->
+            <div class="container">
 
-        <div class="container">
+                <div class="row gy-4">
 
-            <div class="row gy-4">
-
-                <div class="col-lg-6" data-aos="fade-up" data-aos-delay="100">
-                    <div class="team-member d-flex align-items-start">
-                        <div class="pic"><img src="{{ asset('assets/frontend') }}/img/person/person-m-7.webp"
-                                class="img-fluid" alt=""></div>
-                        <div class="member-info">
-                            <h4>Walter White</h4>
-                            <span>Chief Executive Officer</span>
-                            <p>Explicabo voluptatem mollitia et repellat qui dolorum quasi</p>
-                            <div class="social">
-                                <a href=""><i class="bi bi-twitter-x"></i></a>
-                                <a href=""><i class="bi bi-facebook"></i></a>
-                                <a href=""><i class="bi bi-instagram"></i></a>
-                                <a href=""> <i class="bi bi-linkedin"></i> </a>
+                    <div class="col-lg-6" data-aos="fade-up" data-aos-delay="100">
+                        <div class="team-member d-flex align-items-start">
+                            <div class="pic"><img src="{{ asset('assets/frontend') }}/img/person/person-m-7.webp"
+                                    class="img-fluid" alt=""></div>
+                            <div class="member-info">
+                                <h4>Walter White</h4>
+                                <span>Chief Executive Officer</span>
+                                <p>Explicabo voluptatem mollitia et repellat qui dolorum quasi</p>
+                                <div class="social">
+                                    <a href=""><i class="bi bi-twitter-x"></i></a>
+                                    <a href=""><i class="bi bi-facebook"></i></a>
+                                    <a href=""><i class="bi bi-instagram"></i></a>
+                                    <a href=""> <i class="bi bi-linkedin"></i> </a>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                </div><!-- End Team Member -->
+                    </div><!-- End Team Member -->
 
-                <div class="col-lg-6" data-aos="fade-up" data-aos-delay="200">
-                    <div class="team-member d-flex align-items-start">
-                        <div class="pic"><img src="{{ asset('assets/frontend') }}/img/person/person-f-8.webp"
-                                class="img-fluid" alt=""></div>
-                        <div class="member-info">
-                            <h4>Sarah Jhonson</h4>
-                            <span>Product Manager</span>
-                            <p>Aut maiores voluptates amet et quis praesentium qui senda para</p>
-                            <div class="social">
-                                <a href=""><i class="bi bi-twitter-x"></i></a>
-                                <a href=""><i class="bi bi-facebook"></i></a>
-                                <a href=""><i class="bi bi-instagram"></i></a>
-                                <a href=""> <i class="bi bi-linkedin"></i> </a>
+                    <div class="col-lg-6" data-aos="fade-up" data-aos-delay="200">
+                        <div class="team-member d-flex align-items-start">
+                            <div class="pic"><img src="{{ asset('assets/frontend') }}/img/person/person-f-8.webp"
+                                    class="img-fluid" alt=""></div>
+                            <div class="member-info">
+                                <h4>Sarah Jhonson</h4>
+                                <span>Product Manager</span>
+                                <p>Aut maiores voluptates amet et quis praesentium qui senda para</p>
+                                <div class="social">
+                                    <a href=""><i class="bi bi-twitter-x"></i></a>
+                                    <a href=""><i class="bi bi-facebook"></i></a>
+                                    <a href=""><i class="bi bi-instagram"></i></a>
+                                    <a href=""> <i class="bi bi-linkedin"></i> </a>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                </div><!-- End Team Member -->
+                    </div><!-- End Team Member -->
 
-                <div class="col-lg-6" data-aos="fade-up" data-aos-delay="300">
-                    <div class="team-member d-flex align-items-start">
-                        <div class="pic"><img src="{{ asset('assets/frontend') }}/img/person/person-m-6.webp"
-                                class="img-fluid" alt=""></div>
-                        <div class="member-info">
-                            <h4>William Anderson</h4>
-                            <span>CTO</span>
-                            <p>Quisquam facilis cum velit laborum corrupti fuga rerum quia</p>
-                            <div class="social">
-                                <a href=""><i class="bi bi-twitter-x"></i></a>
-                                <a href=""><i class="bi bi-facebook"></i></a>
-                                <a href=""><i class="bi bi-instagram"></i></a>
-                                <a href=""> <i class="bi bi-linkedin"></i> </a>
+                    <div class="col-lg-6" data-aos="fade-up" data-aos-delay="300">
+                        <div class="team-member d-flex align-items-start">
+                            <div class="pic"><img src="{{ asset('assets/frontend') }}/img/person/person-m-6.webp"
+                                    class="img-fluid" alt=""></div>
+                            <div class="member-info">
+                                <h4>William Anderson</h4>
+                                <span>CTO</span>
+                                <p>Quisquam facilis cum velit laborum corrupti fuga rerum quia</p>
+                                <div class="social">
+                                    <a href=""><i class="bi bi-twitter-x"></i></a>
+                                    <a href=""><i class="bi bi-facebook"></i></a>
+                                    <a href=""><i class="bi bi-instagram"></i></a>
+                                    <a href=""> <i class="bi bi-linkedin"></i> </a>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                </div><!-- End Team Member -->
+                    </div><!-- End Team Member -->
 
-                <div class="col-lg-6" data-aos="fade-up" data-aos-delay="400">
-                    <div class="team-member d-flex align-items-start">
-                        <div class="pic"><img src="{{ asset('assets/frontend') }}/img/person/person-f-4.webp"
-                                class="img-fluid" alt=""></div>
-                        <div class="member-info">
-                            <h4>Amanda Jepson</h4>
-                            <span>Accountant</span>
-                            <p>Dolorum tempora officiis odit laborum officiis et et accusamus</p>
-                            <div class="social">
-                                <a href=""><i class="bi bi-twitter-x"></i></a>
-                                <a href=""><i class="bi bi-facebook"></i></a>
-                                <a href=""><i class="bi bi-instagram"></i></a>
-                                <a href=""> <i class="bi bi-linkedin"></i> </a>
+                    <div class="col-lg-6" data-aos="fade-up" data-aos-delay="400">
+                        <div class="team-member d-flex align-items-start">
+                            <div class="pic"><img src="{{ asset('assets/frontend') }}/img/person/person-f-4.webp"
+                                    class="img-fluid" alt=""></div>
+                            <div class="member-info">
+                                <h4>Amanda Jepson</h4>
+                                <span>Accountant</span>
+                                <p>Dolorum tempora officiis odit laborum officiis et et accusamus</p>
+                                <div class="social">
+                                    <a href=""><i class="bi bi-twitter-x"></i></a>
+                                    <a href=""><i class="bi bi-facebook"></i></a>
+                                    <a href=""><i class="bi bi-instagram"></i></a>
+                                    <a href=""> <i class="bi bi-linkedin"></i> </a>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                </div><!-- End Team Member -->
+                    </div><!-- End Team Member -->
+
+                </div>
 
             </div>
 
-        </div>
+        </section>
+        <!-- /Team Section -->
 
-    </section>
-    <!-- /Team Section -->
+        <!-- Testimonials Section -->
+        <section id="testimonials" class="testimonials section light-background">
 
-    <!-- Testimonials Section -->
-    <section id="testimonials" class="testimonials section light-background">
+            <!-- Section Title -->
+            <div class="container section-title" data-aos="fade-up">
+                <h2>Testimonials</h2>
+                <p>Include profile pictures, names, and roles to humanize each testimonial and build emotional connection
+                </p>
+            </div><!-- End Section Title -->
 
-        <!-- Section Title -->
-        <div class="container section-title" data-aos="fade-up">
-            <h2>Testimonials</h2>
-            <p>Include profile pictures, names, and roles to humanize each testimonial and build emotional connection</p>
-        </div><!-- End Section Title -->
+            <div class="container" data-aos="fade-up" data-aos-delay="100">
 
-        <div class="container" data-aos="fade-up" data-aos-delay="100">
-
-            <div class="swiper init-swiper">
-                <script type="application/json" class="swiper-config">
+                <div class="swiper init-swiper">
+                    <script type="application/json" class="swiper-config">
                     {
                     "loop": true,
                     "speed": 600,
@@ -386,119 +390,119 @@
                     }
                     }
                 </script>
-                <div class="swiper-wrapper">
+                    <div class="swiper-wrapper">
 
-                    <div class="swiper-slide">
-                        <div class="testimonial-item">
-                            <img src="{{ asset('assets/frontend') }}/img/person/person-m-9.webp" class="testimonial-img"
-                                alt="">
-                            <h3>Saul Goodman</h3>
-                            <h4>Ceo &amp; Founder</h4>
-                            <div class="stars">
-                                <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i
-                                    class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i
-                                    class="bi bi-star-fill"></i>
+                        <div class="swiper-slide">
+                            <div class="testimonial-item">
+                                <img src="{{ asset('assets/frontend') }}/img/person/person-m-9.webp"
+                                    class="testimonial-img" alt="">
+                                <h3>Saul Goodman</h3>
+                                <h4>Ceo &amp; Founder</h4>
+                                <div class="stars">
+                                    <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i
+                                        class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i
+                                        class="bi bi-star-fill"></i>
+                                </div>
+                                <p>
+                                    <i class="bi bi-quote quote-icon-left"></i>
+                                    <span>Proin iaculis purus consequat sem cure digni ssim donec porttitora entum
+                                        suscipit rhoncus. Accusantium quam, ultricies eget id, aliquam eget nibh et.
+                                        Maecen aliquam, risus at semper.</span>
+                                    <i class="bi bi-quote quote-icon-right"></i>
+                                </p>
                             </div>
-                            <p>
-                                <i class="bi bi-quote quote-icon-left"></i>
-                                <span>Proin iaculis purus consequat sem cure digni ssim donec porttitora entum
-                                    suscipit rhoncus. Accusantium quam, ultricies eget id, aliquam eget nibh et.
-                                    Maecen aliquam, risus at semper.</span>
-                                <i class="bi bi-quote quote-icon-right"></i>
-                            </p>
-                        </div>
-                    </div><!-- End testimonial item -->
+                        </div><!-- End testimonial item -->
 
-                    <div class="swiper-slide">
-                        <div class="testimonial-item">
-                            <img src="{{ asset('assets/frontend') }}/img/person/person-f-5.webp" class="testimonial-img"
-                                alt="">
-                            <h3>Sara Wilsson</h3>
-                            <h4>Designer</h4>
-                            <div class="stars">
-                                <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i
-                                    class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i
-                                    class="bi bi-star-fill"></i>
+                        <div class="swiper-slide">
+                            <div class="testimonial-item">
+                                <img src="{{ asset('assets/frontend') }}/img/person/person-f-5.webp"
+                                    class="testimonial-img" alt="">
+                                <h3>Sara Wilsson</h3>
+                                <h4>Designer</h4>
+                                <div class="stars">
+                                    <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i
+                                        class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i
+                                        class="bi bi-star-fill"></i>
+                                </div>
+                                <p>
+                                    <i class="bi bi-quote quote-icon-left"></i>
+                                    <span>Export tempor illum tamen malis malis eram quae irure esse labore quem cillum
+                                        quid cillum eram malis quorum velit fore eram velit sunt aliqua noster fugiat
+                                        irure amet legam anim culpa.</span>
+                                    <i class="bi bi-quote quote-icon-right"></i>
+                                </p>
                             </div>
-                            <p>
-                                <i class="bi bi-quote quote-icon-left"></i>
-                                <span>Export tempor illum tamen malis malis eram quae irure esse labore quem cillum
-                                    quid cillum eram malis quorum velit fore eram velit sunt aliqua noster fugiat
-                                    irure amet legam anim culpa.</span>
-                                <i class="bi bi-quote quote-icon-right"></i>
-                            </p>
-                        </div>
-                    </div><!-- End testimonial item -->
+                        </div><!-- End testimonial item -->
 
-                    <div class="swiper-slide">
-                        <div class="testimonial-item">
-                            <img src="{{ asset('assets/frontend') }}/img/person/person-f-12.webp" class="testimonial-img"
-                                alt="">
-                            <h3>Jena Karlis</h3>
-                            <h4>Store Owner</h4>
-                            <div class="stars">
-                                <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i
-                                    class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i
-                                    class="bi bi-star-fill"></i>
+                        <div class="swiper-slide">
+                            <div class="testimonial-item">
+                                <img src="{{ asset('assets/frontend') }}/img/person/person-f-12.webp"
+                                    class="testimonial-img" alt="">
+                                <h3>Jena Karlis</h3>
+                                <h4>Store Owner</h4>
+                                <div class="stars">
+                                    <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i
+                                        class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i
+                                        class="bi bi-star-fill"></i>
+                                </div>
+                                <p>
+                                    <i class="bi bi-quote quote-icon-left"></i>
+                                    <span>Enim nisi quem export duis labore cillum quae magna enim sint quorum nulla
+                                        quem veniam duis minim tempor labore quem eram duis noster aute amet eram fore
+                                        quis sint minim.</span>
+                                    <i class="bi bi-quote quote-icon-right"></i>
+                                </p>
                             </div>
-                            <p>
-                                <i class="bi bi-quote quote-icon-left"></i>
-                                <span>Enim nisi quem export duis labore cillum quae magna enim sint quorum nulla
-                                    quem veniam duis minim tempor labore quem eram duis noster aute amet eram fore
-                                    quis sint minim.</span>
-                                <i class="bi bi-quote quote-icon-right"></i>
-                            </p>
-                        </div>
-                    </div><!-- End testimonial item -->
+                        </div><!-- End testimonial item -->
 
-                    <div class="swiper-slide">
-                        <div class="testimonial-item">
-                            <img src="{{ asset('assets/frontend') }}/img/person/person-m-12.webp" class="testimonial-img"
-                                alt="">
-                            <h3>Matt Brandon</h3>
-                            <h4>Freelancer</h4>
-                            <div class="stars">
-                                <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i
-                                    class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i
-                                    class="bi bi-star-fill"></i>
+                        <div class="swiper-slide">
+                            <div class="testimonial-item">
+                                <img src="{{ asset('assets/frontend') }}/img/person/person-m-12.webp"
+                                    class="testimonial-img" alt="">
+                                <h3>Matt Brandon</h3>
+                                <h4>Freelancer</h4>
+                                <div class="stars">
+                                    <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i
+                                        class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i
+                                        class="bi bi-star-fill"></i>
+                                </div>
+                                <p>
+                                    <i class="bi bi-quote quote-icon-left"></i>
+                                    <span>Fugiat enim eram quae cillum dolore dolor amet nulla culpa multos export minim
+                                        fugiat minim velit minim dolor enim duis veniam ipsum anim magna sunt elit fore
+                                        quem dolore labore illum veniam.</span>
+                                    <i class="bi bi-quote quote-icon-right"></i>
+                                </p>
                             </div>
-                            <p>
-                                <i class="bi bi-quote quote-icon-left"></i>
-                                <span>Fugiat enim eram quae cillum dolore dolor amet nulla culpa multos export minim
-                                    fugiat minim velit minim dolor enim duis veniam ipsum anim magna sunt elit fore
-                                    quem dolore labore illum veniam.</span>
-                                <i class="bi bi-quote quote-icon-right"></i>
-                            </p>
-                        </div>
-                    </div><!-- End testimonial item -->
+                        </div><!-- End testimonial item -->
 
-                    <div class="swiper-slide">
-                        <div class="testimonial-item">
-                            <img src="{{ asset('assets/frontend') }}/img/person/person-m-13.webp" class="testimonial-img"
-                                alt="">
-                            <h3>John Larson</h3>
-                            <h4>Entrepreneur</h4>
-                            <div class="stars">
-                                <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i
-                                    class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i
-                                    class="bi bi-star-fill"></i>
+                        <div class="swiper-slide">
+                            <div class="testimonial-item">
+                                <img src="{{ asset('assets/frontend') }}/img/person/person-m-13.webp"
+                                    class="testimonial-img" alt="">
+                                <h3>John Larson</h3>
+                                <h4>Entrepreneur</h4>
+                                <div class="stars">
+                                    <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i
+                                        class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i
+                                        class="bi bi-star-fill"></i>
+                                </div>
+                                <p>
+                                    <i class="bi bi-quote quote-icon-left"></i>
+                                    <span>Quis quorum aliqua sint quem legam fore sunt eram irure aliqua veniam tempor
+                                        noster veniam enim culpa labore duis sunt culpa nulla illum cillum fugiat legam
+                                        esse veniam culpa fore nisi cillum quid.</span>
+                                    <i class="bi bi-quote quote-icon-right"></i>
+                                </p>
                             </div>
-                            <p>
-                                <i class="bi bi-quote quote-icon-left"></i>
-                                <span>Quis quorum aliqua sint quem legam fore sunt eram irure aliqua veniam tempor
-                                    noster veniam enim culpa labore duis sunt culpa nulla illum cillum fugiat legam
-                                    esse veniam culpa fore nisi cillum quid.</span>
-                                <i class="bi bi-quote quote-icon-right"></i>
-                            </p>
-                        </div>
-                    </div><!-- End testimonial item -->
+                        </div><!-- End testimonial item -->
 
+                    </div>
+                    <div class="swiper-pagination"></div>
                 </div>
-                <div class="swiper-pagination"></div>
+
             </div>
 
-        </div>
-
-    </section>
-    <!-- /Testimonials Section -->
-@endsection
+        </section>
+        <!-- /Testimonials Section -->
+    @endsection

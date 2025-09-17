@@ -19,8 +19,11 @@
                         class = "{{ Route::currentRouteName() == 'blog.index' ? 'active' : '' }}">
                         Blogs
                     </a></li>
-                <li class="dropdown"><a href="#"><span>Authentication</span> <i
-                            class="bi bi-chevron-down toggle-dropdown"></i></a>
+                <li class="dropdown">
+                    <a href="#"
+                        class = "{{ Route::currentRouteName() == 'login' || Route::currentRouteName() == 'register' ? 'active' : '' }}">
+                        <span>Authentication</span> <i class="bi bi-chevron-down toggle-dropdown"></i>
+                    </a>
                     <ul>
                         <li><a href="{{ route('login') }}">Login</a></li>
                         <li><a href="{{ route('register') }}">Register</a></li>

@@ -18,7 +18,7 @@
                 <ul>
                     <li><i class="bi bi-chevron-right"></i> <a href="#hero">Home</a></li>
                     <li><i class="bi bi-chevron-right"></i> <a href="#portfolio">Photos</a></li>
-                    <li><i class="bi bi-chevron-right"></i> <a href="#recent-blog-postst">Recent Blogs</a></li>
+                    <li><i class="bi bi-chevron-right"></i> <a href="#recent-blog-posts">Recent Blogs</a></li>
                     <li><i class="bi bi-chevron-right"></i> <a href="#team">Team</a></li>
                 </ul>
             </div>

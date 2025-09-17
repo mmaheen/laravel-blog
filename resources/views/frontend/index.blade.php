@@ -342,8 +342,8 @@
     </section>
     <!-- /Portfolio Section -->
 
-    <!-- Recent Blog Postst Section -->
-    <section id="recent-blog-postst" class="recent-blog-postst section light-background">
+    <!-- Recent Blog Posts Section -->
+    <section id="recent-blog-posts" class="recent-blog-posts section light-background">
 
         <!-- Section Title -->
         <div class="container section-title" data-aos="fade-up">
@@ -459,7 +459,7 @@
         </div>
 
     </section>
-    <!-- /Recent Blog Postst Section -->
+    <!-- /Recent Blog Posts Section -->
 
     <!-- Team Section -->
     <section id="team" class="team section">

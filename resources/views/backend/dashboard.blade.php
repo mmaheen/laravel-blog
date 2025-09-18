@@ -1,6 +1,6 @@
-dashboard
-@if (session('success'))
-    <div class="alert alert-success">
-        {{ session('success') }}
-    </div>
-@endif
+@extends('backend.layouts.master')
+@section('title', 'Home')
+@section('content')
+    @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+    @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+@endsection

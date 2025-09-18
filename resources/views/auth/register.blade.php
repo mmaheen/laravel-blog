@@ -13,7 +13,7 @@
                         <h2 class="display-5 fw-bold text-center">Sign up</h2>
                         <p class="text-center m-0">
                             Already have an account?
-                            <a href="{{ route('login') }}" class="link-primary text-decoration-none">
+                            <a href="{{ route('login.form') }}" class="link-primary text-decoration-none">
                                 Sign in
                             </a>
                         </p>
@@ -23,27 +23,42 @@
             <div class="row justify-content-center">
                 <div class="col-12 col-lg-10 col-xl-8">
                     <div class="row gy-5 justify-content-center">
+                        @if ($errors->any())
+                            <div class="col-12">
+                                <div class="alert alert-danger">
+                                    <ul class="mb-0">
+                                        @foreach ($errors->all() as $error)
+                                            <li>{{ $error }}</li>
+                                        @endforeach
+                                    </ul>
+                                </div>
+                            </div>
+                        @endif
                         <div class="col-12 col-lg-5">
-                            <form action="#!">
+                            <form action="{{ route('register') }}" method="POST">
+                                @csrf
                                 <div class="row gy-3 overflow-hidden">
                                     <div class="col-12">
                                         <div class="form-floating mb-3">
                                             <input type="text" class="form-control border-0 border-bottom rounded-0"
-                                                name="firstName" id="firstName" placeholder="First Name" required>
+                                                name="firstName" id="firstName" placeholder="First Name"
+                                                value="{{ old('firstName') }}" required>
                                             <label for="firstName" class="form-label">First Name</label>
                                         </div>
                                     </div>
                                     <div class="col-12">
                                         <div class="form-floating mb-3">
                                             <input type="text" class="form-control border-0 border-bottom rounded-0"
-                                                name="lastName" id="lastName" placeholder="Last Name" required>
+                                                name="lastName" id="lastName" placeholder="Last Name"
+                                                value="{{ old('lastName') }}" required>
                                             <label for="lastName" class="form-label">Last Name</label>
                                         </div>
                                     </div>
                                     <div class="col-12">
                                         <div class="form-floating mb-3">
                                             <input type="email" class="form-control border-0 border-bottom rounded-0"
-                                                name="email" id="email" placeholder="name@example.com" required>
+                                                name="email" id="email" placeholder="name@example.com"
+                                                value="{{ old('email') }}" required>
                                             <label for="email" class="form-label">Email</label>
                                         </div>
                                     </div>

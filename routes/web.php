@@ -1,9 +1,11 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Auth\UserController;
 use App\Http\Controllers\Frontend\BlogController;
 use App\Http\Controllers\Frontend\HomeController;
 use App\Http\Controllers\Frontend\PhotoController;
+use App\Http\Controllers\Backend\DashboardController;
 
 //Frontend Routes
 Route::get('/', [HomeController::class, 'index'])->name('home');
@@ -16,8 +18,21 @@ Route::get('blogs-by-author/{author}', [BlogController::class, 'blogsByAuthor'])
 Route::get('blogs-by-category/{category}', [BlogController::class, 'blogsByCategory'])->name('blogs.by.category');
 Route::get('blogs-by-tag/{tag}', [BlogController::class, 'blogsByTag'])->name('blogs.by.tag');
 
+// Photo Routes Frontend
 Route::get('/photo/{id}', [PhotoController::class, 'show'])->name('photo.show');
 
 // Auth Routes
-Route::get('/register', [HomeController::class, 'register'])->name('register');
-Route::get('/login', [HomeController::class, 'login'])->name('login');
+Route::middleware(['guest'])->group(function () {
+    //Registration routes
+    Route::get('/register', [UserController::class, 'showRegisterForm'])->name('register.form');
+    Route::post('/register', [UserController::class, 'register'])->name('register');
+
+    //Login routes
+    Route::get('/login', [UserController::class, 'showLoginForm'])->name('login.form');
+    Route::post('/login', [UserController::class, 'login'])->name('login');
+});
+
+//Dashboard Routes
+Route::middleware('auth')->group(function () {
+    Route::get('/dashboard', [DashboardController::class, 'dashboard'])->name('dashboard');
+});

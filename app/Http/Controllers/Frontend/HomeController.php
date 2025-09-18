@@ -8,7 +8,6 @@ use App\Http\Controllers\Controller;
 
 class HomeController extends Controller
 {
-    //
     public function index()
     {
         //In clients section
@@ -41,15 +40,5 @@ class HomeController extends Controller
             ->take(6)
             ->get();
         return view('frontend.index', compact('categories', 'skills', 'photos', 'photo_categories', 'recent_blogs'));
-    }
-
-    public function register()
-    {
-        return view('auth.register');
-    }
-
-    public function login()
-    {
-        return view('auth.login');
     }
 }

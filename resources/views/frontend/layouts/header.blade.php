@@ -25,8 +25,8 @@
                         <span>Authentication</span> <i class="bi bi-chevron-down toggle-dropdown"></i>
                     </a>
                     <ul>
-                        <li><a href="{{ route('login') }}">Login</a></li>
-                        <li><a href="{{ route('register') }}">Register</a></li>
+                        <li><a href="{{ route('login.form') }}">Login</a></li>
+                        <li><a href="{{ route('register.form') }}">Register</a></li>
                     </ul>
                 </li>
 

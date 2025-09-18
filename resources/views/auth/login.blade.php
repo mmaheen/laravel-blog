@@ -10,6 +10,11 @@
             <div class="row">
                 <div class="col-12">
                     <div class="mb-5">
+                        @if (session('success'))
+                            <div class="alert alert-success text-center">
+                                {{ session('success') }}
+                            </div>
+                        @endif
                         <h2 class="display-5 fw-bold text-center">Log in</h2>
                         <p class="text-center m-0">Don't have an account? <a href="{{ route('register') }}"
                                 class="link-primary text-decoration-none">Sign up</a></p>
@@ -19,14 +24,27 @@
             <div class="row justify-content-center">
                 <div class="col-12 col-lg-10 col-xl-8">
                     <div class="row gy-5 justify-content-center">
+                        @if ($errors->any())
+                            <div class="col-12">
+                                <div class="alert alert-danger">
+                                    <ul class="mb-0">
+                                        @foreach ($errors->all() as $error)
+                                            <li>{{ $error }}</li>
+                                        @endforeach
+                                    </ul>
+                                </div>
+                            </div>
+                        @endif
                         <div class="col-12 col-lg-5">
-                            <form action="#!">
+                            <form action="{{ route('login') }}" method="POST">
+                                @csrf
                                 <div class="row gy-3 overflow-hidden">
 
                                     <div class="col-12">
                                         <div class="form-floating mb-3">
                                             <input type="email" class="form-control border-0 border-bottom rounded-0"
-                                                name="email" id="email" placeholder="name@example.com" required>
+                                                name="email" id="email" placeholder="name@example.com"
+                                                value="{{ old('email') }}" required>
                                             <label for="email" class="form-label">Email</label>
                                         </div>
                                     </div>
@@ -41,7 +59,7 @@
                                     <div class="col-12">
                                         <div class="form-check">
                                             <input class="form-check-input" type="checkbox" value=""
-                                                name="remember_me" id="remember_me" required>
+                                                name="remember_me" id="remember_me">
                                             <label class="form-check-label text-secondary" for="remember_me">
                                                 Remember me
                                             </label>

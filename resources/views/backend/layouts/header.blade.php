@@ -189,8 +189,15 @@
                                         <span>{{ ucfirst(Auth::user()->name) }}</span></a>
                                 </li>
                                 <hr class="my-2">
-                                <li><a href="#"><i class="icon-key"></i> <span>Logout</span></a>
-                                </li>
+                                <form action="{{ route('logout') }}" method="POST">
+                                    @csrf
+                                    <li>
+                                        <button type="submit" class="btn btn-danger btn-block">
+                                            <i class="icon-key"></i>
+                                            <span>Logout</span>
+                                        </button>
+                                    </li>
+                                </form>
                             </ul>
                         </div>
                     </div>

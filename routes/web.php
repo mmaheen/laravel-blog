@@ -6,6 +6,7 @@ use App\Http\Controllers\Frontend\BlogController;
 use App\Http\Controllers\Frontend\HomeController;
 use App\Http\Controllers\Frontend\PhotoController;
 use App\Http\Controllers\Backend\DashboardController;
+use App\Models\User;
 
 //Frontend Routes
 Route::get('/', [HomeController::class, 'index'])->name('home');
@@ -35,4 +36,5 @@ Route::middleware(['guest'])->group(function () {
 //Dashboard Routes
 Route::middleware('auth')->group(function () {
     Route::get('/dashboard', [DashboardController::class, 'dashboard'])->name('dashboard');
+    Route::post('/logout', [UserController::class, 'logout'])->name('logout');
 });

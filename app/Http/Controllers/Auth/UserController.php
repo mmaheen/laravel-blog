@@ -59,4 +59,17 @@ class UserController extends Controller
             ])->onlyInput('email');
         }
     }
+
+    public function logout(Request $request)
+    {
+        //Logout the user
+        Auth::logout();
+
+        //Invalidate the session
+        $request->session()->invalidate();
+
+        //Regenerate CSRF token
+        $request->session()->regenerateToken();
+        return redirect()->route('home')->with('success', 'You have been logged out.');
+    }
 }

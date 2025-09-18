@@ -80,11 +80,13 @@
                                     </div>
                                     <div class="col-12">
                                         <div class="form-check">
-                                            <input class="form-check-input" type="checkbox" value="" name="iAgree"
-                                                id="iAgree" required>
-                                            <label class="form-check-label text-secondary" for="iAgree">
-                                                I agree to the <a href="#!"
-                                                    class="link-primary text-decoration-none">terms and conditions</a>
+                                            <input class="form-check-input" type="checkbox" value="1" name="terms"
+                                                id="terms" required>
+                                            <label class="form-check-label text-secondary" for="terms">
+                                                I agree to the
+                                                <a href="#!" class="link-primary text-decoration-none">
+                                                    terms and conditions
+                                                </a>
                                             </label>
                                         </div>
                                     </div>

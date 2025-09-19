@@ -40,7 +40,7 @@
                                         @foreach ($blogs as $blog)
                                             <tr>
                                                 <td><img src="{{ asset('uploads/blogs/' . $blog->image) }}"
-                                                        alt="{{ $blog->title }}" width="60"></td>
+                                                        alt="{{ $blog->title }}" width="60" class="rounded"></td>
                                                 <td>
                                                     <img src="{{ asset('uploads/users/' . $blog->user->image) }}"
                                                         alt="{{ $blog->user->name }}" width="40"

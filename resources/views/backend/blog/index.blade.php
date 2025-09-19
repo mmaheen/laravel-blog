@@ -60,8 +60,13 @@
                                                         class="rounded-circle mr-2">
                                                     {{ $blog->user->name }}
                                                 </td>
-                                                <td class="text-info">
-                                                    {{ \Illuminate\Support\Str::limit($blog->title, 30) }}</td>
+                                                <td>
+                                                    <strong>
+                                                        <a href="{{ route('dashboard.blogs.show', $blog->slug) }}">
+                                                            {{ \Illuminate\Support\Str::limit($blog->title, 30) }}
+                                                        </a>
+                                                    </strong>
+                                                </td>
                                                 <td>{{ \Illuminate\Support\Str::limit($blog->subtitle, 30) }}</td>
                                                 <td>{{ \Illuminate\Support\Str::limit($blog->description, 30) }}</td>
                                                 <td>{!! $blog->is_published
@@ -72,8 +77,6 @@
                                                 <td>{{ $blog->created_at->format('d M, Y') }}</td>
                                                 <td>
                                                     <div class="d-flex">
-                                                        <a href="{{ route('dashboard.blogs.show', $blog->slug) }}"
-                                                            class="btn btn-info btn-sm mr-1">View</a>
                                                         <a href="{{ route('dashboard.blogs.edit', $blog->slug) }}"
                                                             class="btn btn-primary btn-sm mr-1">Edit</a>
                                                         <form action="{{ route('dashboard.blogs.destroy', $blog->slug) }}"

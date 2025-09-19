@@ -40,6 +40,7 @@ Route::prefix('/dashboard')->middleware('auth')->name('dashboard.')->group(funct
     Route::post('/logout', [UserController::class, 'logout'])->name('logout');
 
     Route::resources([
-        'blogs' => \App\Http\Controllers\Backend\BlogController::class
+        'blogs' => \App\Http\Controllers\Backend\BlogController::class,
+        'photos' => \App\Http\Controllers\Backend\PhotoController::class,
     ]);
 });

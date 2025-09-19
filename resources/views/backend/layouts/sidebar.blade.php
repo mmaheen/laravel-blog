@@ -33,7 +33,7 @@
                 </a>
                 <ul aria-expanded="false">
                     <li><a href="{{ route('dashboard.blogs.index') }}" aria-expanded="false">Blog</a></li>
-                    <li><a href="#" aria-expanded="false">Data Table</a></li>
+                    <li><a href="{{ route('dashboard.photos.index') }}" aria-expanded="false">Photos</a></li>
                 </ul>
             </li>
 

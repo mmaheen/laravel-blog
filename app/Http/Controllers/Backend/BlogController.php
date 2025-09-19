@@ -14,7 +14,7 @@ class BlogController extends Controller
     public function index()
     {
         //
-        $blogs = Blog::select('image', 'user_id', 'title', 'subtitle', 'description', 'is_published', 'category_id', 'created_at')
+        $blogs = Blog::select('slug', 'image', 'user_id', 'title', 'subtitle', 'description', 'is_published', 'category_id', 'created_at')
             ->with('user:id,name,image', 'category:id,name')
             ->get();
         return view("backend.blog.index", compact('blogs'));
@@ -63,8 +63,22 @@ class BlogController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy(string $slug)
     {
         //
+        try {
+            $blog = Blog::where('slug', $slug)->firstOrFail();
+            if ($blog->image != null) {
+                $image_path = public_path('uploads/blogs/' . $blog->image);
+                if (file_exists($image_path)) {
+                    unlink($image_path);
+                }
+            }
+            $blog->delete();
+            session()->flash('success', 'Blog deleted successfully.');
+            return redirect()->route('dashboard.blogs.index');
+        } catch (\Exception $error) {
+            return redirect()->route('dashboard.blogs.index')->with('error', $error->getMessage());
+        }
     }
 }

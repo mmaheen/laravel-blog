@@ -162,7 +162,7 @@
                         </div>
                     </div>
                 </li>
-                <li class="icons dropdown d-none d-md-flex">
+                {{-- <li class="icons dropdown d-none d-md-flex">
                     <a href="javascript:void(0)" class="log-user" data-toggle="dropdown">
                         <span>English</span> <i class="fa fa-angle-down f-s-14" aria-hidden="true"></i>
                     </a>
@@ -174,7 +174,7 @@
                             </ul>
                         </div>
                     </div>
-                </li>
+                </li> --}}
                 <li class="icons dropdown">
                     <div class="user-img c-pointer position-relative" data-toggle="dropdown">
                         <span class="activity active"></span>

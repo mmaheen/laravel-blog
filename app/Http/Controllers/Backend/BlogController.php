@@ -14,7 +14,9 @@ class BlogController extends Controller
     public function index()
     {
         //
-        $blogs = Blog::all();
+        $blogs = Blog::select('image', 'user_id', 'title', 'subtitle', 'description', 'is_published', 'category_id', 'created_at')
+            ->with('user:id,name,image', 'category:id,name')
+            ->get();
         return view("backend.blog.index", compact('blogs'));
     }
 

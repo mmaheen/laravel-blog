@@ -40,10 +40,20 @@
                                     <tbody>
                                         @foreach ($blogs as $blog)
                                             <tr>
-                                                <td><img src="{{ asset('uploads/blogs/' . $blog->image) }}"
-                                                        alt="{{ $blog->title }}" width="60" class="rounded"></td>
                                                 <td>
-                                                    <img src="{{ asset('uploads/users/' . $blog->user->image) }}"
+                                                    @if ($blog->image == null)
+                                                        <img src="{{ asset('assets/default_images/placeholder.png') }}"
+                                                            alt="Default Image" width="60" class="rounded">
+                                                    @else
+                                                        <img src="{{ asset('uploads/blogs/' . $blog->image) }}"
+                                                            alt="{{ $blog->title }}" width="60" class="rounded">
+                                                    @endif
+                                                    {{-- <img src="{{ $blog->image ? asset('uploads/blogs/' . $blog->image) : asset('assets/default_images/placeholder.png') }}"
+                                                        alt="{{ $blog->title }}" width="60" class="rounded"> --}}
+
+                                                </td>
+                                                <td>
+                                                    <img src="{{ $blog->user->image ? asset('uploads/users/' . $blog->user->image) : asset('assets/default_images/user.jpg') }}"
                                                         alt="{{ $blog->user->name }}" width="40"
                                                         class="rounded-circle mr-2">
                                                     {{ $blog->user->name }}
@@ -59,8 +69,10 @@
                                                 <td>{{ $blog->created_at->format('d M, Y') }}</td>
                                                 <td>
                                                     <div class="d-flex">
+                                                        <a href="{{ route('dashboard.blogs.show', $blog->slug) }}"
+                                                            class="btn btn-info btn-sm mr-1">View</a>
                                                         <a href="{{ route('dashboard.blogs.edit', $blog->slug) }}"
-                                                            class="btn btn-primary btn-sm">Edit</a>
+                                                            class="btn btn-primary btn-sm mr-1">Edit</a>
                                                         <form action="{{ route('dashboard.blogs.destroy', $blog->slug) }}"
                                                             method="POST" style="display: inline-block;">
                                                             @csrf

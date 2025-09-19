@@ -55,10 +55,12 @@
 
                                                 </td>
                                                 <td>
-                                                    <img src="{{ $blog->user->image ? asset('uploads/users/' . $blog->user->image) : asset('assets/default_images/user.jpg') }}"
-                                                        alt="{{ $blog->user->name }}" width="40"
-                                                        class="rounded-circle mr-2">
-                                                    {{ $blog->user->name }}
+                                                    <div class="d-flex align-items-center">
+                                                        <img src="{{ $blog->user->image ? asset('uploads/users/' . $blog->user->image) : asset('assets/default_images/user.jpg') }}"
+                                                            alt="{{ $blog->user->name }}" width="40"
+                                                            class="rounded-circle mr-2">
+                                                        {{ $blog->user->name }}
+                                                    </div>
                                                 </td>
                                                 <td>
                                                     <strong>

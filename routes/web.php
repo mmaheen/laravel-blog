@@ -38,4 +38,8 @@ Route::middleware(['guest'])->group(function () {
 Route::prefix('/dashboard')->middleware('auth')->name('dashboard.')->group(function () {
     Route::get('/', [DashboardController::class, 'dashboard'])->name('index');
     Route::post('/logout', [UserController::class, 'logout'])->name('logout');
+
+    Route::resources([
+        'blogs' => \App\Http\Controllers\Backend\BlogController::class
+    ]);
 });

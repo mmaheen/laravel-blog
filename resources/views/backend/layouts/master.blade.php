@@ -10,6 +10,7 @@
     <link rel="icon" type="image/png" sizes="16x16" href="{{ asset('assets/backend/images/favicon.png') }}">
     <!-- Custom Stylesheet -->
     <link href="{{ asset('assets/backend/css/style.css') }}" rel="stylesheet">
+    @yield('styles')
 
 </head>
 
@@ -49,23 +50,7 @@
         <!--**********************************
             Content body start
         ***********************************-->
-        <div class="content-body">
-
-            <div class="row page-titles mx-0">
-                <div class="col p-md-0">
-                    <ol class="breadcrumb">
-                        <li class="breadcrumb-item"><a href="javascript:void(0)">Dashboard</a></li>
-                        <li class="breadcrumb-item active"><a href="javascript:void(0)">Home</a></li>
-                    </ol>
-                </div>
-            </div>
-            <!-- row -->
-
-            <div class="container-fluid">
-                @yield('content')
-            </div>
-            <!-- #/ container -->
-        </div>
+        @yield('content')
         <!--**********************************
             Content body end
         ***********************************-->
@@ -91,6 +76,8 @@
     <script src="{{ asset('assets/backend/js/settings.js') }}"></script>
     <script src="{{ asset('assets/backend/js/gleek.js') }}"></script>
     <script src="{{ asset('assets/backend/js/styleSwitcher.js') }}"></script>
+
+    @yield('scripts')
 
 </body>
 

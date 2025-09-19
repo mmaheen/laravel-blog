@@ -26,6 +26,7 @@
                                 <table class="table table-striped table-bordered zero-configuration">
                                     <thead>
                                         <tr>
+                                            <th>#</th>
                                             <th>Image</th>
                                             <th>Author</th>
                                             <th>Title</th>
@@ -40,6 +41,7 @@
                                     <tbody>
                                         @foreach ($blogs as $blog)
                                             <tr>
+                                                <td>{{ $loop->iteration }}</td>
                                                 <td>
                                                     @if ($blog->image == null)
                                                         <img src="{{ asset('assets/default_images/placeholder.png') }}"
@@ -58,7 +60,8 @@
                                                         class="rounded-circle mr-2">
                                                     {{ $blog->user->name }}
                                                 </td>
-                                                <td>{{ \Illuminate\Support\Str::limit($blog->title, 30) }}</td>
+                                                <td class="text-info">
+                                                    {{ \Illuminate\Support\Str::limit($blog->title, 30) }}</td>
                                                 <td>{{ \Illuminate\Support\Str::limit($blog->subtitle, 30) }}</td>
                                                 <td>{{ \Illuminate\Support\Str::limit($blog->description, 30) }}</td>
                                                 <td>{!! $blog->is_published
@@ -87,6 +90,7 @@
                                     </tbody>
                                     <tfoot>
                                         <tr>
+                                            <th>#</th>
                                             <th>Image</th>
                                             <th>Author</th>
                                             <th>Title</th>

@@ -16,6 +16,7 @@ class BlogController extends Controller
         //
         $blogs = Blog::select('slug', 'image', 'user_id', 'title', 'subtitle', 'description', 'is_published', 'category_id', 'created_at')
             ->with('user:id,name,image', 'category:id,name')
+            ->orderBy('created_at', 'desc')
             ->get();
         return view("backend.blog.index", compact('blogs'));
     }

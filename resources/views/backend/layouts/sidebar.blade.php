@@ -7,7 +7,7 @@
                     <i class="icon-speedometer menu-icon"></i><span class="nav-text">Dashboard</span>
                 </a>
                 <ul aria-expanded="false">
-                    <li><a href="{{ route('dashboard') }}">Dashboard Home</a></li>
+                    <li><a href="{{ route('dashboard.index') }}">Dashboard Home</a></li>
                 </ul>
             </li>
 

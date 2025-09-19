@@ -189,7 +189,7 @@
                                         <span>{{ ucfirst(Auth::user()->name) }}</span></a>
                                 </li>
                                 <hr class="my-2">
-                                <form action="{{ route('logout') }}" method="POST">
+                                <form action="{{ route('dashboard.logout') }}" method="POST">
                                     @csrf
                                     <li>
                                         <button type="submit" class="btn btn-danger btn-block">

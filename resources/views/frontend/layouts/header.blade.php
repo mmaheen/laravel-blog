@@ -31,7 +31,7 @@
                         </ul>
                     </li>
                 @else
-                    <li><a href="{{ route('dashboard') }}">{{ Auth::user()->name }}</a></li>
+                    <li><a href="{{ route('dashboard.index') }}">{{ Auth::user()->name }}</a></li>
                 @endguest
 
             </ul>

@@ -53,7 +53,7 @@ class UserController extends Controller
         if ($user && password_verify($request->password, $user->password)) {
             Auth::login($user, $request->has('remember_me'));
             $request->session()->regenerate();
-            return redirect()->route('dashboard')->with('success', 'You are logged in!');
+            return redirect()->route('dashboard.index')->with('success', 'You are logged in!');
         } else {
             return back()->withErrors([
                 'email' => 'The provided credentials do not match our records.',

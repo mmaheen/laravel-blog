@@ -9,8 +9,8 @@
         <div class="row page-titles mx-0">
             <div class="col p-md-0">
                 <ol class="breadcrumb">
-                    <li class="breadcrumb-item"><a href="javascript:void(0)">Dashboard</a></li>
-                    <li class="breadcrumb-item active"><a href="javascript:void(0)">Home</a></li>
+                    <li class="breadcrumb-item"><a href="{{ route('dashboard.index') }}">Dashboard</a></li>
+                    <li class="breadcrumb-item active"><a href="{{ route('dashboard.blogs.index') }}">Blog</a></li>
                 </ol>
             </div>
         </div>
@@ -21,7 +21,7 @@
                 <div class="col-12">
                     <div class="card">
                         <div class="card-body">
-                            <h4 class="card-title">Data Table</h4>
+                            <h4 class="card-title">Blog Table</h4>
                             <div class="table-responsive">
                                 <table class="table table-striped table-bordered zero-configuration">
                                     <thead>
@@ -50,7 +50,10 @@
                                                 <td>{{ \Illuminate\Support\Str::limit($blog->title, 30) }}</td>
                                                 <td>{{ \Illuminate\Support\Str::limit($blog->subtitle, 30) }}</td>
                                                 <td>{{ \Illuminate\Support\Str::limit($blog->description, 30) }}</td>
-                                                <td>{{ $blog->is_published ? 'Published' : 'Unpublished' }}</td>
+                                                <td>{!! $blog->is_published
+                                                    ? "<span class='badge badge-success'>Published</span>"
+                                                    : "<span class='badge badge-danger'>Unpublished</span>" !!}</td>
+                                                </td>
                                                 <td>{{ $blog->category->name }}</td>
                                                 <td>{{ $blog->created_at->format('d M, Y') }}</td>
                                             </tr>

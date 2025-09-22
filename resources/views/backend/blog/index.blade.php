@@ -45,7 +45,10 @@
                                                 <td>
                                                     @if ($blog->image == null)
                                                         <img src="{{ asset('assets/default_images/placeholder.png') }}"
-                                                            alt="Default Image" width="60" class="rounded">
+                                                            alt="No Image" width="60" class="rounded">
+                                                    @elseif (!file_exists(public_path('uploads/blogs/' . $blog->image)))
+                                                        <img src="{{ asset('assets/default_images/placeholder.png') }}"
+                                                            alt="File not found" width="60" class="rounded">
                                                     @else
                                                         <img src="{{ asset('uploads/blogs/' . $blog->image) }}"
                                                             alt="{{ $blog->title }}" width="60" class="rounded">

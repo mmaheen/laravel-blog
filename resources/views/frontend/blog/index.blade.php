@@ -40,8 +40,13 @@
 
                                         <div class="post-img">
                                             <div class="ratio ratio-4x3">
-                                                <img src="{{ asset('uploads/blogs/' . $blog->image) }}" alt=""
+                                                @php
+                                                    $blogImage = blogImage($blog->image, $blog->title);
+                                                @endphp
+                                                <img src="{{ $blogImage['src'] }}" alt="{{ $blogImage['alt'] }}"
                                                     class="img-fluid">
+                                                {{-- <img src="{{ asset('uploads/blogs/' . $blog->image) }}" alt=""
+                                                    class="img-fluid"> --}}
                                             </div>
 
                                         </div>

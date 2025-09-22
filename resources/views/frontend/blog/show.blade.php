@@ -26,8 +26,11 @@
                         <article class="article">
 
                             <div class="hero-img" data-aos="zoom-in">
-                                <img src="{{ asset('uploads/blogs/' . $blog->image) }}" alt="Featured blog image"
-                                    class="img-fluid" loading="lazy">
+                                @php
+                                    $blogImage = blogImage($blog->image, $blog->title);
+                                @endphp
+                                <img src="{{ $blogImage['src'] }}" alt="{{ $blogImage['alt'] }}" class="img-fluid"
+                                    loading="lazy">
                                 <div class="meta-overlay">
                                     <div class="meta-categories">
                                         <a href="{{ route('blogs.by.category', $blog->category->slug) }}"
@@ -49,7 +52,12 @@
 
                                     <div class="author-info">
                                         <div class="author-details">
-                                            <img src="{{ asset('uploads/users/' . $blog->user->image) }}" alt="Author"
+                                            {{-- <img src="{{ asset('uploads/users/' . $blog->user->image) }}" alt="Author"
+                                                class="author-img"> --}}
+                                            @php
+                                                $authorImage = userImage($blog->user->image, $blog->user->name);
+                                            @endphp
+                                            <img src="{{ $authorImage['src'] }}" alt="{{ $authorImage['alt'] }}"
                                                 class="author-img">
                                             <div class="info">
                                                 <h4>{{ ucfirst($blog->user->name) }}</h4>

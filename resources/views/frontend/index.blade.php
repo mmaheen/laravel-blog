@@ -224,8 +224,13 @@
 
                                 <div class="post-img position-relative overflow-hidden">
                                     <div class="ratio ratio-4x3">
-                                        <img src="{{ asset('uploads/blogs/' . $blog->image) }}" class="img-fluid"
-                                            alt="">
+                                        {{-- <img src="{{ asset('uploads/blogs/' . $blog->image) }}" class="img-fluid"
+                                            alt=""> --}}
+                                        @php
+                                            $blogImage = blogImage($blog->image, $blog->title);
+                                        @endphp
+                                        <img src="{{ $blogImage['src'] }}" alt="{{ $blogImage['alt'] }}"
+                                            class="img-fluid">
                                     </div>
                                     <span class="post-date">{{ $blog->created_at->format('F d') }}</span>
                                 </div>
@@ -268,7 +273,7 @@
 
         </section>
         <!-- /Recent Blog Posts Section -->
-        <!-- /Recent Blog Posts Section -->
+
 
         <!-- Team Section -->
         <section id="team" class="team section">

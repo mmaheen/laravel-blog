@@ -2,7 +2,11 @@
 
 @foreach ($blogs as $blog)
     <div class="post-item">
-        <img src="{{ asset('uploads/blogs/' . $blog->image) }}" alt="" class="flex-shrink-0">
+        @php
+            $blogImage = blogImage($blog->image, $blog->title);
+        @endphp
+        <img src="{{ $blogImage['src'] }}" alt="{{ $blogImage['alt'] }}" class="flex-shrink-0">
+        {{-- <img src="{{ asset('uploads/blogs/' . $blog->image) }}" alt="" class="flex-shrink-0"> --}}
         <div>
             <h4>
                 <a href="{{ route('blog.show', $blog->slug) }}">

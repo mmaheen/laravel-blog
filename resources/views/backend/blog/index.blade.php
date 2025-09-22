@@ -43,7 +43,7 @@
                                             <tr>
                                                 <td>{{ $loop->iteration }}</td>
                                                 <td>
-                                                    @if ($blog->image == null)
+                                                    {{-- @if ($blog->image == null)
                                                         <img src="{{ asset('assets/default_images/placeholder.png') }}"
                                                             alt="No Image" width="60" class="rounded">
                                                     @elseif (!file_exists(public_path('uploads/blogs/' . $blog->image)))
@@ -52,10 +52,14 @@
                                                     @else
                                                         <img src="{{ asset('uploads/blogs/' . $blog->image) }}"
                                                             alt="{{ $blog->title }}" width="60" class="rounded">
-                                                    @endif
+                                                    @endif --}}
                                                     {{-- <img src="{{ $blog->image ? asset('uploads/blogs/' . $blog->image) : asset('assets/default_images/placeholder.png') }}"
                                                         alt="{{ $blog->title }}" width="60" class="rounded"> --}}
-
+                                                    @php
+                                                        $blogImage = blogImage($blog->image, $blog->title);
+                                                    @endphp
+                                                    <img src="{{ $blogImage['src'] }}" alt="{{ $blogImage['alt'] }}"
+                                                        width="60" class="rounded">
                                                 </td>
                                                 <td>
                                                     <div class="d-flex align-items-center">

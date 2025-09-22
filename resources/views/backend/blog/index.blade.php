@@ -95,13 +95,18 @@
                                                 <td>
                                                     <div class="d-flex">
                                                         <a href="{{ route('dashboard.blogs.edit', $blog->slug) }}"
-                                                            class="btn btn-primary btn-sm mr-1">Edit</a>
+                                                            class="btn btn-outline-primary btn-sm mr-1" title="Edit">
+                                                            <i class="ti-pencil"></i>
+                                                        </a>
                                                         <form action="{{ route('dashboard.blogs.destroy', $blog->slug) }}"
                                                             method="POST" style="display: inline-block;">
                                                             @csrf
                                                             @method('DELETE')
-                                                            <button type="submit" class="btn btn-danger btn-sm"
-                                                                onclick="return confirm('Are you sure you want to delete this blog?')">Delete</button>
+                                                            <button type="submit" class="btn btn-outline-danger btn-sm"
+                                                                title="Delete"
+                                                                onclick="return confirm('Are you sure you want to delete this blog?')">
+                                                                <i class="ti-trash"></i>
+                                                            </button>
                                                         </form>
                                                     </div>
                                                 </td>

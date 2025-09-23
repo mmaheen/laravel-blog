@@ -18,6 +18,7 @@ class BlogController extends Controller
         $blogs = Blog::select('slug', 'title', 'image', 'created_at', 'user_id', 'category_id', 'description')
             ->with(['user:id,name', 'category:id,name,slug'])
             ->where('is_published', true)
+            ->withCount('comments')
             ->inRandomOrder()
             ->paginate(6);
         return view('frontend.blog.index', compact('blogs'));
@@ -30,8 +31,8 @@ class BlogController extends Controller
     {
         //
         $blog = Blog::where('slug', $slug)
-            // ->with('comments.user')
-            // ->withCount('comments')
+            ->with('comments.user')
+            ->withCount('comments')
             ->firstOrFail();
         // return $blog;
         return view('frontend.blog.show', compact('blog'));
@@ -45,6 +46,7 @@ class BlogController extends Controller
         $blogs = Blog::whereDate('created_at', $date)
             ->select('slug', 'title', 'image', 'created_at', 'user_id', 'category_id', 'description')
             ->with(['user:id,name', 'category:id,name,slug'])
+            ->withCount('comments')
             ->inRandomOrder()
             ->paginate(6);
         return view('frontend.blog.index', compact('blogs', 'date'));
@@ -60,6 +62,7 @@ class BlogController extends Controller
         $blogs = Blog::where('user_id', $author->id)
             ->select('slug', 'title', 'image', 'created_at', 'user_id', 'category_id', 'description')
             ->with(['user:id,name', 'category:id,name,slug'])
+            ->withCount('comments')
             ->inRandomOrder()
             ->paginate(6);
         return view('frontend.blog.index', compact('blogs', 'author'));
@@ -75,6 +78,7 @@ class BlogController extends Controller
         $blogs = Blog::where('category_id', $category->id)
             ->select('slug', 'title', 'image', 'created_at', 'user_id', 'category_id', 'description')
             ->with(['user:id,name', 'category:id,name,slug'])
+            ->withCount('comments')
             ->inRandomOrder()
             ->paginate(6);
         return view('frontend.blog.index', compact('blogs', 'category'));
@@ -89,6 +93,7 @@ class BlogController extends Controller
         $blogs = $tag->blogs()
             ->select('slug', 'title', 'image', 'created_at', 'user_id', 'category_id', 'description')
             ->with(['user:id,name', 'category:id,name,slug'])
+            ->withCount('comments')
             ->inRandomOrder()
             ->paginate(6);
         // return $blogs;

@@ -70,7 +70,7 @@
                                                             datetime="2022-01-01">{{ $blog->created_at->format('M d, Y') }}</time></a>
                                                 </div>
                                                 <div class="col-6 d-flex align-items-center"><i class="bi bi-chat-dots"></i>
-                                                    <a href="#">12 Comments</a>
+                                                    <a href="#">{{ $blog->comments_count }} Comments</a>
                                                 </div>
                                             </div>
 

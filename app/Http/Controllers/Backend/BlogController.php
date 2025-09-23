@@ -56,8 +56,12 @@ class BlogController extends Controller
         $blog = Blog::where('slug', $slug)
             ->with('tags:id,name')
             ->firstOrFail();
-        $categories = Category::select('id', 'name')->get();
-        $tags = Tag::select('id', 'name')->get();
+        $categories = Category::select('id', 'name')
+            ->orderBy('name', 'asc')
+            ->get();
+        $tags = Tag::select('id', 'name')
+            ->orderBy('name', 'asc')
+            ->get();
         return view('backend.blog.edit', compact('blog', 'categories', 'tags'));
     }
 

@@ -95,7 +95,13 @@
                                     <div class="form-group row">
                                         <label for="image" class="col-sm-2 col-form-label">Image</label>
                                         <div class="col-sm-10">
-                                            <input type="file" class="form-control-file" name="image" id="image">
+                                            <div class="input-group mb-3">
+                                                <div class="custom-file">
+                                                    <input type="file" name="image" class="custom-file-input"
+                                                        id="image">
+                                                    <label class="custom-file-label" for="image">Choose image</label>
+                                                </div>
+                                            </div>
                                         </div>
                                         @error('image')
                                             <span class="text-danger mx-2">* {{ $message }}</span>

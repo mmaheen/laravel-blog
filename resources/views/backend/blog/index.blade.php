@@ -43,6 +43,7 @@
                                             <th>Description</th>
                                             <th>Status</th>
                                             <th>Category</th>
+                                            <th>Tags</th>
                                             <th>Created At</th>
                                             <th>Actions</th>
                                         </tr>
@@ -101,6 +102,11 @@
                                                         : "<span class='badge badge-danger'>Unpublished</span>" !!}
                                                 </td>
                                                 <td>{{ $blog->category->name }}</td>
+                                                <td>
+                                                    @foreach ($blog->tags as $tag)
+                                                        <span class="badge badge-info">{{ ucfirst($tag->name) }}</span>
+                                                    @endforeach
+                                                </td>
                                                 <td>{{ $blog->created_at->format('d M, Y') }}</td>
                                                 <td>
                                                     <div class="d-flex">
@@ -133,6 +139,7 @@
                                             <th>Description</th>
                                             <th>Status</th>
                                             <th>Category</th>
+                                            <th>Tags</th>
                                             <th>Created At</th>
                                             <th>Actions</th>
                                         </tr>

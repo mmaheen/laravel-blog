@@ -91,9 +91,14 @@ class BlogController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    public function show(string $slug)
     {
         //
+        $blog = Blog::where('slug', $slug)
+            ->with('user:id,name,image', 'category:id,name', 'tags:id,name', 'comments.user:id,name,image')
+            ->withCount('comments')
+            ->first();
+        return view('backend.blog.show', compact('blog'));
     }
 
     /**

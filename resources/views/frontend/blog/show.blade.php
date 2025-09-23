@@ -112,7 +112,8 @@
                         </article>
 
                     </div>
-                </section><!-- /Blog Details Section -->
+                </section>
+                <!-- /Blog Details Section -->
 
                 <!-- Blog Comments Section -->
                 <section id="blog-comments" class="blog-comments section">
@@ -129,14 +130,11 @@
                             </div>
 
                             <div class="comments-container">
-                                <!-- Comment #1 -->
                                 @foreach ($blog->comments as $comment)
                                     <div class="comment-thread">
                                         <div class="comment-box">
                                             <div class="comment-wrapper">
                                                 <div class="avatar-wrapper">
-                                                    {{-- <img src="{{ asset('assets/frontend') }}/img/person/person-f-9.webp"
-                                                        alt="Avatar" loading="lazy"> --}}
                                                     @php
                                                         $commenterImage = userImage(
                                                             $comment->user->image,

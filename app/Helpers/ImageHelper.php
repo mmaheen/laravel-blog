@@ -23,3 +23,15 @@ function userImage($image, $name = 'Default User')
         return ['src' => asset('uploads/users/' . $image), 'alt' => $name];
     }
 }
+
+function photoImage($image, $title = 'Default Image')
+{
+    $path = public_path('uploads/photos/' . $image);
+    if (!$image) {
+        return ['src' => asset('assets/default_images/placeholder.png'), 'alt' => 'No Image'];
+    } elseif (!file_exists($path)) {
+        return ['src' => asset('assets/default_images/placeholder.png'), 'alt' => 'File not found'];
+    } else {
+        return ['src' => asset('uploads/photos/' . $image), 'alt' => $title];
+    }
+}

@@ -7,18 +7,7 @@
                     <i class="icon-speedometer menu-icon"></i><span class="nav-text">Dashboard</span>
                 </a>
                 <ul aria-expanded="false">
-                    <li><a href="{{ route('dashboard.index') }}">Dashboard Home</a></li>
-                </ul>
-            </li>
-
-            <li class="nav-label">Create Content</li>
-            <li>
-                <a class="has-arrow" href="javascript:void()" aria-expanded="false">
-                    <i class="icon-note menu-icon"></i><span class="nav-text">Forms</span>
-                </a>
-                <ul aria-expanded="false">
-                    <li><a href="{{ route('dashboard.blogs.create') }}">Blog</a></li>
-                    <li><a href="{{ route('dashboard.photos.create') }}">Photos</a></li>
+                    <li><a href="{{ route('dashboard.index') }}">Home</a></li>
                 </ul>
             </li>
 
@@ -33,6 +22,16 @@
                 </ul>
             </li>
 
+            <li class="nav-label">Create Content</li>
+            <li>
+                <a class="has-arrow" href="javascript:void()" aria-expanded="false">
+                    <i class="icon-note menu-icon"></i><span class="nav-text">Forms</span>
+                </a>
+                <ul aria-expanded="false">
+                    <li><a href="{{ route('dashboard.blogs.create') }}">Blog</a></li>
+                    <li><a href="{{ route('dashboard.photos.create') }}">Photos</a></li>
+                </ul>
+            </li>
         </ul>
     </div>
 </div>

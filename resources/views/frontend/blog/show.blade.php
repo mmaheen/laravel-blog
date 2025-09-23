@@ -198,7 +198,8 @@
 
                     </div>
 
-                </section><!-- /Blog Comments Section -->
+                </section>
+                <!-- /Blog Comments Section -->
 
                 <!-- Blog Comment Form Section -->
                 <section id="blog-comment-form" class="blog-comment-form section">
@@ -256,7 +257,8 @@
 
                     </div>
 
-                </section><!-- /Blog Comment Form Section -->
+                </section>
+                <!-- /Blog Comment Form Section -->
 
             </div>
 

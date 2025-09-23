@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Backend;
 
+use App\Models\Tag;
 use App\Models\Blog;
 use App\Models\Category;
 use Illuminate\Http\Request;
@@ -52,9 +53,12 @@ class BlogController extends Controller
     public function edit(string $slug)
     {
         //
-        $blog = Blog::where('slug', $slug)->firstOrFail();
+        $blog = Blog::where('slug', $slug)
+            ->with('tags:id,name')
+            ->firstOrFail();
         $categories = Category::select('id', 'name')->get();
-        return view('backend.blog.edit', compact('blog', 'categories'));
+        $tags = Tag::select('id', 'name')->get();
+        return view('backend.blog.edit', compact('blog', 'categories', 'tags'));
     }
 
     /**
@@ -94,6 +98,10 @@ class BlogController extends Controller
             $blog->category_id = $request->category_id;
             $blog->is_published = $request->is_published;
             $blog->update();
+
+            // Sync tags
+            $blog->tags()->sync($request->tags ?? []);
+
             return redirect()->route('dashboard.blogs.index')->with('success', 'Blog updated successfully.');
 
         } catch (\Exception $e) {

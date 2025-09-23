@@ -102,6 +102,24 @@
                                         @enderror
                                     </div>
 
+                                    <fieldset class="form-group">
+                                        <div class="row">
+                                            <label for="tags" class="col-form-label col-sm-2 pt-0">
+                                                Tags
+                                            </label>
+                                            <div class="col-sm-10">
+                                                @foreach ($tags as $tag)
+                                                    <label class="form-check-label mr-4">
+                                                        <input type="checkbox" class = "form-check-input" name="tags[]"
+                                                            value="{{ $tag->id }}"
+                                                            {{ $blog->tags->contains($tag->id) ? 'checked' : '' }}>
+                                                        {{ ucfirst($tag->name) }}</label>
+                                                @endforeach
+
+                                            </div>
+                                        </div>
+                                    </fieldset>
+
                                     <div class="form-group row">
                                         <div class="col-sm-10">
                                             <button type="submit" class="btn btn-primary">Update</button>

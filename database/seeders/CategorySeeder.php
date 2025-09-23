@@ -156,7 +156,7 @@ class CategorySeeder extends Seeder
             \App\Models\Category::create([
                 'name' => $category,
                 'user_id' => \App\Models\User::inRandomOrder()->first()->id,
-                'slug' => \Str::slug($category),
+                'slug' => \Str::slug($category) . '-' . uniqid(),
                 'image' => $image_name,
                 'created_at' => $faker->dateTimeBetween('-1 year', 'now'),
             ]);

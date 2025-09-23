@@ -53,7 +53,7 @@ class BlogSeeder extends Seeder
                 'description' => $faker->realText(500),
                 'image' => $new_name,
                 'is_published' => $faker->boolean(),
-                'slug' => Str::slug($title),
+                'slug' => Str::slug($title) . '-' . uniqid(),
                 'user_id' => User::inRandomOrder()->first()->id,
                 'category_id' => Category::inRandomOrder()->first()->id,
                 'created_at' => $faker->dateTimeThisYear(),

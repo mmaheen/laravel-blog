@@ -34,7 +34,7 @@ class PhotoSeeder extends Seeder
                 'description' => $faker->realText($maxNbChars = 500, $indexSize = 4),
                 'image' => $image_name,
                 'is_published' => $faker->boolean(),
-                'slug' => \Str::slug($title),
+                'slug' => \Str::slug($title) . '-' . uniqid(),
                 'user_id' => \App\Models\User::inRandomOrder()->first()->id,
                 'category_id' => \App\Models\Category::inRandomOrder()->first()->id,
                 'created_at' => $faker->dateTimeThisYear(),

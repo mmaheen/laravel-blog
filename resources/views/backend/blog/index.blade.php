@@ -76,12 +76,12 @@
                                                             alt="{{ $blog->user->name }}" width="40"
                                                             class="rounded-circle mr-2"> --}}
                                                         @php
-                                                            $userImage = userImage(
+                                                            $authorImage = userImage(
                                                                 $blog->user->image,
                                                                 $blog->user->name,
                                                             );
                                                         @endphp
-                                                        <img src="{{ $userImage['src'] }}" alt="{{ $userImage['alt'] }}"
+                                                        <img src="{{ $authorImage['src'] }}" alt="{{ $authorImage['alt'] }}"
                                                             width="40" class="rounded-circle mr-2">
                                                         {{ $blog->user->name }}
                                                     </div>

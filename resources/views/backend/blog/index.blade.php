@@ -21,6 +21,15 @@
                 <div class="col-12">
                     <div class="card">
                         <div class="card-body">
+                            @if (session('success'))
+                                <div class="alert alert-success alert-dismissible fade show" role="alert">
+                                    {{ session('success') }}
+                                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                            @endif
+
                             <h4 class="card-title">Blog Table</h4>
                             <div class="table-responsive">
                                 <table class="table table-striped table-bordered zero-configuration">
@@ -86,9 +95,10 @@
                                                 </td>
                                                 <td>{{ \Illuminate\Support\Str::limit($blog->subtitle, 30) }}</td>
                                                 <td>{{ \Illuminate\Support\Str::limit($blog->description, 30) }}</td>
-                                                <td>{!! $blog->is_published
-                                                    ? "<span class='badge badge-success'>Published</span>"
-                                                    : "<span class='badge badge-danger'>Unpublished</span>" !!}</td>
+                                                <td>
+                                                    {!! $blog->is_published
+                                                        ? "<span class='badge badge-success'>Published</span>"
+                                                        : "<span class='badge badge-danger'>Unpublished</span>" !!}
                                                 </td>
                                                 <td>{{ $blog->category->name }}</td>
                                                 <td>{{ $blog->created_at->format('d M, Y') }}</td>

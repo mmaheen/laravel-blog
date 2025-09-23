@@ -5,8 +5,11 @@ namespace App\Http\Controllers\Backend;
 use App\Models\Tag;
 use App\Models\Blog;
 use App\Models\Category;
+use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
+
 
 class BlogController extends Controller
 {
@@ -29,6 +32,13 @@ class BlogController extends Controller
     public function create()
     {
         //
+        $categories = Category::select('id', 'name')
+            ->orderBy('name', 'asc')
+            ->get();
+        $tags = Tag::select('id', 'name')
+            ->orderBy('name', 'asc')
+            ->get();
+        return view('backend.blog.create', compact('categories', 'tags'));
     }
 
     /**
@@ -37,6 +47,45 @@ class BlogController extends Controller
     public function store(Request $request)
     {
         //
+        $request->validate([
+            'title' => 'required|string|max:255',
+            'subtitle' => 'nullable|string|max:255',
+            'description' => 'required|string',
+            'category_id' => 'required|exists:categories,id',
+            'is_published' => 'required|boolean',
+            'image' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+        ], [
+            'title.required' => 'Please enter a title for the blog.',
+            'description.required' => 'Please enter a description for the blog.',
+            'category_id.required' => 'Please select a category for the blog.',
+            'is_published.required' => 'Please specify if the blog is published.',
+        ]);
+        try {
+            $image_name = null;
+            if ($request->hasFile('image')) {
+                $image = $request->file('image');
+                $image_name = time() . '_blog_' . uniqid() . '.' . $image->getClientOriginalExtension();
+                $image->move(public_path('uploads/blogs/'), $image_name);
+            }
+            $blog = new Blog();
+            $blog->user_id = Auth::user()->id;
+            $blog->title = $request->title;
+            $blog->subtitle = $request->subtitle;
+            $blog->slug = Str::slug($request->title) . '-' . uniqid();
+            $blog->description = $request->description;
+            $blog->category_id = $request->category_id;
+            $blog->is_published = $request->is_published;
+            $blog->image = $image_name;
+            $blog->save();
+
+            // Sync tags
+            $blog->tags()->sync($request->tags ?? []);
+
+            return redirect()->route('dashboard.blogs.index')->with('success', 'Blog created successfully.');
+
+        } catch (\Exception $e) {
+            return redirect()->route('dashboard.blogs.index')->with('error', 'Failed to create blog. ' . $e->getMessage());
+        }
     }
 
     /**

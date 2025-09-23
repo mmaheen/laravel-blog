@@ -11,20 +11,16 @@
                 </ul>
             </li>
 
-            <li class="nav-label">Apps</li>
+            <li class="nav-label">Create Content</li>
             <li>
                 <a class="has-arrow" href="javascript:void()" aria-expanded="false">
-                    <i class="icon-envelope menu-icon"></i> <span class="nav-text">Email</span>
+                    <i class="icon-note menu-icon"></i><span class="nav-text">Forms</span>
                 </a>
                 <ul aria-expanded="false">
-                    <li><a href="#">Inbox</a></li>
-                    <li><a href="#">Read</a></li>
-                    <li><a href="#">Compose</a></li>
+                    <li><a href="{{ route('dashboard.blogs.create') }}">Blog</a></li>
+                    <li><a href="{{ route('dashboard.photos.create') }}">Photos</a></li>
                 </ul>
             </li>
-
-
-
 
             <li class="nav-label">Table</li>
             <li>

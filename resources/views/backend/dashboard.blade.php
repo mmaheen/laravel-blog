@@ -23,7 +23,7 @@
                                 <h2 class="text-white">{{ $total_blogs }}</h2>
                                 <p class="text-white mb-0">Jan - March 2019</p>
                             </div>
-                            <span class="float-right display-5 opacity-5"><i class="fa fa-shopping-cart"></i></span>
+                            <span class="float-right display-5 opacity-5"><i class="fa fa-book"></i></span>
                         </div>
                     </div>
                 </div>
@@ -35,7 +35,7 @@
                                 <h2 class="text-white">{{ $total_photos }}</h2>
                                 <p class="text-white mb-0">Jan - March 2019</p>
                             </div>
-                            <span class="float-right display-5 opacity-5"><i class="fa fa-money"></i></span>
+                            <span class="float-right display-5 opacity-5"><i class="fa fa-photo"></i></span>
                         </div>
                     </div>
                 </div>
@@ -59,7 +59,7 @@
                                 <h2 class="text-white">{{ $total_categories }}</h2>
                                 <p class="text-white mb-0">Jan - March 2019</p>
                             </div>
-                            <span class="float-right display-5 opacity-5"><i class="fa fa-heart"></i></span>
+                            <span class="float-right display-5 opacity-5"><i class="fa fa-newspaper-o"></i></span>
                         </div>
                     </div>
                 </div>

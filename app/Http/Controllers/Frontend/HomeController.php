@@ -39,6 +39,18 @@ class HomeController extends Controller
             ->latest()
             ->take(6)
             ->get();
-        return view('frontend.index', compact('categories', 'skills', 'photos', 'photo_categories', 'recent_blogs'));
+
+        $team = \App\Models\User::select('name', 'image')
+            ->inRandomOrder()
+            ->take(4)
+            ->get();
+
+        //In Testimonials section
+        $testimonials = \App\Models\Testimonial::with('user:id,name,image')
+            ->inRandomOrder()
+            ->take(5)
+            ->get();
+
+        return view('frontend.index', compact('categories', 'skills', 'photos', 'photo_categories', 'recent_blogs', 'team', 'testimonials'));
     }
 }
